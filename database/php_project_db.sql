@@ -6,6 +6,7 @@ drop table if exists log_in;
 drop table if exists posts;
 drop table if exists tags;
 drop table if exists users_info;
+drop table if exists comments;
 
 create table if not exists users_info
 (
@@ -18,6 +19,7 @@ create table if not exists users_info
     phone		varchar(30)		not null	unique,
     address		varchar(100)	not null,  
     job			varchar(50)		not null,
+    avatar_url	varchar(1000)	not null,
     no_posts	int				default 0,
     no_followers int			default 0,
     no_likes	int				default 0
@@ -59,4 +61,13 @@ create table if not exists post_tag
     foreign key (tag_id) references tags(tag_id)
 );
 
+create table if not exists comments
+(
+	comment_id	int 	not null	auto_increment	primary key,
+    user_id	int		not null,
+    post_id	int		not null,
+    content	text,
+    foreign key (user_id) references users_info (user_id),
+    foreign key (post_id) references posts (post_id)
+);
 
