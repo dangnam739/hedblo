@@ -24,7 +24,7 @@ Route::match(['GET','POST'],'/create_blog','BlogController@create');
 /*User authen*/
 Route::match(['GET','POST'],'/login','AuthController@login');
 Route::match(['GET','POST'],'/register','AuthController@register');
-Route::match(['GET','POST'],'/profile','AuthController@profile');
+Route::match(['GET','POST'],'/profiles','AuthController@profile');
 Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');
 
 /*Admin route*/

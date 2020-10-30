@@ -25,26 +25,32 @@
             </div>
         </div>
     </section>
-    <div class="comment-form">
-        <form class="form-contact comment_form" action="#" id="commentForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="comment-form">
 
-                    <div class="form-group" style="width: 30%;">
-                        <input class="form-control" name="password" id="password" type="text" placeholder="Current Password">
-                    </div>
-
-
-                    <div class="form-group" style="width: 30%;">
-                        <input class="form-control" name="password" id="password" type="text" placeholder="New Password">
-                    </div>
+                    <form class="form-contact comment_form" action="#" id="commentForm">
+                        <div class="form-group">
+                            <input class="form-control" name="password" id="password" type="text" placeholder="Current Password">
+                        </div>
 
 
-                    <div class="form-group" style="width: 30%;">
-                        <input class="form-control" name="password2" id="password2" type="text" placeholder="Confirm password">
-                    </div>
+                        <div class="form-group">
+                            <input class="form-control" name="password" id="password" type="text" placeholder="New Password">
+                        </div>
 
-            <div class="form-group">
-                <button type="submit" class="button button-contactForm btn_1 boxed-btn">Save</button>
+
+                        <div class="form-group">
+                            <input class="form-control" name="password2" id="password2" type="text" placeholder="Confirm password">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 @endsection

@@ -28,7 +28,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-8">
                     <div class="single-services mb-30">
                         <div class="features-icon">
-                            <img src="{{asset('public/user/img/icon/icon1.svg')}}" alt="">
+                            <img src="{{asset('/user/img/icon/icon1.svg')}}" alt="">
                         </div>
                         <div class="features-caption">
                             <h3>60+ UX courses</h3>
@@ -39,7 +39,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-8">
                     <div class="single-services mb-30">
                         <div class="features-icon">
-                            <img src="{{asset('public/user/img/icon/icon2.svg')}}" alt="">
+                            <img src="{{asset('/user/img/icon/icon2.svg')}}" alt="">
                         </div>
                         <div class="features-caption">
                             <h3>Expert instructors</h3>
@@ -50,7 +50,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-8">
                     <div class="single-services mb-30">
                         <div class="features-icon">
-                            <img src="{{asset('public/user/img/icon/icon3.svg')}}" alt="">
+                            <img src="{{asset('/user/img/icon/icon3.svg')}}" alt="">
                         </div>
                         <div class="features-caption">
                             <h3>Life time access</h3>
@@ -76,7 +76,7 @@
                 <div class="properties pb-20">
                     <div class="properties__card">
                         <div class="properties__img overlay1">
-                          <img src="{{asset('public/user/img/gallery/featured1.png')}}" alt="">
+                          <img src="{{asset('/user/img/gallery/featured1.png')}}" alt="">
                         </div>
                         <div class="properties__caption">
                             <p>User Experience</p>
@@ -109,7 +109,7 @@
                 <div class="properties pb-20">
                     <div class="properties__card">
                         <div class="properties__img overlay1">
-                            <a href="#"><img src="{{asset('public/user/img/gallery/featured2.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('/user/img/gallery/featured2.png')}}" alt=""></a>
                         </div>
                         <div class="properties__caption">
                             <p>User Experience</p>
@@ -140,7 +140,7 @@
                 <div class="properties pb-20">
                     <div class="properties__card">
                         <div class="properties__img overlay1">
-                            <a href="#"><img src="{{asset('public/user/img/gallery/featured3.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('/user/img/gallery/featured3.png')}}" alt=""></a>
                         </div>
                         <div class="properties__caption">
                             <p>User Experience</p>

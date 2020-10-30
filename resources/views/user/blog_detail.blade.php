@@ -32,7 +32,7 @@
                 <div class="col-lg-8 posts-list">
                     <div class="single-post">
                         <div class="feature-img">
-                            <img class="img-fluid" src="{{asset('public/user/img/blog/single_blog_1.png')}}" alt="">
+                            <img class="img-fluid" src="{{asset('/user/img/blog/single_blog_1.png')}}" alt="">
                         </div>
                         <div class="blog_details">
                             <h2 style="color: #2d2d2d;">Second divided from form fish beast made every of seas

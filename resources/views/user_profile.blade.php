@@ -9,59 +9,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="{{asset('public/profile/css/bootstrap.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('public/profile/font-awesome/4.5.0/css/font-awesome.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/font-awesome/4.5.0/css/font-awesome.min.css')}}" />
 
     <!-- page specific plugin styles -->
-    <link rel="stylesheet" href="{{asset('public/profile/css/jquery-ui.custom.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('public/profile/css/jquery.gritter.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('public/profile/css/select2.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('public/profile/css/bootstrap-datepicker3.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('public/profile/css/bootstrap-editable.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/jquery-ui.custom.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/jquery.gritter.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/select2.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/bootstrap-datepicker3.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/bootstrap-editable.min.css')}}" />
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="{{asset('public/profile/css/fonts.googleapis.com.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/fonts.googleapis.com.css')}}" />
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="{{asset('public/profile/css/ace.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="{{asset('/profile/css/ace.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{asset('public/profile/css/ace-part2.min.css')}}" class="ace-main-stylesheet" />
+    <link rel="stylesheet" href="{{asset('/profile/css/ace-part2.min.css')}}" class="ace-main-stylesheet" />
     <![endif]-->
-    <link rel="stylesheet" href="{{asset('public/profile/css/ace-skins.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('public/profile/css/ace-rtl.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/ace-skins.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/ace-rtl.min.css')}}" />
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{asset('public/profile/css/ace-ie.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/profile/css/ace-ie.min.css')}}" />
     <![endif]-->
 
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
-    <script src="{{asset('public/profile/js/ace-extra.min.js')}}"></script>
+    <script src="{{asset('/profile/js/ace-extra.min.js')}}"></script>
 
     <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
     <!--[if lte IE 8]>
-    <script src="{{asset('public/profile/js/html5shiv.min.js')}}"></script>
-    <script src="{{asset('public/profile/js/respond.min.js')}}"></script>
+    <script src="{{asset('/profile/js/html5shiv.min.js')}}"></script>
+    <script src="{{asset('/profile/js/respond.min.js')}}"></script>
     <![endif]-->
 
     <!--Css for header-->
-    <link rel="stylesheet" href="{{asset('public/user/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/slicknav.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/flaticon.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/progressbar_barfiller.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/gijgo.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/animated-headline.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/nice-select.css')}}">
-    <link rel="stylesheet" href="{{asset('public/user/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/progressbar_barfiller.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/gijgo.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/animated-headline.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('/user/css/style.css')}}">
 </head>
 
 <body class="no-skin">
@@ -75,7 +75,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="{{URL::to('/')}}"><img src="{{asset('public/user/img/logo/logo.png')}}" alt=""></a>
+                                <a href="{{URL::to('/')}}"><img src="{{asset('/user/img/logo/logo.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10">
@@ -96,7 +96,7 @@
                                             </li>
                                             <li><a href="#">User account</a>
                                                 <ul class="submenu">
-                                                    <li><a href="{{URL::to('/profile')}}">Profile</a></li>
+                                                    <li><a href="{{URL::to('/profiles')}}">Profile</a></li>
                                                     <li><a href="{{URL::to('/change-pass')}}">Change pass</a></li>
                                                 </ul>
                                             </li>
@@ -134,8 +134,8 @@
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">All Blog</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/')}}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/all_blog')}}">All Blog</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -202,14 +202,10 @@
                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-date">Birth Date</label>
 
                                                             <div class="col-sm-9">
-                                                                <div class="input-medium">
-                                                                    <div class="input-group">
-                                                                        <input class="input-medium date-picker" id="form-field-date" type="text" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy" />
-                                                                        <span class="input-group-addon">
-																				<i class="ace-icon fa fa-calendar"></i>
-																			</span>
-                                                                    </div>
-                                                                </div>
+                                                                <span class="input-icon input-icon-right">
+                                                                        <input class="input-medium date-picker pr-1" id="form-field-date" type="date" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy" />
+{{--                                                                        <i class="ace-icon fa fa-calendar"></i>--}}
+                                                                </span>
                                                             </div>
                                                         </div>
 
@@ -329,7 +325,7 @@
                                                         <div>
                                                             <label class="inline">
                                                                 <input type="checkbox" name="form-field-checkbox" class="ace" />
-                                                                <span class="lbl"> Make my profile public</span>
+                                                                <span class="lbl"> Make my profile </span>
                                                             </label>
                                                         </div>
 
@@ -423,7 +419,7 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo mb-25">
-                                    <a href="index.html"><img src="{{asset('public/user/img/logo/logo2_footer.png')}}" alt=""></a>
+                                    <a href="index.html"><img src="{{asset('/user/img/logo/logo2_footer.png')}}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -505,65 +501,65 @@
 </footer>
 
 <!--[if lte IE 8]>
-<script src="{{asset('public/profile/js/excanvas.min.js')}}"></script>
+<script src="{{asset('/profile/js/excanvas.min.js')}}"></script>
 <![endif]-->
-<script src="{{asset('public/profile/js/jquery-ui.custom.min.js')}}"></script>
-<script src="{{asset('public/profile/js/jquery.ui.touch-punch.min.js')}}"></script>
-<script src="{{asset('public/profile/js/jquery.gritter.min.js')}}"></script>
-<script src="{{asset('public/profile/js/bootbox.js')}}"></script>
-<script src="{{asset('public/profile/js/jquery.easypiechart.min.js')}}"></script>
-<script src="{{asset('public/profile/js/bootstrap-datepicker.min.js')}}"></script>
-<script src="{{asset('public/profile/js/jquery.hotkeys.index.min.js')}}"></script>
-<script src="{{asset('public/profile/js/bootstrap-wysiwyg.min.js')}}"></script>
-<script src="{{asset('public/profile/js/select2.min.js')}}"></script>
-<script src="{{asset('public/profile/js/spinbox.min.js')}}"></script>
-<script src="{{asset('public/profile/js/bootstrap-editable.min.js')}}"></script>
-<script src="{{asset('public/profile/js/ace-editable.min.js')}}"></script>
-<script src="{{asset('public/profile/js/jquery.maskedinput.min.js')}}"></script>
+<script src="{{asset('/profile/js/jquery-ui.custom.min.js')}}"></script>
+<script src="{{asset('/profile/js/jquery.ui.touch-punch.min.js')}}"></script>
+<script src="{{asset('/profile/js/jquery.gritter.min.js')}}"></script>
+<script src="{{asset('/profile/js/bootbox.js')}}"></script>
+<script src="{{asset('/profile/js/jquery.easypiechart.min.js')}}"></script>
+<script src="{{asset('/profile/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('/profile/js/jquery.hotkeys.index.min.js')}}"></script>
+<script src="{{asset('/profile/js/bootstrap-wysiwyg.min.js')}}"></script>
+<script src="{{asset('/profile/js/select2.min.js')}}"></script>
+<script src="{{asset('/profile/js/spinbox.min.js')}}"></script>
+<script src="{{asset('/profile/js/bootstrap-editable.min.js')}}"></script>
+<script src="{{asset('/profile/js/ace-editable.min.js')}}"></script>
+<script src="{{asset('/profile/js/jquery.maskedinput.min.js')}}"></script>
 
 <!-- ace scripts -->
-<script src="{{asset('public/profile/js/ace-elements.min.js')}}"></script>
-<script src="{{asset('public/profile/js/ace.min.js')}}"></script>
+<script src="{{asset('/profile/js/ace-elements.min.js')}}"></script>
+<script src="{{asset('/profile/js/ace.min.js')}}"></script>
 
 <!--Js user template-->
-<script src="{{asset('public/user/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+<script src="{{asset('/user/js/vendor/modernizr-3.5.0.min.js')}}"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="{{asset('public/user/js/vendor/jquery-1.12.4.min.js')}}"></script>
-<script src="{{asset('public/user/js/popper.min.js')}}"></script>
-<script src="{{asset('public/user/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('/user/js/vendor/jquery-1.12.4.min.js')}}"></script>
+<script src="{{asset('/user/js/popper.min.js')}}"></script>
+<script src="{{asset('/user/js/bootstrap.min.js')}}"></script>
 <!-- Jquery Mobile Menu -->
-<script src="{{asset('public/user/js/jquery.slicknav.min.js')}}"></script>
+<script src="{{asset('/user/js/jquery.slicknav.min.js')}}"></script>
 <!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="{{asset('public/user/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('public/user/js/slick.min.js')}}"></script>
+<script src="{{asset('/user/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('/user/js/slick.min.js')}}"></script>
 <!-- One Page, Animated-HeadLin -->
-<script src="{{asset('public/user/js/wow.min.js')}}"></script>
-<script src="{{asset('public/user/js/animated.headline.js')}}"></script>
-<script src="{{asset('public/user/js/jquery.magnific-popup.js')}}"></script>
+<script src="{{asset('/user/js/wow.min.js')}}"></script>
+<script src="{{asset('/user/js/animated.headline.js')}}"></script>
+<script src="{{asset('/user/js/jquery.magnific-popup.js')}}"></script>
 
 <!-- Date Picker -->
-<script src="{{asset('public/user/js/gijgo.min.js')}}"></script>
+<script src="{{asset('/user/js/gijgo.min.js')}}"></script>
 <!-- Nice-select, sticky -->
-<script src="{{asset('public/user/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{asset('public/user/js/jquery.sticky.js')}}"></script>
+<script src="{{asset('/user/js/jquery.nice-select.min.js')}}"></script>
+<script src="{{asset('/user/js/jquery.sticky.js')}}"></script>
 <!-- Progress -->
-<script src="{{asset('public/user/js/jquery.barfiller.js')}}"></script>
+<script src="{{asset('/user/js/jquery.barfiller.js')}}"></script>
 <!-- counter , waypoint,Hover Direction -->
-<script src="{{asset('public/user/js/jquery.counterup.min.js')}}"></script>
-<script src="{{asset('public/user/js/waypoints.min.js')}}"></script>
-<script src="{{asset('public/user/js/jquery.countdown.min.js')}}"></script>
-<script src="{{asset('public/user/js/hover-direction-snake.min.js')}}"></script>
+<script src="{{asset('/user/js/jquery.counterup.min.js')}}"></script>
+<script src="{{asset('/user/js/waypoints.min.js')}}"></script>
+<script src="{{asset('/user/js/jquery.countdown.min.js')}}"></script>
+<script src="{{asset('/user/js/hover-direction-snake.min.js')}}"></script>
 
 <!-- contact js -->
-<script src="{{asset('public/user/js/contact.js')}}"></script>
-<script src="{{asset('public/user/js/jquery.form.js')}}"></script>
-<script src="{{asset('public/user/js/jquery.validate.min.js')}}"></script>
-<script src="{{asset('public/user/js/mail-script.js')}}"></script>
-<script src="{{asset('public/user/js/jquery.ajaxchimp.min.js')}}"></script>
+<script src="{{asset('/user/js/contact.js')}}"></script>
+<script src="{{asset('/user/js/jquery.form.js')}}"></script>
+<script src="{{asset('/user/js/jquery.validate.min.js')}}"></script>
+<script src="{{asset('/user/js/mail-script.js')}}"></script>
+<script src="{{asset('/user/js/jquery.ajaxchimp.min.js')}}"></script>
 
 <!-- Jquery Plugins, main Jquery -->
-<script src="{{asset('public/user/js/plugins.js')}}"></script>
-<script src="{{asset('public/user/js/main.js')}}"></script>
+<script src="{{asset('/user/js/plugins.js')}}"></script>
+<script src="{{asset('/user/js/main.js')}}"></script>
 
 <!-- inline scripts related to this page -->
 </body>
