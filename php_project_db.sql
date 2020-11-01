@@ -6,10 +6,10 @@ drop table if exists comments;
 drop table if exists user_post_like;
 drop table if exists posts;
 drop table if exists tags;
-drop table if exists users_info;
+drop table if exists users;
 
 
-create table if not exists users_info
+create table if not exists users
 (
 	user_id 	int		 		not null 	auto_increment primary key,
     first_name	varchar(30)		not null,		
@@ -24,7 +24,6 @@ create table if not exists users_info
     job			varchar(50)		not null,
     avatar_url	varchar(1000)	not null,
     no_posts	int				default 0,
-    no_followers int			default 0,
     no_likes	int				default 0
 );
 
@@ -37,7 +36,7 @@ create table if not exists posts
     date_create	date,
     no_likes	int 	default 0,
     no_comments	int		default 0,
-    foreign key (author_id) references users_info (user_id)
+    foreign key (author_id) references users (user_id)
 );
 
 create table if not exists tags
@@ -62,7 +61,7 @@ create table if not exists comments
     user_id		int		not null,
     post_id		int		not null,
     content		text,
-    foreign key (user_id) references users_info (user_id),
+    foreign key (user_id) references users (user_id),
     foreign key (post_id) references posts (post_id)
 );
 
@@ -71,6 +70,7 @@ create table if not exists user_post_like
 	user_id		int		not null,
     post_id		int		not null,
     like_state	int	default 1,
-    foreign key (user_id) references users_info (user_id),
+    primary key (user_id, post_id),
+    foreign key (user_id) references users (user_id),
     foreign key (post_id) references posts (post_id)
 )
