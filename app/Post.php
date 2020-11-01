@@ -10,8 +10,4 @@ class Post extends Model
     protected $primaryKey = 'post_id';
     public $timestamps = false;
     protected $connection = '';
-    protected $attributes = [
-        'no_likes'=>0,
-        'no_comments'=>0,
-    ];
 }

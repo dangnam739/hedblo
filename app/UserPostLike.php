@@ -12,4 +12,7 @@ class UserPostLike extends Model
 
     public $timestamps = false;
     protected $connection = '';
+    protected $attributes = [
+        'like_state'=>1,
+    ];
 }

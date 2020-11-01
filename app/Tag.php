@@ -10,7 +10,4 @@ class Tag extends Model
     protected $primaryKey = 'tag_id';
     public $timestamps = false;
     protected $connection = '';
-    protected $attributes = [
-        'no_posts'=>0,
-    ];
 }

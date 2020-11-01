@@ -10,8 +10,4 @@ class User extends Model
     protected $primaryKey = 'user_id';
     public $timestamps = false;
     protected $connection = '';
-    protected $attributes = [
-        'no_posts'=>0,
-        'no_likes'=>0,
-    ];
 }
