@@ -15,16 +15,15 @@ create table if not exists users
     first_name	varchar(30)		not null,		
     last_name	varchar(30)		not null,
     username	varchar(100)	not null	unique,
-    pass_word	varchar(100)	not null,
+    password	varchar(100)	not null,
+    admin		int				not null	default 0,
     gender		varchar(10)		not null,
     birthday	date			not null,
     email		varchar(30)		not null	unique,
     phone		varchar(30)		not null	unique,
     address		varchar(100)	not null,  
     job			varchar(50)		not null,
-    avatar_url	varchar(1000)	not null,
-    no_posts	int				default 0,
-    no_likes	int				default 0
+    avatar_url	varchar(1000)	not null
 );
 
 create table if not exists posts
@@ -34,16 +33,13 @@ create table if not exists posts
     title		varchar(1000)		not null,
     content		text,
     date_create	date,
-    no_likes	int 	default 0,
-    no_comments	int		default 0,
     foreign key (author_id) references users (user_id)
 );
 
 create table if not exists tags
 (
 	tag_id		int			not null	auto_increment primary key,
-    tag_title	varchar(100) not null	unique,
-    no_posts	int		default 0
+    tag_title	varchar(100) not null	unique
 );
 
 create table if not exists post_tag
@@ -69,7 +65,7 @@ create table if not exists user_post_like
 (
 	user_id		int		not null,
     post_id		int		not null,
-    like_state	int	default 1,
+    like_state	int		default 1,
     primary key (user_id, post_id),
     foreign key (user_id) references users (user_id),
     foreign key (post_id) references posts (post_id)
