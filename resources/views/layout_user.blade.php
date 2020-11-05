@@ -65,14 +65,14 @@
                                             <li><a href="{{URL::to('create_blog')}}">Create</a></li>
                                             <li><a href="#">Categories</a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">Python</a></li>
-                                                    <li><a href="blog_details.html">Java</a></li>
-                                                    <li><a href="elements.html">JavaScript</a></li>
+                                                    <li><a href="#">Coding</a></li>
+                                                    <li><a href="#">Food</a></li>
+                                                    <li><a href="#">Travel</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">User account</a>
                                                 <ul class="submenu">
-                                                    <li><a href="{{URL::to('/profile')}}">Profile</a></li>
+                                                    <li><a href="{{URL::to('/profiles')}}">Profile</a></li>
                                                     <li><a href="{{URL::to('/change-pass')}}">Change pass</a></li>
                                                 </ul>
                                             </li>
@@ -110,7 +110,7 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo mb-25">
-                                    <a href="index.html"><img src="{{asset('/user/img/logo/logo2_footer.png')}}" alt=""></a>
+                                    <a href="{{URL::to('/')}}"><img src="{{asset('/user/img/logo/logo2_footer.png')}}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -119,9 +119,9 @@
                                 </div>
                                 <!-- social -->
                                 <div class="footer-social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="https://twitter.com/Locckhl1999" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.facebook.com/Locckhl/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.pinterest.com/locckhl/" target="_blank"><i class="fab fa-pinterest-p"></i></a>
                                 </div>
                             </div>
                         </div>
