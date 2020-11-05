@@ -10,13 +10,28 @@ This project is Web Programming Lab's final project. It is built as well as a pl
 
 Follow the following steps to clone this project: ❤❤
 
-- Clone using https: `git clone https://github.com/dangnam739/php_project.git`
-- Check out the remote template branch with your local template branch: `git checkout -b template origin/template`
-- Install the composer's packages(Vendor): `composer install`
-- Make a copy of **.env.example** file, rename it .env
-- Generate app's key: `php artisan key:generate`
-- Start server with xampp or Laravel's built-in development server: `php artisan serve`
-- The project is running at: http://localhost/php_project/public/
+* Clone:
+    * Using https: `git clone https://github.com/dangnam739/php_project.git` 
+    * Using ssh: `git@github.com:dangnam739/php_project.git`
+    * Using Github CLI: `gh repo clone dangnam739/php_project`
+* Check out new branch: `git checkout -b {branch_name} origin/{branch_name}` 
+* Install the composer's packages(Vendor): `composer install`
+* Make a copy of **.env.example** file, rename it .env and **config your db's settings**
+* Generate app's key: `php artisan key:generate`
+* Migrating and seeding: `php artisan migrate:fresh --seed`
+* Start server with xampp or Laravel's built-in development server: `php artisan serve`
+* The project is running at:
+    * With xampp server: http://localhost:{your_port}/php_project/public/
+    * With Laravel's built-in development server: http://localhost:{your_port}/
+* <span style="color:red">Note:</span>
+    * Do not modify anything in **main** branch, you have to checkout your own branch
+    * Just modify only files **related to your task**, try not to modify **other files**
+    * When modify the **.env** file run `php artisan config:cache` to make it work
+    * Comannd  `php artisan migrate:fresh --seed` is to recreate your tables and reinsert into your tables
+        * Just run: `php artisan migrate` to run migrating files ( create tables )
+        * Just run: `php artisan migrate:fresh` to refresh migrating files
+        * Just run: `php artisan db:seed` to insert into your tables
+        * **Commannd `migrate` may run to error in ubuntu or MacOs, please wait Huy-san until he finds the solution**
 
 ## About Database
 
