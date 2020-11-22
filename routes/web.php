@@ -30,3 +30,7 @@ Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');
 /*Admin route*/
 Route::get('admin/home-page','AdminController@index');
 Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
