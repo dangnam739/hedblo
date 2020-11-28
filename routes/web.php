@@ -17,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','HomeController@index');
 
 /*Blog*/
-Route::get('/all_blog','BlogController@all_blog');
-Route::get('/blog_detail','BlogController@blog_detail');
-Route::match(['GET','POST'],'/create_blog','BlogController@create');
+Route::get('/posts','PostController@all_post');
+Route::get('/posts/{post_id}','PostController@post_detail');
+Route::get('/posts/tag/{tag_id}','PostController@post_tag');
+Route::match(['GET','POST'],'/create_post','PostController@create');
+Route::match(['GET','POST'],'/edit/{post_id}','PostController@edit');
+Route::get('/posts/delete/{tag_id}','PostController@delete');
 
 /*User authen*/
 Route::match(['GET','POST'],'/login','AuthController@login');

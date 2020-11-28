@@ -10,4 +10,11 @@ class Post extends Model
     protected $primaryKey = 'post_id';
     public $timestamps = false;
     protected $connection = '';
+    protected $fillable = [
+        'post_id',
+        'title',
+        'description',
+        'content',
+        'date_create'
+    ];
 }

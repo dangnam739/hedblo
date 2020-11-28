@@ -72,102 +72,21 @@
                 </div>
             </div>
             <div class="courses-actives">
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                          <img src="{{asset('/user/img/gallery/featured1.png')}}" alt="">
-                        </div>
-                        <div class="properties__caption">
-                            <p>User Experience</p>
-                            <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                            <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-
-                            </p>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
-                                    </div>
-                                    <p><span>(4.5)</span> based on 120</p>
+                @foreach($posts as $post)
+                    <div class="properties pb-20">
+                            <div class="properties__card">
+                                <div class="properties__img overlay1">
+                                    <img src="{{asset('/user/img/gallery/featured1.png')}}" alt="">
                                 </div>
-                                <div class="price">
-                                    <span>$135</span>
+                                <div class="properties__caption">
+                                    <h3>{{$post->title}}</h3>
+                                    <p>{{$post->description}}</p>
+                                    <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">Read more</a>
                                 </div>
                             </div>
-                            <a href="{{URL::to('/blog_detail')}}" class="border-btn border-btn2">Read more</a>
                         </div>
+                @endforeach
 
-                    </div>
-                </div>
-                <!-- Single -->
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <a href="#"><img src="{{asset('/user/img/gallery/featured2.png')}}" alt=""></a>
-                        </div>
-                        <div class="properties__caption">
-                            <p>User Experience</p>
-                            <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                            <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                            </p>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
-                                    </div>
-                                    <p><span>(4.5)</span> based on 120</p>
-                                </div>
-                                <div class="price">
-                                    <span>$135</span>
-                                </div>
-                            </div>
-                            <a href="#" class="border-btn border-btn2">Find out more</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <a href="#"><img src="{{asset('/user/img/gallery/featured3.png')}}" alt=""></a>
-                        </div>
-                        <div class="properties__caption">
-                            <p>User Experience</p>
-                            <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                            <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-
-                            </p>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
-                                    </div>
-                                    <p><span>(4.5)</span> based on 120</p>
-                                </div>
-                                <div class="price">
-                                    <span>$135</span>
-                                </div>
-                            </div>
-                            <a href="#" class="border-btn border-btn2">Find out more</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
             </div>
         </div>
     </div>

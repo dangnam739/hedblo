@@ -13,8 +13,10 @@
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                                        @foreach($data as $post)
+                                            <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">Edit post</a></li>
+                                            <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">Delete</a></li>
+                                        @endforeach
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -34,45 +36,31 @@
                         <div class="feature-img">
                             <img class="img-fluid" src="{{asset('/user/img/blog/single_blog_1.png')}}" alt="">
                         </div>
-                        <div class="blog_details">
-                            <h2 style="color: #2d2d2d;">Second divided from form fish beast made every of seas
-                                all gathered us saying he our
-                            </h2>
-                            <ul class="blog-info-link mt-3 mb-4">
-                                <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                            </ul>
-                            <p class="excert">
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                                should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                                fraction of the camp price. However, who has the willpower
-                            </p>
-                            <p>
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                                should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                                fraction of the camp price. However, who has the willpower to actually sit through a
-                                self-imposed MCSE training. who has the willpower to actually
-                            </p>
-                            <div class="quote-wrapper">
-                                <div class="quotes">
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                                    should have to spend money on boot camp when you can get the MCSE study materials yourself at
-                                    a fraction of the camp price. However, who has the willpower to actually sit through a
-                                    self-imposed MCSE training.
+                        @foreach($data as $post)
+                            <div class="blog_details">
+                                <h2 style="color: #2d2d2d;">
+                                    {{$post->title}}
+                                </h2>
+                                <ul class="blog-info-link mt-3 mb-4">
+                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                </ul>
+                                <div class="quote-wrapper">
+                                    <div class="quotes">
+                                        {{$post->description}}
+                                    </div>
                                 </div>
+                                <p>
+                                    {{$post->content}}
+                                </p>
+                                <p>
+                                    {{$post->content}}
+                                </p>
+                                <p>
+                                    {{$post->content}}
+                                </p>
                             </div>
-                            <p>
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                                should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                                fraction of the camp price. However, who has the willpower
-                            </p>
-                            <p>
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                                should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                                fraction of the camp price. However, who has the willpower to actually sit through a
-                                self-imposed MCSE training. who has the willpower to actually
-                            </p>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="navigation-top">
                         <div class="d-sm-flex justify-content-between text-center">
@@ -273,160 +261,33 @@
                                         type="submit">Search</button>
                             </form>
                         </aside>
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title" style="color: #2d2d2d;">Recent Post</h3>
+                            @foreach($recent_posts as $post)
+                                <div class="media post_item">
+                                    <div class="media-body">
+                                        <a href="{{URL::to('/posts/'.$post->post_id)}}">
+                                            <h3 style="color: #2d2d2d;">{{$post->title}}</h3>
+                                        </a>
+                                        <p>{{$post->date_create}}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </aside>
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title" style="color: #2d2d2d;">Category</h4>
                             <ul class="list cat-list">
+                                @foreach ($tags as $tag )
                                 <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Resaurant food</p>
-                                        <p>(37)</p>
+                                    <a href="{{URL::to('/posts/tag/'.$tag->tag_id)}}" class="d-flex">
+                                        <p>{{$tag->tag_title}}</p>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Travel news</p>
-                                        <p>(10)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Modern technology</p>
-                                        <p>(03)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Product</p>
-                                        <p>(11)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Inspiration</p>
-                                        <p>(21)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Health Care</p>
-                                        <p>(21)</p>
-                                    </a>
-                                </li>
+                                @endforeach
                             </ul>
                         </aside>
-                        <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title" style="color: #2d2d2d;">Recent Post</h3>
-                            <div class="media post_item">
-                                <img src="assets/img/post/post_1.png" alt="post">
-                                <div class="media-body">
-                                    <a href="blog_details.html">
-                                        <h3 style="color: #2d2d2d;">From life was you fish...</h3>
-                                    </a>
-                                    <p>January 12, 2019</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="assets/img/post/post_2.png" alt="post">
-                                <div class="media-body">
-                                    <a href="blog_details.html">
-                                        <h3 style="color: #2d2d2d;">The Amazing Hubble</h3>
-                                    </a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="assets/img/post/post_3.png" alt="post">
-                                <div class="media-body">
-                                    <a href="blog_details.html">
-                                        <h3 style="color: #2d2d2d;">Astronomy Or Astrology</h3>
-                                    </a>
-                                    <p>03 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="assets/img/post/post_4.png" alt="post">
-                                <div class="media-body">
-                                    <a href="blog_details.html">
-                                        <h3 style="color: #2d2d2d;">Asteroids telescope</h3>
-                                    </a>
-                                    <p>01 Hours ago</p>
-                                </div>
-                            </div>
-                        </aside>
-                        <aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title" style="color: #2d2d2d;">Tag Clouds</h4>
-                            <ul class="list">
-                                <li>
-                                    <a href="#">project</a>
-                                </li>
-                                <li>
-                                    <a href="#">love</a>
-                                </li>
-                                <li>
-                                    <a href="#">technology</a>
-                                </li>
-                                <li>
-                                    <a href="#">travel</a>
-                                </li>
-                                <li>
-                                    <a href="#">restaurant</a>
-                                </li>
-                                <li>
-                                    <a href="#">life style</a>
-                                </li>
-                                <li>
-                                    <a href="#">design</a>
-                                </li>
-                                <li>
-                                    <a href="#">illustration</a>
-                                </li>
-                            </ul>
-                        </aside>
-                        <aside class="single_sidebar_widget instagram_feeds">
-                            <h4 class="widget_title" style="color: #2d2d2d;">Instagram Feeds</h4>
-                            <ul class="instagram_row flex-wrap">
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="assets/img/post/post_5.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="assets/img/post/post_6.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="assets/img/post/post_7.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="assets/img/post/post_8.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="assets/img/post/post_9.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="assets/img/post/post_10.png" alt="">
-                                    </a>
-                                </li>
-                            </ul>
-                        </aside>
-                        <aside class="single_sidebar_widget newsletter_widget">
-                            <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
-                            <form action="#">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                           onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                                </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Subscribe</button>
-                            </form>
-                        </aside>
+
                     </div>
                 </div>
             </div>
