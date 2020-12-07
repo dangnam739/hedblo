@@ -24,6 +24,6 @@ class BlogController extends Controller
 
         }
         return view('user.create_blog');
-    }
+    } 
 
 }
