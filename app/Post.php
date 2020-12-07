@@ -14,7 +14,6 @@ class Post extends Model implements Searchable
     protected $primaryKey = 'post_id';
     public $timestamps = false;
     protected $connection = '';
-
     public function getSearchResult(): SearchResult
     {
         $url = route('post.show', $this->post_id);
@@ -28,4 +27,11 @@ class Post extends Model implements Searchable
             $url
         );
     }
+    protected $fillable = [
+        'post_id',
+        'title',
+        'description',
+        'content',
+        'date_create'
+    ];
 }

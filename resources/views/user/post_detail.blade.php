@@ -47,6 +47,9 @@
                                 </ul>
                                 <div class="quote-wrapper">
 
+                                    <div class="quotes">
+                                        {{$post->description}}
+                                    </div>
                                 </div>
                                 <p>
                                     {{$post->content}}
@@ -292,4 +295,5 @@
         </div>
     </section>
     <!-- Blog Area End -->
+@endsection
 @endsection
