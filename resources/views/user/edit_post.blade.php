@@ -13,8 +13,8 @@
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">All Blog</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/')}}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts')}}">All Blog</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -46,10 +46,10 @@
                                         @foreach($selected_tags as $key=>$selected_tag)
                                             @if($tag->tag_id == $selected_tag->tag_id)
                                                 <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}" checked disabled><b>{{$tag->tag_title}}</b>
-                                            @else
-                                                <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}" disabled>{{$tag->tag_title}}
+                                                @continue
                                             @endif
                                         @endforeach
+                                        <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}" disabled>{{$tag->tag_title}}
                                     </label>
                                 @endforeach
                             </div>
