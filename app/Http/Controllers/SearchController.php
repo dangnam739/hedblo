@@ -33,11 +33,11 @@ class SearchController extends Controller
         $searchResults = (new Search())
             ->registerModel(\App\Post::class, ['title', 'content']) //apply search on field name and description
             //Config partial match or exactly match
-            // ->registerModel(\App\Category::class, function (ModelSearchAspect $modelSearchAspect) {
-            //     $modelSearchAspect
-            //         ->addExactSearchableAttribute('name') // only return results that exactly match
-            //         ->addSearchableAttribute('description'); // return results for partial matches
-            // })
+            ->registerModel(\App\Post::class, function (ModelSearchAspect $modelSearchAspect) {
+                $modelSearchAspect
+                    ->addSearchableAttribute('title') // only return results that exactly match
+                    ->addSearchableAttribute('content'); // return results for partial matches
+            })
             ->perform($searchterm);
 
         return view('search.searchPost', compact('searchResults', 'searchterm'));

@@ -42,14 +42,34 @@
                     @foreach($searchResults->groupByType() as $type => $modelSearchResults)
                     <h2>{{ $type }}</h2>
 
-                    @foreach($modelSearchResults as $searchResult)
-                        <ul>
-                            <!-- Biến $url được cấu hình trong file model-->
-<!--                             <a href="{{ $searchResult->url }}">{{ $searchResult->title }}</a>
- -->                            <h3><a href="{{ $searchResult->url }}">{{ $searchResult->title }}</a></h3>
-<!--                                 <p>{{ $searchResult->date_create }}</p>
- -->                        </ul>
-                    @endforeach
+                            <div class="courses-area section-padding40 fix">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-xl-7 col-lg-8">
+                                            <div class="section-tittle text-center mb-55">
+                                                <h2>Newest Post</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="courses-actives">
+                                        @foreach($modelSearchResults as $searchResult)
+                                        <!-- Biến $url được cấu hình trong file model-->
+                                        <div class="properties pb-20">
+                                                    <div class="properties__card">
+                                                        <div class="properties__img overlay1">
+                                                            <img src="{{asset('/user/img/gallery/featured1.png')}}" alt="">
+                                                        </div>
+                                                        <div class="properties__caption">
+                                                            <h3>{{$searchResult->title}}</h3>
+                                                            <a href="{{ $searchResult->url}}" class="border-btn border-btn2">Read more</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                            </div>
                     @endforeach
                 @endif
             @endif

@@ -14,19 +14,6 @@ class Post extends Model implements Searchable
     protected $primaryKey = 'post_id';
     public $timestamps = false;
     protected $connection = '';
-    public function getSearchResult(): SearchResult
-    {
-        $url = route('post.show', $this->post_id);
-        $UserId = DB::table('users')->where('user_id','=', this->user_id);
-
-        return new SearchResult(
-            $this,
-            $this->title,
-            $this->date_create,
-
-            $url
-        );
-    }
     protected $fillable = [
         'post_id',
         'title',
@@ -34,4 +21,16 @@ class Post extends Model implements Searchable
         'content',
         'date_create'
     ];
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('post.show', $this->post_id);
+        // $UserId = DB::table('users')->where('user_id','=', this->user_id);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
+    }
+
 }

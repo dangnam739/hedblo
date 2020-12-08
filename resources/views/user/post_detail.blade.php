@@ -48,7 +48,7 @@
                                 <div class="quote-wrapper">
 
                                     <div class="quotes">
-                                        {{$post->description}}
+                                        {{$post->content}}
                                     </div>
                                 </div>
                                 <p>
@@ -215,7 +215,7 @@
                     </div>
                     <div class="comment-form">
                         <h4>Leave a Reply</h4>
-                        <form class="form-contact comment_form" action="#" id="commentForm">
+                        <form class="form-contact comment_form" action="" id="commentForm" >
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -248,11 +248,10 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <form action="#">
+                            <form action="{{ route('search.result') }}">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search Keyword'
-                                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                        <input type="text" name="query" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
                                         <div class="input-group-append">
                                             <button class="btns" type="button"><i class="ti-search"></i></button>
                                         </div>
@@ -295,5 +294,4 @@
         </div>
     </section>
     <!-- Blog Area End -->
-@endsection
 @endsection
