@@ -13,10 +13,8 @@
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        @foreach($data as $post)
-                                            <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">Edit post</a></li>
-                                            <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">Delete</a></li>
-                                        @endforeach
+                                            <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$data->post_id)}}">Edit post</a></li>
+                                            <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$data->post_id)}}">Delete</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -36,10 +34,9 @@
                         <div class="feature-img">
                             <img class="img-fluid" src="{{asset('/user/img/blog/single_blog_1.png')}}" alt="">
                         </div>
-                        @foreach($data as $post)
                             <div class="blog_details">
                                 <h2 style="color: #2d2d2d;">
-                                    {{$post->title}}
+                                    {{$data->title}}
                                 </h2>
                                 <ul class="blog-info-link mt-3 mb-4">
                                     <li><a href="#"><i class="fa fa-user"></i>{{$user_author->user_name}}</a></li>
@@ -47,15 +44,25 @@
                                 </ul>
                                 <div class="quote-wrapper">
                                     <div class="quotes">
-                                        {{$post->content}}
+                                        {{$data->content}}
                                     </div>
                                 </div>
-                                @foreach($comments as $comment)
-                                <p>{{$comment->user_name}}<br>{{$comment->content}}</p>
-                                @endforeach
+                                <div>
+                                    @foreach($comments as $comment)
+                                    <p>{{$comment->user_name}}<br>{{$comment->content}}</p>
+                                    @endforeach
+                                </div>
+                                <form method="get" action="post.comment">
+                                    <h3>Add your comment</h3>
+                                    <br>
+                                    <input type="text" name="comment">
+                                    <input type="hidden" name="post_id" value='{{$data->post_id}}'>
+                                    <input type="hidden" name="user_id" value="{{$data->user_id}}">
+
+                                    <input type="submit" name="Submit">
+                                </form>
 
                             </div>
-                        @endforeach
                     </div>
                     <div class="navigation-top">
                         <div class="d-sm-flex justify-content-between text-center">

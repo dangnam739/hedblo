@@ -14,14 +14,7 @@ class Post extends Model implements Searchable
     protected $primaryKey = 'post_id';
     public $timestamps = false;
     protected $connection = '';
-    protected $fillable = [
-        'post_id',
-        'user_id',
-        'title',
-        'description',
-        'content',
-        'date_create'
-    ];
+
     public function getSearchResult(): SearchResult
     {
         $url = route('post.show', $this->post_id);
