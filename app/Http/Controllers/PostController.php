@@ -30,7 +30,7 @@ class PostController extends Controller
         $user_author = DB::table('users')
                             ->join('posts','users.user_id','=','posts.user_id')
                             ->where('posts.post_id','=',$post_id)
-                            ->get();
+                            ->first();
 
         $tags = DB::table('tags')
                             ->join('post_tag','tags.tag_id','=','post_tag.tag_id')
@@ -39,8 +39,14 @@ class PostController extends Controller
                             ->join('posts','comments.post_id','=','posts.post_id')
                             ->where('posts.post_id','=',$post_id)
                             ->count();
+        $comments = DB::table('comments')
+                    ->join('posts','comments.post_id','=','posts.post_id')
+                    ->join('users','comments.user_id','=','users.user_id')
+                    ->where('posts.post_id','=',$post_id)
+                    ->select('comments.content','users.user_name')
+                    ->get();
 
-        return view('user.post_detail',compact('user_author','data','recent_posts','tags','comment_count'));
+        return view('user.post_detail',compact('user_author','data','recent_posts','tags','comment_count','comments'));
     }
 
     # Get post by tag_id
