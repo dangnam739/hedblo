@@ -15,8 +15,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                        <a href='/my_profiles'>View profile</a>
-                        <a href='/'>Edit profile</a>
+                    <a href='/users/{{Auth::user()->user_id}}'>View profile</a>
+                        <a href='/users/{{Auth::user()->user_id}}/edit'>Edit profile</a>
                 </div>
             </div>
         </div>

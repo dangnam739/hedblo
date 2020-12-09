@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,8 +24,12 @@ Route::match(['GET','POST'],'/create_blog','BlogController@create');
 Route::match(['GET','POST'],'/login','AuthController@login');
 Route::match(['GET','POST'],'/register','AuthController@register');
 Route::match(['GET','POST'],'/profiles','AuthController@profile');
-Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');
 
+// Route::match(['GET','POST'],'/users/{id}','Auth\UserController@show');
+Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');
+Route::get('users/{id}','Auth\UserController@show');
+Route::get('users/{id}/edit', 'Auth\UserController@edit');
+Route::match(['GET', 'POST'], 'users/{id}/update', 'Auth\UserController@update');
 /*Admin route*/
 Route::get('admin/home-page','AdminController@index');
 Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');

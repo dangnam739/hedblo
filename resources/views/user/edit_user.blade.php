@@ -1,52 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<h1>{{ $user ?? ''->user_name }}'s Profile</h1>
-
-<table>
-    <tr>
-        <td> <img src="">
-            <div class="col-xs-12 col-sm-4">
-                <input type="file" />
-            </div>
-
-        </td>
-        <td>
-            <a href='/user/{{ Auth::user()->id }}/edit'>Edit your profile</a>
-        </td>
-    </tr>
-    <tr>
-        <td><label>First name:</label></td>
-        <td>{{ $user ?? ''->first_name }}</td>
-    </tr>
-    <tr>
-        <td><label>Last name:</label></td>
-        <td>{{ $user ?? ''->last_name }}</td>
-    </tr>
-    <tr>
-        <td><label>gender name:</label></td>
-        <td>{{ $user ?? ''->gender }}</td>
-    </tr>
-    <tr>
-        <td><label>Email:</label></td>
-        <td>{{ $user ?? ''->email }}</td>
-    </tr>
-    <tr>
-        <td><label>Phone number:</label></td>
-        <td>{{ $user ?? ''->phone }}</td>
-    </tr>
-    <tr>
-        <td><label>
-                <Address></Address>
-            </label></td>
-        <td>{{ $user ?? ''->address }}</td>
-    </tr>
-    <tr>
-        <td><label>Job:</label></td>
-        <td>{{ $user ?? ''->job }}</td>
-    </tr>
-</table>
-@endsection --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -216,57 +167,38 @@
                                     <div id="user-profile-3" class="user-profile row">
                                         <div class="col-sm-offset-1 col-sm-10">
                                             <div class="space"></div>
-                                            <form class="form-horizontal">
+                                            <form class="form-horizontal" action="update" method="POST">
+                                                @csrf
                                                 <div class="tabbable">
                                                     <div class="tab-content profile-edit-tab-content">
                                                         <div id="edit-basic" class="tab-pane in active">
                                                             <h4 class="header blue bolder smaller">General</h4>
-                                                            <a href='/users/{{ $user->user_id }}/edit'>Edit your
-                                                                profile</a>
 
                                                             <div class="row">
                                                                 <img src="">
                                                                 <div class="col-xs-12 col-sm-4">
-                                                                    {{$user->avatar_url}}
+                                                                    <input type="file" />
                                                                 </div>
 
                                                                 <div class="vspace-12-sm"></div>
+
                                                                 <div class="col-xs-12 col-sm-8">
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-firstname">First
-                                                                            name</label>
+                                                                            for="form-field-username">Username</label>
 
                                                                         <div class="col-sm-8">
-                                                                            {{-- <input
-                                                                                class="col-xs-12 col-sm-10" type="text"
-                                                                                id="form-field-username"
-                                                                                placeholder="Username"
-                                                                                value="alexdoe" />
-                                                                            --}}
-                                                                            {{ $user->first_name }}
+                                                                            <input class="col-xs-12 col-sm-10"
+                                                                                type="text" id="form-field-username"
+                                                                                placeholder="Username" name="username"
+                                                                                value={{ $user->user_name }} />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label
-                                                                            class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-lastname">Last name</label>
 
-                                                                        <div class="col-sm-8">
-                                                                            {{-- <input
-                                                                                class="col-xs-12 col-sm-10" type="text"
-                                                                                id="form-field-username"
-                                                                                placeholder="Username"
-                                                                                value="alexdoe" />
-                                                                            --}}
-                                                                            {{ $user->last_name }}
-                                                                        </div>
-                                                                    </div>
                                                                     <div class="space-4"></div>
 
-                                                                    {{-- <div
-                                                                        class="form-group">
+                                                                    <div class="form-group">
                                                                         <label
                                                                             class="col-sm-4 control-label no-padding-right"
                                                                             for="form-field-first">Name</label>
@@ -274,12 +206,15 @@
                                                                         <div class="col-sm-8">
                                                                             <input class="input-small" type="text"
                                                                                 id="form-field-first"
-                                                                                placeholder="First Name" value="Alex" />
+                                                                                placeholder="First Name"
+                                                                                name="firstname"
+                                                                                value={{ $user->first_name }} />
                                                                             <input class="input-small" type="text"
                                                                                 id="form-field-last"
-                                                                                placeholder="Last Name" value="Doe" />
+                                                                                placeholder="Last Name" name="lastname"
+                                                                                value={{ $user->last_name }} />
                                                                         </div>
-                                                                    </div> --}}
+                                                                    </div>
                                                                 </div>
                                                             </div>
 
@@ -290,15 +225,12 @@
 
                                                                 <div class="col-sm-9">
                                                                     <span class="input-icon input-icon-right">
-                                                                        {{-- <input
-                                                                            class="input-medium date-picker pr-1"
+                                                                        <input class="input-medium date-picker pr-1"
                                                                             id="form-field-date" type="date"
                                                                             data-date-format="dd-mm-yyyy"
-                                                                            placeholder="dd-mm-yyyy" />
-                                                                        --}}
-                                                                        {{-- <i
-                                                                            class="ace-icon fa fa-calendar"></i>--}}
-                                                                        {{ $user->birthday }}
+                                                                            name="birthday"
+                                                                            value={{ $user->birthday }} />
+                                                                        <i class="ace-icon fa fa-calendar"></i>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -306,88 +238,128 @@
                                                             <div class="space-4"></div>
 
                                                             <div class="form-group">
-                                                                <label
-                                                                    class="col-sm-3 control-label no-padding-right">Gender</label>
+                                                                <label class="col-sm-3 control-label no-padding-right">Gender</label>
                                                                 <div class="col-sm-9">
-                                                                    {{$user->gender}}
+                                                                    <input type="radio" name="form-field-radio" value="Male" <?php if($user->gender=="Male"){?> checked="true" <?php } ?> />Male
+                                                                    <input type="radio" name="form-field-radio" value="Female"<?php if($user->gender=="Female"){?> checked="true" <?php } ?>/>Female
                                                                 </div>
+                                                                </label>                  
+                                                               
                                                             </div>
 
                                                             <div class="space-4"></div>
 
-                                                            <div class="space"></div>
-                                                            <h4 class="header blue bolder smaller">Contact</h4>
+                                                            {{-- <div class="form-group">
+                                                                    <label
+                                                                        class="col-sm-3 control-label no-padding-right"
+                                                                        for="form-field-comment">Comment</label>
 
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 control-label no-padding-right"
-                                                                    for="form-field-email">Email</label>
+                                                                    <div class="col-sm-9">
+                                                                        <textarea id="form-field-comment"></textarea>
+                                                                    </div>
+                                                                </div> --}}
 
-                                                                <div class="col-sm-9">
-                                                                    <span class="input-icon input-icon-right">
-                                                                        {{-- <input
-                                                                            type="email" id="form-field-email"
-                                                                            value="alexdoe@gmail.com" />
-                                                                        <i class="ace-icon fa fa-envelope"></i>
-                                                                        --}}
-                                                                        {{ $user->email }}
+                                                                <div class="space"></div>
+                                                                <h4 class="header blue bolder smaller">Contact</h4>
 
-                                                                    </span>
+                                                                <div class="form-group">
+                                                                    <label
+                                                                        class="col-sm-3 control-label no-padding-right"
+                                                                        for="form-field-email">Email</label>
+
+                                                                    <div class="col-sm-9">
+                                                                        <span class="input-icon input-icon-right">
+                                                                            <input type="email" id="form-field-email"
+                                                                                name="email"
+                                                                                placeholder="example@gmail.com"
+                                                                                value={{ $user->email }} />
+                                                                            <i class="ace-icon fa fa-envelope"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="space-4"></div>
+
+                                                                <div class="form-group">
+                                                                    <label
+                                                                        class="col-sm-3 control-label no-padding-right"
+                                                                        for="form-field-website">Address</label>
+
+                                                                    <div class="col-sm-9">
+                                                                        <span class="input-icon input-icon-right">
+                                                                            <input type="text" id="form-field-website"
+                                                                                name="address" placeholder="Address"
+                                                                                value={{ $user->address }} />
+                                                                            <i class="ace-icon fa fa-globe"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="space-4"></div>
+
+                                                                <div class="form-group">
+                                                                    <label
+                                                                        class="col-sm-3 control-label no-padding-right"
+                                                                        for="form-field-phone">Phone</label>
+
+                                                                    <div class="col-sm-9">
+                                                                        <span class="input-icon input-icon-right">
+                                                                            <input class="input-medium input-mask-phone"
+                                                                                type="text" id="form-field-phone"
+                                                                                name="phone" placeholder="phone"
+                                                                                value={{ $user->phone }} />
+                                                                            <i
+                                                                                class="ace-icon fa fa-phone fa-flip-horizontal"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="space"></div>
+
+                                                                <div id="edit-password" class="tab-pane">
+                                                                    <div class="space-10"></div>
+
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            class="col-sm-3 control-label no-padding-right"
+                                                                            for="form-field-pass1">New Password</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="password"
+                                                                                id="form-field-pass1" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="space-4"></div>
+
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            class="col-sm-3 control-label no-padding-right"
+                                                                            for="form-field-pass2">Confirm
+                                                                            Password</label>
+
+                                                                        <div class="col-sm-9">
+                                                                            <input type="password"
+                                                                                id="form-field-pass2" />
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
 
-                                                            <div class="space-4"></div>
+                                                        <div class="clearfix form-actions">
+                                                            <div class="col-md-offset-3 col-md-9">
+                                                                <button class="btn btn-info" type="submit">
+                                                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                                                    Save
+                                                                </button>
+                                                                &nbsp; &nbsp;
+                                                                <button class="btn" type="reset">
+                                                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                                    Reset
+                                                                </button>
 
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 control-label no-padding-right"
-                                                                    for="form-field-website">Address</label>
-
-                                                                <div class="col-sm-9">
-                                                                    <span class="input-icon input-icon-right">
-                                                                        {{-- <input
-                                                                            type="url" id="form-field-website"
-                                                                            value="http://www.alexdoe.com/" />
-                                                                        <i class="ace-icon fa fa-globe"></i>
-                                                                        --}}
-                                                                        {{ $user->address }}
-                                                                    </span>
-                                                                </div>
                                                             </div>
-
-                                                            <div class="space-4"></div>
-
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 control-label no-padding-right"
-                                                                    for="form-field-phone">Phone</label>
-
-                                                                <div class="col-sm-9">
-                                                                    <span class="input-icon input-icon-right">
-                                                                        {{-- <input
-                                                                            class="input-medium input-mask-phone"
-                                                                            type="text" id="form-field-phone" />
-                                                                        <i
-                                                                            class="ace-icon fa fa-phone fa-flip-horizontal"></i>
-                                                                        --}}
-                                                                        {{ $user->phone }}
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="space"></div>
-
-                                                <div class="clearfix form-actions">
-                                                    <div class="col-md-offset-3 col-md-9">
-                                                        <button class="btn btn-info" type="button">
-                                                            <i class="ace-icon fa fa-check bigger-110"></i>
-                                                        <a href='/users/{{$user->user_id}}/edit'>Edit your profile</a>
-                                                        </button>
-{{-- 
-                                                        &nbsp; &nbsp;
-                                                        <button class="btn" type="reset">
-                                                            <i class="ace-icon fa fa-undo bigger-110"></i>
-                                                            Reset
-                                                        </button> --}}
-                                                    </div>
-                                                </div>
+                                                        </div>
                                             </form>
                                         </div><!-- /.span -->
                                     </div><!-- /.user-profile -->
