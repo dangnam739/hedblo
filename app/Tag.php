@@ -10,4 +10,9 @@ class Tag extends Model
     protected $primaryKey = 'tag_id';
     public $timestamps = false;
     protected $connection = '';
+    protected $fillable = [
+        'tag_id',
+        'tag_title',
+        'quantity'
+    ];
 }

@@ -81,37 +81,35 @@
                                             alt=""></a>
                                 </div>
                             </div>
-                            <div class="col-xl-10 col-lg-10">
-                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
-                                    <!-- Main-menu -->
-                                    <div class="main-menu d-none d-lg-block">
-                                        <nav>
-                                            <ul id="navigation">
-                                                <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
-                                                <li><a href="{{ URL::to('/all_blog') }}">Blogs</a></li>
-                                                <li><a href="{{ URL::to('create_blog') }}">Create</a></li>
-                                                <li><a href="#">Categories</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="#">Coding</a></li>
-                                                        <li><a href="#">Food</a></li>
-                                                        <li><a href="#">Travel</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">User account</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="{{ URL::to('/profiles') }}">Profile</a></li>
-                                                        <li><a href="{{ URL::to('/change-pass') }}">Change pass</a></li>
-                                                    </ul>
-                                                </li>
+                        </div>
+                        <div class="col-xl-10 col-lg-10">
+                            <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li class="active" ><a href="{{URL::to('/')}}">Home</a></li>
+                                            <li><a href="{{URL::to('/posts')}}">Posts</a></li>
+                                            <li><a href="{{URL::to('create_post')}}">Create</a></li>
+                                            <li><a href="#">Categories</a>
+                                                <ul class="submenu">
+                                                    <li><a href="#">Coding</a></li>
+                                                    <li><a href="#">Food</a></li>
+                                                    <li><a href="#">Travel</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">User account</a>
+                                                <ul class="submenu">
+                                                    <li><a href="{{URL::to('/profiles')}}">Profile</a></li>
+                                                    <li><a href="{{URL::to('/change-pass')}}">Change pass</a></li>
+                                                </ul>
+                                            </li>
 
-                                                <!-- Button -->
-                                                <li class="button-header margin-left "><a
-                                                        href="{{ URL::to('/register') }}" class="btn">Sign Up</a></li>
-                                                <li class="button-header"><a href="{{ URL::to('/login') }}"
-                                                        class="btn btn3">Log in</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
+                                            <!-- Button -->
+                                            <li class="button-header margin-left "><a href="{{URL::to('/register')}}" class="btn">Sign Up</a></li>
+                                            <li class="button-header"><a href="{{URL::to('/login')}}" class="btn btn3">Log in</a></li>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                             <!-- Mobile Menu -->

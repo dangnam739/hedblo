@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('user_id')->on('users');
             $table->string('title');
             $table->text('content');
+            $table->text('description');
             $table->date('date_create');
         });
     }
