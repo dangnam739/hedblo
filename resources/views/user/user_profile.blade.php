@@ -223,13 +223,8 @@
                                                             <h4 class="header blue bolder smaller">General</h4>
                                                             <a href='/users/{{ $user->user_id }}/edit'>Edit your
                                                                 profile</a>
-
                                                             <div class="row">
-                                                                <img src="">
-                                                                <div class="col-xs-12 col-sm-4">
-                                                                    {{$user->avatar_url}}
-                                                                </div>
-
+                                                                <img src="/storage/avatar_url/{{$user->avatar_url}}" style="width:100px">
                                                                 <div class="vspace-12-sm"></div>
                                                                 <div class="col-xs-12 col-sm-8">
                                                                     <div class="form-group">
@@ -298,7 +293,7 @@
                                                                         --}}
                                                                         {{-- <i
                                                                             class="ace-icon fa fa-calendar"></i>--}}
-                                                                        {{ $user->birthday }}
+                                                                        {{ $user->birdthday }}
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -308,12 +303,34 @@
                                                             <div class="form-group">
                                                                 <label
                                                                     class="col-sm-3 control-label no-padding-right">Gender</label>
+                                                                        {{ $user->gender}}
                                                                 <div class="col-sm-9">
-                                                                    {{$user->gender}}
+                                                                    {{-- <label
+                                                                        class="inline">
+                                                                        <input name="form-field-radio" type="radio"
+                                                                            class="ace" />
+                                                                        <span class="lbl middle"> Male</span>
+                                                                    </label>
+
+                                                                    &nbsp; &nbsp; &nbsp;
+                                                                    <label class="inline">
+                                                                        <input name="form-field-radio" type="radio"
+                                                                            class="ace" />
+                                                                        <span class="lbl middle"> Female</span>
+                                                                    </label> --}}
                                                                 </div>
                                                             </div>
 
                                                             <div class="space-4"></div>
+
+                                                            {{-- <div class="form-group">
+                                                                <label class="col-sm-3 control-label no-padding-right"
+                                                                    for="form-field-comment">Comment</label>
+
+                                                                <div class="col-sm-9">
+                                                                    <textarea id="form-field-comment"></textarea>
+                                                                </div>
+                                                            </div> --}}
 
                                                             <div class="space"></div>
                                                             <h4 class="header blue bolder smaller">Contact</h4>

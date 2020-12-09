@@ -26,6 +26,16 @@ class UserController extends Controller
         $user = User::find(auth()->user()->user_id);
 
         if ($request->isMethod("POST")) {
+            if($request->hasFile('avatar_url')){
+                $filenameWithExt = $request->file('avatar_url')->getClientOriginalName();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('avatar_url')->getClientOriginalExtension();
+                $filenameToStore = $filename .'_'.time().'.'.$extension;
+                $path = $request->file('avatar_url')->storeAs('public/avatar_url', $filenameToStore);
+            } else {
+                $user->avatar_url="noimage.jpeg";
+            }
+            $user->avatar_url = $filenameToStore;
             $user->user_name = $request->input('username');
             $user->last_name = $request->input('lastname');
             $user->first_name = $request->input('firstname');

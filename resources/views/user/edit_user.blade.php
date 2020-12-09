@@ -167,7 +167,7 @@
                                     <div id="user-profile-3" class="user-profile row">
                                         <div class="col-sm-offset-1 col-sm-10">
                                             <div class="space"></div>
-                                            <form class="form-horizontal" action="update" method="POST">
+                                            <form class="form-horizontal" action="update" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="tabbable">
                                                     <div class="tab-content profile-edit-tab-content">
@@ -177,7 +177,7 @@
                                                             <div class="row">
                                                                 <img src="">
                                                                 <div class="col-xs-12 col-sm-4">
-                                                                    <input type="file" />
+                                                                    <input type="file" name="avatar_url"/>
                                                                 </div>
 
                                                                 <div class="vspace-12-sm"></div>
