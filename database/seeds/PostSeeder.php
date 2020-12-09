@@ -13,14 +13,16 @@ class PostSeeder extends Seeder
     {
         DB::table('posts')->insert([
             'user_id' => 1,
-            'title' => Str::random(10),
-            'content' => Str::random(50),
+            'title' => "First title",
+            'content' => "First content",
+            'description' => "First desc",
             'date_create' => date('Y-m-d H:i:s'),
         ]);
         DB::table('posts')->insert([
             'user_id' => 2,
-            'title' => Str::random(10),
-            'content' => Str::random(50),
+            'title' => "Second title",
+            'content' => "Second content",
+            'description' => "Second desc",
             'date_create' => date('Y-m-d H:i:s'),
         ]);
     }

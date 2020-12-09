@@ -85,8 +85,8 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li class="active" ><a href="{{URL::to('/')}}">Home</a></li>
-                                            <li><a href="{{URL::to('/all_blog')}}">Blogs</a></li>
-                                            <li><a href="{{URL::to('create_blog')}}">Create</a></li>
+                                            <li><a href="{{URL::to('/posts')}}">Posts</a></li>
+                                            <li><a href="{{URL::to('create_post')}}">Create</a></li>
                                             <li><a href="#">Categories</a>
                                                 <ul class="submenu">
                                                     <li><a href="#">Coding</a></li>
