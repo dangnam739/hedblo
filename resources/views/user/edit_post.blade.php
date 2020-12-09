@@ -42,14 +42,14 @@
                             <p>Tags</p>
                             <div class="form-group">
                                 @foreach($tags as $tag)
-                                    <label class="checkbox-inline">
+                                    <label class="checkbox-inline" for="tag[]"> 
                                         @foreach($selected_tags as $key=>$selected_tag)
                                             @if($tag->tag_id == $selected_tag->tag_id)
-                                                <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}" checked disabled><b>{{$tag->tag_title}}</b>
+                                                <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}" checked ><b>{{$tag->tag_title}}</b>
                                                 @continue
                                             @endif
                                         @endforeach
-                                        <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}" disabled>{{$tag->tag_title}}
+                                        <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}" >{{$tag->tag_title}}
                                     </label>
                                 @endforeach
                             </div>

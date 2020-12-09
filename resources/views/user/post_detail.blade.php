@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">Blog title</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Blog title {{$data->post_id}}</h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
@@ -52,10 +52,11 @@
                                     <p>{{$comment->user_name}}<br>{{$comment->content}}</p>
                                     @endforeach
                                 </div>
-                                <form method="get" action="post.comment">
+                                <form method="post" action="{{URL::to('/posts/{$data->post_id}/comment')}}">
+                                    {{ csrf_field() }}
                                     <h3>Add your comment</h3>
                                     <br>
-                                    <input type="text" name="comment">
+                                    <input type="text" name="content">
                                     <input type="hidden" name="post_id" value='{{$data->post_id}}'>
                                     <input type="hidden" name="user_id" value="{{$data->user_id}}">
 

@@ -67,6 +67,12 @@
                                             <li><a href="{{URL::to('/posts')}}">Posts</a></li>
                                             <li><a href="{{URL::to('create_post')}}">Create</a></li>
                                             <li><a href="#">Categories</a>
+                                                <ul class="submenu">
+                                                    @foreach($tags as $tag)
+                                                        <li><a href="{{URL::to('/posts/tag/'.$tag->tag_id)}}">{{$tag->tag_title}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
 
                                             </li>
                                             <li><a href="#">User account</a>
