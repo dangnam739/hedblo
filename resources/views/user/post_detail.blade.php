@@ -42,23 +42,18 @@
                                     {{$post->title}}
                                 </h2>
                                 <ul class="blog-info-link mt-3 mb-4">
-                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                    @foreach($user_author as $user_author_t)
+                                    <li><a href="#"><i class="fa fa-user"></i>{{$user_author_t->user_name}}</a></li>
+                                    <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
+                                    @endforeach
                                 </ul>
                                 <div class="quote-wrapper">
-
                                     <div class="quotes">
                                         {{$post->content}}
                                     </div>
                                 </div>
                                 <p>
-                                    {{$post->content}}
-                                </p>
-                                <p>
-                                    {{$post->content}}
-                                </p>
-                                <p>
-                                    {{$post->content}}
+                                    <p>Print comment</p>
                                 </p>
                             </div>
                         @endforeach

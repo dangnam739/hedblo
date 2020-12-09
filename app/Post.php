@@ -16,6 +16,7 @@ class Post extends Model implements Searchable
     protected $connection = '';
     protected $fillable = [
         'post_id',
+        'user_id',
         'title',
         'description',
         'content',
