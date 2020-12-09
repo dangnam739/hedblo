@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{{asset('/user/css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('/user/css/style.css')}}">
 
+    <script src="{{asset('/user/js/jquery.min.js')}}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -61,18 +64,20 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li class="active" ><a href="{{URL::to('/')}}">Home</a></li>
-                                            <li><a href="{{URL::to('/all_blog')}}">Blogs</a></li>
-                                            <li><a href="{{URL::to('create_blog')}}">Create</a></li>
+                                            <li><a href="{{URL::to('/posts')}}">Posts</a></li>
+                                            <li><a href="{{URL::to('create_post')}}">Create</a></li>
                                             <li><a href="#">Categories</a>
                                                 <ul class="submenu">
-                                                    <li><a href="#">Coding</a></li>
-                                                    <li><a href="#">Food</a></li>
-                                                    <li><a href="#">Travel</a></li>
+                                                    @foreach($tags as $tag)
+                                                        <li><a href="{{URL::to('/posts/tag/'.$tag->tag_id)}}">{{$tag->tag_title}}</a></li>
+                                                    @endforeach
                                                 </ul>
+                                            </li>
+
                                             </li>
                                             <li><a href="#">User account</a>
                                                 <ul class="submenu">
-                                                    <li><a href="{{URL::to('/profiles')}}">Profile</a></li>
+                                                    <li><a href="{{URL::to('/profile')}}">Profile</a></li>
                                                     <li><a href="{{URL::to('/change-pass')}}">Change pass</a></li>
                                                 </ul>
                                             </li>
@@ -110,7 +115,7 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo mb-25">
-                                    <a href="{{URL::to('/')}}"><img src="{{asset('/user/img/logo/logo2_footer.png')}}" alt=""></a>
+                                    <a href="index.html"><img src="{{asset('/user/img/logo/logo2_footer.png')}}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -119,9 +124,9 @@
                                 </div>
                                 <!-- social -->
                                 <div class="footer-social">
-                                    <a href="https://twitter.com/Locckhl1999" target="_blank"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://www.facebook.com/Locckhl/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://www.pinterest.com/locckhl/" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -198,9 +203,9 @@
 <!-- JS here -->
 <script src="{{asset('/user/js/vendor/modernizr-3.5.0.min.js')}}"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="{{asset('/user/js/vendor/jquery-1.12.4.min.js')}}"></script>
+{{--<script src="{{asset('/user/js/vendor/jquery-1.12.4.min.js')}}"></script>--}}
 <script src="{{asset('/user/js/popper.min.js')}}"></script>
-<script src="{{asset('/user/js/bootstrap.min.js')}}"></script>
+{{--<script src="{{asset('/user/js/bootstrap.min.js')}}"></script>--}}
 <!-- Jquery Mobile Menu -->
 <script src="{{asset('/user/js/jquery.slicknav.min.js')}}"></script>
 <!-- Jquery Slick , Owl-Carousel Plugins -->
@@ -234,5 +239,6 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="{{asset('/user/js/plugins.js')}}"></script>
 <script src="{{asset('/user/js/main.js')}}"></script>
+
 </body>
 </html>
