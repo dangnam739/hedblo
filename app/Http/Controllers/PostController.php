@@ -25,12 +25,28 @@ class PostController extends Controller
 
     # Get post by id
     public function post_detail($post_id){
-        $data = DB::table('posts')->where('post_id',$post_id)->get();
+        $data = DB::table('posts')->where('post_id',$post_id)->first();
         $recent_posts = DB::table('posts')->where('post_id','!=',$post_id)->orderBy('date_create','desc')->limit(3)->get();
+        $user_author = DB::table('users')
+                            ->join('posts','users.user_id','=','posts.user_id')
+                            ->where('posts.post_id','=',$post_id)
+                            ->first();
 
+        $tags = DB::table('tags')
+                            ->join('post_tag','tags.tag_id','=','post_tag.tag_id')
+                            ->get();
+        $comment_count = DB::table('comments')
+                            ->join('posts','comments.post_id','=','posts.post_id')
+                            ->where('posts.post_id','=',$post_id)
+                            ->count();
+        $comments = DB::table('comments')
+                    ->join('posts','comments.post_id','=','posts.post_id')
+                    ->join('users','comments.user_id','=','users.user_id')
+                    ->where('posts.post_id','=',$post_id)
+                    ->select('comments.content','users.user_name')
+                    ->get();
 
-        return view('user.post_detail',
-            compact('data','recent_posts'));
+        return view('user.post_detail',compact('user_author','data','recent_posts','tags','comment_count','comments'));
     }
 
     # Get post by tag_id
@@ -80,11 +96,11 @@ class PostController extends Controller
 
         if($request->isMethod('post')){
             $data = array();
-            $data["title"] = $request->title;
+            $data["user_id"] = $request->title;
             $data["content"] = $request->detail_content;
             $data["description"] = $request->description;
             $data["date_create"] = date('Y-m-d');
-            DB::table("posts")->where('post_id',$post_id)->update($data);
+            DB::table("posts")->insert($data);
 
             return redirect('/posts/'.$post_id);
         }
@@ -97,5 +113,18 @@ class PostController extends Controller
         DB::table('post_tag')->where('post_id',$post_id)->delete();
         DB::table('posts')->where('post_id',$post_id)->delete();
         return redirect('/posts');
+    }
+
+    #add comment
+    public function add_comment($request){
+        $comments = DB::table('comments')->get();
+        if($request->isMethod('get')){
+            $dataa = array();
+            $dataa["post_id"] = $request->post_id;
+            $dataa["user_id"] = $request->user_id;
+            $dataa["content"] = $request->content;
+            DB::table("comments")->insert($dataa);  
+        }
+        self.post_detail($request->post_id);
     }
 }

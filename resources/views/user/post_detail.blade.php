@@ -13,10 +13,8 @@
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        @foreach($data as $post)
-                                            <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">Edit post</a></li>
-                                            <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">Delete</a></li>
-                                        @endforeach
+                                            <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$data->post_id)}}">Edit post</a></li>
+                                            <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$data->post_id)}}">Delete</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -36,31 +34,35 @@
                         <div class="feature-img">
                             <img class="img-fluid" src="{{asset('/user/img/blog/single_blog_1.png')}}" alt="">
                         </div>
-                        @foreach($data as $post)
                             <div class="blog_details">
                                 <h2 style="color: #2d2d2d;">
-                                    {{$post->title}}
+                                    {{$data->title}}
                                 </h2>
                                 <ul class="blog-info-link mt-3 mb-4">
-                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i>{{$user_author->user_name}}</a></li>
+                                    <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
                                 </ul>
                                 <div class="quote-wrapper">
                                     <div class="quotes">
-                                        {{$post->description}}
+                                        {{$data->content}}
                                     </div>
                                 </div>
-                                <p>
-                                    {{$post->content}}
-                                </p>
-                                <p>
-                                    {{$post->content}}
-                                </p>
-                                <p>
-                                    {{$post->content}}
-                                </p>
+                                <div>
+                                    @foreach($comments as $comment)
+                                    <p>{{$comment->user_name}}<br>{{$comment->content}}</p>
+                                    @endforeach
+                                </div>
+                                <form method="get" action="post.comment">
+                                    <h3>Add your comment</h3>
+                                    <br>
+                                    <input type="text" name="comment">
+                                    <input type="hidden" name="post_id" value='{{$data->post_id}}'>
+                                    <input type="hidden" name="user_id" value="{{$data->user_id}}">
+
+                                    <input type="submit" name="Submit">
+                                </form>
+
                             </div>
-                        @endforeach
                     </div>
                     <div class="navigation-top">
                         <div class="d-sm-flex justify-content-between text-center">
@@ -214,7 +216,7 @@
                     </div>
                     <div class="comment-form">
                         <h4>Leave a Reply</h4>
-                        <form class="form-contact comment_form" action="#" id="commentForm">
+                        <form class="form-contact comment_form" action="" id="commentForm" >
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -247,11 +249,10 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <form action="#">
+                            <form action="{{ route('search.result') }}">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search Keyword'
-                                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                        <input type="text" name="query" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
                                         <div class="input-group-append">
                                             <button class="btns" type="button"><i class="ti-search"></i></button>
                                         </div>

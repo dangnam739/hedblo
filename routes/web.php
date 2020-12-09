@@ -18,7 +18,8 @@ Route::get('/','HomeController@index');
 
 /*Blog*/
 Route::get('/posts','PostController@all_post');
-Route::get('/posts/{post_id}','PostController@post_detail');
+Route::get('/posts/{post_id}','PostController@post_detail')->name('post.show');
+Route::get('/posts/{post_id}/comment','PostController@add_comment')->name('post.comment');
 Route::get('/posts/tag/{tag_id}','PostController@post_tag');
 Route::match(['GET','POST'],'/create_post','PostController@create');
 Route::match(['GET','POST'],'/edit/{post_id}','PostController@edit');
@@ -33,3 +34,11 @@ Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');
 /*Admin route*/
 Route::get('admin/home-page','AdminController@index');
 Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');
+
+#search
+Route::get('/search', 'SearchController@index')->name('search.index');
+Route::get('/search-results', 'SearchController@search')->name('search.result');
+
+
+
+
