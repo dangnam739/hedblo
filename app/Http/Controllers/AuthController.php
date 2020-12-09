@@ -7,7 +7,10 @@ use DB;
 use App\Http\Requests;
 use Session;
 use Illuminate\Support\Facades\Redirect;
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 
 class AuthController extends Controller
 {

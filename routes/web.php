@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*User route*/
-Route::get('/','HomeController@index');
+// Route::get('/','HomeController@index');
 
 /*Blog*/
 Route::get('/posts','PostController@all_post');
@@ -34,6 +34,10 @@ Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');
 /*Admin route*/
 Route::get('admin/home-page','AdminController@index');
 Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');
+
+
+Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
 
 #search
 Route::get('/search', 'SearchController@index')->name('search.index');
