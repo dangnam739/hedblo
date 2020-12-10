@@ -78,7 +78,7 @@
                                             <li><a href="#">My account</a>
                                                 <ul class="submenu">
                                                     <li><a href="/users/<?php echo auth()->user()->user_id ?>">Profile</a></li>
-                                                    <li><a href="{{URL::to('/change-pass')}}">Change pass</a></li>
+                                                    {{-- <li><a href="{{URL::to('/change-pass')}}">Change pass</a></li> --}}
                                                     @if (!session('status'))
                                                         {{ session('status') }}
                                                         <li><a href='/users/{{Auth::user()->user_id}}'>View Profile</a></li>

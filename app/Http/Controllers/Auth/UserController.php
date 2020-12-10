@@ -6,6 +6,7 @@ use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,16 +27,14 @@ class UserController extends Controller
         $user = User::find(auth()->user()->user_id);
 
         if ($request->isMethod("POST")) {
-            if($request->hasFile('avatar_url')){
+            if ($request->hasFile('avatar_url')) {
                 $filenameWithExt = $request->file('avatar_url')->getClientOriginalName();
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $request->file('avatar_url')->getClientOriginalExtension();
-                $filenameToStore = $filename .'_'.time().'.'.$extension;
+                $filenameToStore = $filename . '_' . time() . '.' . $extension;
                 $path = $request->file('avatar_url')->storeAs('public/avatar_url', $filenameToStore);
-            } else {
-                $user->avatar_url="noimage.jpeg";
+                $user->avatar_url = $filenameToStore;
             }
-            $user->avatar_url = $filenameToStore;
             $user->user_name = $request->input('username');
             $user->last_name = $request->input('lastname');
             $user->first_name = $request->input('firstname');
@@ -48,8 +47,16 @@ class UserController extends Controller
             $user->email = $request->input('email');
             $user->address = $request->input('address');
             $user->phone = $request->input('phone');
-            $user->save();
         }
+        if ($request->input('pass0')) {
+            $hashedPassword = $user->password;
+            if ((Hash::check($request->input('pass0'),$hashedPassword)) && ($request->input('pass1')==$request->input('pass2'))) {
+                $user->password = Hash::make($request->input('pass1'));
+            } else {
+                return redirect("/users/$user->user_id/edit")->with('user', $user);
+            }
+        }
+        $user->save();
         return redirect("/users/$user->user_id")->with('user', $user);
     }
 }
