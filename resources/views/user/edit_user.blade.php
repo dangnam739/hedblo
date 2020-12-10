@@ -1,72 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
-    <title>User Profile Page - Ace Admin</title>
-
-    <meta name="description" content="3 styles with inline editable feature" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-    <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/profile/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
-
-    <!-- page specific plugin styles -->
-    <link rel="stylesheet" href="{{ asset('/profile/css/jquery-ui.custom.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/profile/css/jquery.gritter.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/profile/css/select2.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap-datepicker3.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap-editable.min.css') }}" />
-
-    <!-- text fonts -->
-    <link rel="stylesheet" href="{{ asset('/profile/css/fonts.googleapis.com.css') }}" />
-
-    <!-- ace styles -->
-    <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet"
-        id="main-ace-style" />
-
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{ asset('/profile/css/ace-part2.min.css') }}" class="ace-main-stylesheet" />
-    <![endif]-->
-    <link rel="stylesheet" href="{{ asset('/profile/css/ace-skins.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/profile/css/ace-rtl.min.css') }}" />
-
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{ asset('/profile/css/ace-ie.min.css') }}" />
-    <![endif]-->
-
-    <!-- inline styles related to this page -->
-
-    <!-- ace settings handler -->
-    <script src="{{ asset('/profile/js/ace-extra.min.js') }}"></script>
-
-    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-    <!--[if lte IE 8]>
-    <script src="{{ asset('/profile/js/html5shiv.min.js') }}"></script>
-    <script src="{{ asset('/profile/js/respond.min.js') }}"></script>
-    <![endif]-->
-
-    <!--Css for header-->
-    <link rel="stylesheet" href="{{ asset('/user/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/slicknav.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/progressbar_barfiller.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/gijgo.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/animated-headline.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/fontawesome-all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('/user/css/style.css') }}">
-</head>
-
-<body class="no-skin">
+@extends('layout_user')
+@section('content')
+<section class="no-skin">
     <header>
         <!-- Header Start -->
         <div class="header-area header-transparent">
@@ -175,7 +109,8 @@
                                                             <h4 class="header blue bolder smaller">General</h4>
 
                                                             <div class="row">
-                                                                <img src="">
+                                                                <img src="/storage/avatar_url/{{ $user->avatar_url }}"
+                                                                        style="width:100px">
                                                                 <div class="col-xs-12 col-sm-4">
                                                                     <input type="file" name="avatar_url"/>
                                                                 </div>
@@ -540,6 +475,5 @@
     <script src="{{ asset('/user/js/main.js') }}"></script>
 
     <!-- inline scripts related to this page -->
-</body>
-
-</html>
+</section>
+@endsections

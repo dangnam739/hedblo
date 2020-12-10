@@ -28,6 +28,7 @@ Route::get('/posts/delete/{tag_id}','PostController@delete');
 Route::match(['GET','POST'],'/login','AuthController@login');
 Route::match(['GET','POST'],'/register','AuthController@register');
 Route::match(['GET','POST'],'/profiles','AuthController@profile');
+Route::match(['GET','POST'],'/logout','Auth\LoginController@logout');
 
 // Route::match(['GET','POST'],'/users/{id}','Auth\UserController@show');
 Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');

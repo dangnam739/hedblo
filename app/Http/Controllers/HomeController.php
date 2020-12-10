@@ -10,8 +10,9 @@ use phpDocumentor\Reflection\Types\Compound;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 
-session_start();
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
 class HomeController extends Controller
 {
     /**
@@ -33,5 +34,6 @@ class HomeController extends Controller
     {
         $posts = DB::table('posts')->orderBy('post_id','desc')->limit(3)->get();
         return view('user.home',compact('posts'));
+        // return view('home');
     }
 }
