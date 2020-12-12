@@ -75,16 +75,21 @@
                                             </li>
 
                                             </li>
-                                            <li><a href="#">User account</a>
+                                            <li><a href="#">My account</a>
                                                 <ul class="submenu">
-                                                    <li><a href="{{URL::to('/profile')}}">Profile</a></li>
-                                                    <li><a href="{{URL::to('/change-pass')}}">Change pass</a></li>
+                                                    <li><a href="/users/<?php echo auth()->user()->user_id ?>">Profile</a></li>
+                                                    {{-- <li><a href="{{URL::to('/change-pass')}}">Change pass</a></li> --}}
+                                                    @if (!session('status'))
+                                                        {{ session('status') }}
+                                                        <li><a href='/users/{{Auth::user()->user_id}}'>View Profile</a></li>
+                                                        <li><a href='/users/{{Auth::user()->user_id}}/edit'>Edit Profile</a></li>
+                                                        <li><a href="{{URL::to('/logout')}}">Logout</a></li>
+                                                    @else
+                                                    <li class="button-header margin-left "><a href="{{URL::to('/register')}}" class="btn">Sign Up</a></li>
+                                                    <li class="button-header"><a href="{{URL::to('/login')}}" class="btn btn3">Log in</a></li>
+                                                @endif
                                                 </ul>
                                             </li>
-
-                                            <!-- Button -->
-                                            <li class="button-header margin-left "><a href="{{URL::to('/register')}}" class="btn">Sign Up</a></li>
-                                            <li class="button-header"><a href="{{URL::to('/login')}}" class="btn btn3">Log in</a></li>
                                         </ul>
                                     </nav>
                                 </div>

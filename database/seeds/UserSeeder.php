@@ -37,5 +37,18 @@ class UserSeeder extends Seeder
             'job' => Str::random(10),
             'avatar_url' => asset('personal-user-illustration-@2x.png'),
         ]);
+        DB::table('users')->insert([
+            'first_name' => 'Thanh',
+            'last_name' => 'Nguyen',
+            'user_name' => 'admin ',
+            'password' => Hash::make('123456'),
+            'gender' => 'female',
+            'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
+            'email' => Str::random(10).'@gmail.com',
+            'phone' => '0123456789',
+            'address' => Str::random(20),
+            'job' => Str::random(10),
+            'avatar_url' => asset('personal-user-illustration-@2x.png'),
+        ]);
     }
 }
