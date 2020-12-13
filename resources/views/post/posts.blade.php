@@ -46,7 +46,7 @@
             </div>
 
             <div class="row" id="table_data">
-                @include('user.post_data')
+                @include('post.post_data')
             </div>
 
         </div>

@@ -18,9 +18,9 @@ class PostController extends Controller
     function all_post(Request $request){
         $data = DB::table('posts')->paginate(3);
         if($request->ajax()){
-            return view('user.post_data', compact('data'))->render();
+            return view('post.post_data', compact('data'))->render();
         }
-        return view('user.posts', compact('data'));
+        return view('post.posts', compact('data'));
     }
 
     # Get post by id
@@ -43,7 +43,7 @@ class PostController extends Controller
                     ->select('comments.content','users.user_name')
                     ->get();
 
-        return view('user.post_detail',compact('user_author','data','recent_posts','comment_count','comments'));
+        return view('post.post_detail',compact('user_author','data','recent_posts','comment_count','comments'));
     }
 
     # Get post by tag_id
@@ -56,9 +56,9 @@ class PostController extends Controller
         $title = strtoupper($tag->tag_title);
         Session::put('title',$title);
         if($request->ajax()){
-            return view('user.post_data', compact('data'))->render();
+            return view('post.post_data', compact('data'))->render();
         }
-        return view('user.posts',compact('data'));
+        return view('post.posts',compact('data'));
     }
 
     # Create new post
@@ -83,7 +83,7 @@ class PostController extends Controller
             }
             return redirect('/posts');
         }
-        return view('user.create_post');
+        return view('post.create_post');
     }
 
     # Edit post
@@ -102,7 +102,7 @@ class PostController extends Controller
             return redirect('/posts/'.$post_id);
         }
 
-        return view('user.edit_post',compact('posts'))->with('selected_tags',$selected_tags);
+        return view('post.edit_post',compact('posts'))->with('selected_tags',$selected_tags);
     }
 
     # Delete post
