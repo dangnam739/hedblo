@@ -1,4 +1,4 @@
-@extends('layout_user_profile')
+@extends('layout_user')
 @section('content')
     <section class="no-skin">
         <main>
@@ -423,4 +423,4 @@
 
         <!-- inline scripts related to this page -->
     </section>
-    @endsections
+    @endsection

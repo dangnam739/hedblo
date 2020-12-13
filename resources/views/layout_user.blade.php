@@ -9,6 +9,28 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/user/img/favicon.ico')}}">
 
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/profile/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="{{ asset('/profile/css/fonts.googleapis.com.css') }}" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet"
+        id="main-ace-style" />
+
+    <link rel="stylesheet" href="{{ asset('/profile/css/ace-skins.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/profile/css/ace-rtl.min.css') }}" />
+
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="{{ asset('/profile/css/jquery-ui.custom.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/profile/css/jquery.gritter.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/profile/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap-datepicker3.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap-editable.min.css') }}" />
+
     <!-- CSS here -->
     <link rel="stylesheet" href="{{asset('/user/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('/user/css/owl.carousel.min.css')}}">
@@ -25,8 +47,17 @@
     <link rel="stylesheet" href="{{asset('/user/css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('/user/css/style.css')}}">
 
+    
+
+
+    
+
     <script src="{{asset('/user/js/jquery.min.js')}}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+
+    <!-- User-profile CSS here -->
+    <link rel="stylesheet" href="{{ asset('/user/css/user-profile.css') }}" />
 
 </head>
 
