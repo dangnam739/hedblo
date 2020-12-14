@@ -67,81 +67,87 @@
 </head>
 
 <body class="no-skin">
-<!-- ? Preloader Start -->
-
-<div id="preloader-active">
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-                <img src="{{asset('/user/img/logo/loder.png')}}" alt="">
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{{ asset('/user/img/logo/loder.png') }}" alt="">
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Preloader Start -->
-<header>
-    <!-- Header Start -->
-    <div class="header-area header-transparent">
-        <div class="main-header ">
-            <div class="header-bottom  header-sticky">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <!-- Logo -->
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="logo">
-                                <a href="{{URL::to('/')}}"><img src="{{asset('/user/img/logo/logo.png')}}" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-10 col-lg-10">
-                            <div class="menu-wrapper d-flex align-items-center justify-content-end">
-                                <!-- Main-menu -->
-                                <div class="main-menu d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li class="active" ><a href="{{URL::to('/')}}">Home</a></li>
-                                            <li><a href="{{URL::to('/posts')}}">Posts</a></li>
-                                            <li><a href="{{URL::to('create_post')}}">Create</a></li>
-                                            <li><a href="#">Categories</a>
-                                                <ul class="submenu">
-                                                    @foreach($tags as $tag)
-                                                        <li><a href="{{URL::to('/posts/tag/'.$tag->tag_id)}}">{{$tag->tag_title}}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
 
-                                            </li>
-                                            <li><a href="#">My account</a>
-                                                <ul class="submenu">
-                                                    <li><a href="/users/<?php echo auth()->user()->user_id ?>">Profile</a></li>
-                                                    {{-- <li><a href="{{URL::to('/change-pass')}}">Change pass</a></li> --}}
-                                                    @if (!session('status'))
-                                                        {{ session('status') }}
-                                                        <li><a href='/users/{{Auth::user()->user_id}}'>View Profile</a></li>
-                                                        <li><a href='/users/{{Auth::user()->user_id}}/edit'>Edit Profile</a></li>
-                                                        <li><a href="{{URL::to('/logout')}}">Logout</a></li>
-                                                    @else
-                                                    <li class="button-header margin-left "><a href="{{URL::to('/register')}}" class="btn">Sign Up</a></li>
-                                                    <li class="button-header"><a href="{{URL::to('/login')}}" class="btn btn3">Log in</a></li>
-                                                @endif
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </nav>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <a href="{{ URL::to('/') }}"><img src="{{ asset('/user/img/logo/logo.png') }}"
+                                            alt=""></a>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
+                                                <li><a href="{{ URL::to('/posts') }}">Posts</a></li>
+                                                <li><a href="{{ URL::to('create_post') }}">Create</a></li>
+                                                <li><a href="#">Categories</a>
+                                                    <ul class="submenu">
+                                                        @foreach ($tags as $tag)
+                                                            <li><a
+                                                                    href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+
+                                                @if (!session('status') && auth()->user())
+                                                    <li><a href="#">My account</a>
+                                                        <ul class="submenu">
+                                                            <li><a
+                                                                    href="{{ URL::to('users/{ Auth::user()->user_id }') }}">View
+                                                                    Profile</a></li>
+                                                            <li><a
+                                                                    href="{{ URL::to('users/{ Auth::user()->user_id }/edit') }}">Edit
+                                                                    Profile</a></li>
+                                                            <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
+                                                        </ul>
+                                                    </li>
+                                                @else
+                                                    <li class="button-header margin-left "><a
+                                                            href="{{ URL::to('/register') }}" class="btn">Sign
+                                                            Up</a></li>
+                                                    <li class="button-header"><a href="{{ URL::to('/login') }}"
+                                                            class="btn btn3">Log in</a></li>
+                                                @endif
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Header End -->
-</header>
+        <!-- Header End -->
+    </header>
 
 
     <main>

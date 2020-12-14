@@ -14,6 +14,11 @@ session_start();
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     # Get all post
     function all_post(Request $request){
         $data = DB::table('posts')->paginate(3);

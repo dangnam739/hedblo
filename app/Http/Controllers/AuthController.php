@@ -16,7 +16,7 @@ class AuthController extends Controller
 {
     public function  login(Request $request){
         if ($request->isMethod("POST")){
-
+            
         }
         return view('user.login');
     }
