@@ -51,7 +51,7 @@
                                                                     <img src="/storage/avatar_url/{{ $user->avatar_url }}"
                                                                         style="width:100px">
                                                                     <div class="col-xs-12 col-sm-4">
-                                                                        <input type="file" name="avatar_url" />
+                                                                        <input type="file" name="avatar_url">
                                                                     </div>
 
                                                                     <div class="vspace-12-sm"></div>
@@ -66,7 +66,7 @@
                                                                                 <input class="col-xs-12 col-sm-10"
                                                                                     type="text" id="form-field-username"
                                                                                     placeholder="Username" name="username"
-                                                                                    value={{ $user->user_name }} />
+                                                                                    value={{ $user->user_name }}>
                                                                             </div>
                                                                         </div>
 
@@ -82,11 +82,11 @@
                                                                                     id="form-field-first"
                                                                                     placeholder="First Name"
                                                                                     name="firstname"
-                                                                                    value={{ $user->first_name }} />
+                                                                                    value={{ $user->first_name }}>
                                                                                 <input class="input-small" type="text"
                                                                                     id="form-field-last"
                                                                                     placeholder="Last Name" name="lastname"
-                                                                                    value={{ $user->last_name }} />
+                                                                                    value={{ $user->last_name }}>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -102,8 +102,7 @@
                                                                             <input class="input-medium date-picker pr-1"
                                                                                 id="form-field-date" type="date"
                                                                                 data-date-format="dd-mm-yyyy"
-                                                                                name="birthday"
-                                                                                value={{ $user->birthday }} />
+                                                                                name="birthday" value={{ $user->birthday }}>
                                                                             <i class="ace-icon fa fa-calendar"></i>
                                                                         </span>
                                                                     </div>
@@ -135,7 +134,7 @@
                                                                                     <input type="email"
                                                                                         id="form-field-email" name="email"
                                                                                         placeholder="example@gmail.com"
-                                                                                        value={{ $user->email }} />
+                                                                                        value={{ $user->email }}>
                                                                                     <i class="ace-icon fa fa-envelope"></i>
                                                                                 </span>
                                                                             </div>
@@ -153,7 +152,7 @@
                                                                                     <input type="text"
                                                                                         id="form-field-website"
                                                                                         name="address" placeholder="Address"
-                                                                                        value={{ $user->address }} />
+                                                                                        value={{ $user->address }}>
                                                                                     <i class="ace-icon fa fa-globe"></i>
                                                                                 </span>
                                                                             </div>
@@ -172,7 +171,7 @@
                                                                                         class="input-medium input-mask-phone"
                                                                                         type="text" id="form-field-phone"
                                                                                         name="phone" placeholder="phone"
-                                                                                        value={{ $user->phone }} />
+                                                                                        value={{ $user->phone }}>
                                                                                     <i
                                                                                         class="ace-icon fa fa-phone fa-flip-horizontal"></i>
                                                                                 </span>
@@ -191,8 +190,7 @@
                                                                                     Password</label>
                                                                                 <div class="col-sm-9">
                                                                                     <input type="password"
-                                                                                        id="form-field-pass0"
-                                                                                        name="pass0" />
+                                                                                        id="form-field-pass0" name="pass0">
                                                                                 </div>
                                                                             </div>
 
@@ -205,8 +203,7 @@
                                                                                     Password</label>
                                                                                 <div class="col-sm-9">
                                                                                     <input type="password"
-                                                                                        id="form-field-pass1"
-                                                                                        name="pass1" />
+                                                                                        id="form-field-pass1" name="pass1">
                                                                                 </div>
                                                                             </div>
 
@@ -220,8 +217,7 @@
 
                                                                                 <div class="col-sm-9">
                                                                                     <input type="password"
-                                                                                        id="form-field-pass2"
-                                                                                        name="pass2" />
+                                                                                        id="form-field-pass2" name="pass2">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -256,4 +252,4 @@
             </div><!-- /.main-container -->
         </main>
     </section>
-    @endsection
+@endsection

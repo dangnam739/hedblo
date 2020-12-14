@@ -35,12 +35,10 @@
             <div class="form-input pt-30">
                 <input type="submit" name="submit" value="login">
             </div>
-        </div>
-        
-        <!-- Forget Password -->
-        <a href="#" class="forget">Forget Password</a>
-        <!-- Forget Password -->
-        <a href="{{ URL::to('/register') }}" class="registration">Registration</a>
+            <!-- Forget Password -->
+            {{-- <a href="#" class="forget">Forget Password</a> --}}
+            <!-- Forget Password -->
+            <a href="{{ URL::to('/register') }}" class="registration">Registration</a>
         </div>
     </form>
     <!-- /end login form -->
