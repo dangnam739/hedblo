@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="row" id="table_data">
+            <div class="row d-flex flex-column" id="table_data">
                 @include('post.post_data')
             </div>
 

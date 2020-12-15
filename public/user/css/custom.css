@@ -3,3 +3,8 @@ p img{
     margin: 0 auto;
     display: block;
 }
+
+#table_data{
+    justify-content: center;
+}
+
