@@ -46,7 +46,3 @@ Route::get('/', 'HomeController@index')->name('home');
 #search
 Route::get('/search', 'SearchController@index')->name('search.index');
 Route::get('/search-results', 'SearchController@search')->name('search.result');
-
-
-
-

@@ -26,6 +26,7 @@ class PostController extends Controller
     # Get post by id
     public function post_detail($post_id){
         $data = DB::table('posts')->where('post_id',$post_id)->first();
+
         $recent_posts = DB::table('posts')->where('post_id','!=',$post_id)->orderBy('date_create','desc')->limit(3)->get();
         $user_author = DB::table('users')
                             ->join('posts','users.user_id','=','posts.user_id')
@@ -120,7 +121,7 @@ class PostController extends Controller
             $dataa["post_id"] = $request->post_id;
             $dataa["user_id"] = $request->user_id;
             $dataa["content"] = $request->content;
-            DB::table("comments")->insert($dataa);  
+            DB::table("comments")->insert($dataa);
         }
         return redirect("/posts/{$request->post_id}");
     }

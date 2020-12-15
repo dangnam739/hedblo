@@ -44,7 +44,10 @@
                                 </ul>
                                 <div class="quote-wrapper">
                                     <div class="quotes">
-                                        {{$data->content}}
+                                        <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
+                                        <mark-down>
+                                            {{$data->content}}
+                                        </mark-down>
                                     </div>
                                 </div>
                                 <div>
