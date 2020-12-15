@@ -4,7 +4,7 @@
             <div class="properties__card">
                 <div class="properties__caption">
                     <h3>{{$post->title}}</h3>
-                    <p>{{$post->content}}</p>
+                    <p>{{$post->description}}</p>
                     <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">Read more</a>
                 </div>
             </div>
