@@ -38,37 +38,8 @@
     </div>
 </div>
 <!-- Preloader Start-->
-
-
 <main class="login-body" data-vide-bg="{{asset('/user/img/login-bg.mp4')}}">
-    <!-- Login Admin -->
-    <form class="form-default" action="login-bg.mp4" method="POST">
-
-        <div class="login-form">
-            <!-- logo-login -->
-            <div class="logo-login">
-                <a href="index.html"><img src="{{asset('/user/img/logo/loder.png')}}" alt=""></a>
-            </div>
-            <h2>Login Here</h2>
-            <div class="form-input">
-                <label for="name">Email</label>
-                <input  type="email" name="email" placeholder="Input your email">
-            </div>
-            <div class="form-input">
-                <label for="name">Password</label>
-                <input type="password" name="password" placeholder="Input your password">
-            </div>
-            <div class="form-input pt-30">
-                <input type="submit" name="submit" value="login">
-            </div>
-
-            <!-- Forget Password -->
-            <a href="#" class="forget">Forget Password</a>
-            <!-- Forget Password -->
-            <a href="{{URL::to('/register')}}" class="registration">Registration</a>
-        </div>
-    </form>
-    <!-- /end login form -->
+    @yield('content')
 </main>
 
 <!-- JS here -->

@@ -48,7 +48,7 @@ class UserController extends Controller
             $user->address = $request->input('address');
             $user->phone = $request->input('phone');
         }
-        if ($request->input('pass0')) {
+        if ($request->input('pass0') && $request->input('pass1')) {
             $hashedPassword = $user->password;
             if ((Hash::check($request->input('pass0'),$hashedPassword)) && ($request->input('pass1')==$request->input('pass2'))) {
                 $user->password = Hash::make($request->input('pass1'));
