@@ -57,7 +57,8 @@
     
 
     <!-- User-profile CSS here -->
-    <link rel="stylesheet" href="{{ asset('/user/css/user-profile.css') }}" />
+    <!-- <link rel="stylesheet" href="{{ asset('/user/css/user-profile.css') }}" /> -->
+    <link rel="stylesheet" href="{{ asset('/user/css/custom.css') }}">
 
 </head>
 
