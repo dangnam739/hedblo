@@ -19,6 +19,7 @@ Follow the following steps to clone this project: ❤❤
 * Make a copy of **.env.example** file, rename it .env and **config your db's settings**
 * Generate app's key: `php artisan key:generate`
 * Migrating and seeding: `php artisan migrate:fresh --seed`
+* Link storage: `php artisan storage:link`
 * Start server with xampp or Laravel's built-in development server: `php artisan serve`
 * The project is running at:
     * With xampp server: http://localhost:{your_port}/php_project/public/
@@ -38,3 +39,11 @@ Follow the following steps to clone this project: ❤❤
 SQL Diagram:
 
 <img src="https://github.com/dangnam739/php_project/blob/main/SQL_diagram.png">
+
+## About us
+* PM - Garbage Collector: Nguyen Quang Loc
+* Database Designer - Secretary: Kieu Dang Nam
+* Dev - Wibu: Le Minh Quang
+* Dev - Hot girl 1: Nguyen Thi Hai Thanh
+* Dev - Hot girl 2: Nguyen Thi Nguyet Anh
+* Thanh 's mentor - Idol 4.0: Dao Dang Huy
