@@ -35,6 +35,8 @@ Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');
 Route::get('users/{id}','Auth\UserController@show');
 Route::get('users/{id}/edit', 'Auth\UserController@edit');
 Route::match(['GET', 'POST'], 'users/{id}/update', 'Auth\UserController@update');
+Route::get('users/{user_id}/delete', 'Auth\UserController@delete');
+
 /*Admin route*/
 Route::get('admin/home-page','AdminController@index');
 Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');
@@ -46,3 +48,10 @@ Route::get('/', 'HomeController@index')->name('home');
 #search
 Route::get('/search', 'SearchController@index')->name('search.index');
 Route::get('/search-results', 'SearchController@search')->name('search.result');
+
+#tag
+Route::get('/tags','TagController@tags');
+Route::get('/tags/{tag_id}','TagController@tag_detail');
+Route::match(['GET','POST'],'tags/create','TagController@create');
+Route::match(['GET','POST'],'/tags/edit/{tag_id}','TagController@edit');
+Route::get('/tags/delete/{tag_id}','TagController@delete');

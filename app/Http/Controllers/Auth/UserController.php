@@ -59,4 +59,8 @@ class UserController extends Controller
         $user->save();
         return redirect("/users/$user->user_id")->with('user', $user);
     }
+    public function delete($user_id){
+        User::find($user_id)->delete();
+        return redirect('/admin/home-page');
+    }
 }

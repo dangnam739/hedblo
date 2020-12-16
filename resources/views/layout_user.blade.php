@@ -119,6 +119,10 @@
                                                             <li><a
                                                                     href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">Edit
                                                                     Profile</a></li>
+                                                            @if (auth()->user()->admin)
+                                                                <li><a href="{{ URL::to('admin/home-page') }}">Control
+                                                                        Page</a></li>
+                                                            @endif
                                                             <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
                                                         </ul>
                                                     </li>

@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(Schema::hasTable('tags')){
+       if(Schema::hasTable('tags')){
             $tags = DB::table("tags")->get();
             View::share('tags',$tags);
         }   

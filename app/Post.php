@@ -26,5 +26,9 @@ class Post extends Model implements Searchable
             $url
         );
     }
+    
+    public function user(){
+        return $this->belongsTo(User::class, 'post_id');
+    }
 
 }
