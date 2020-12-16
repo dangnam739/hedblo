@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -10,6 +11,7 @@ use App\PostTag;
 use phpDocumentor\Reflection\Types\Compound;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+
 session_start();
 
 class PostController extends Controller
@@ -46,10 +48,11 @@ class PostController extends Controller
                     ->join('posts','comments.post_id','=','posts.post_id')
                     ->join('users','comments.user_id','=','users.user_id')
                     ->where('posts.post_id','=',$post_id)
-                    ->select('comments.content','users.user_name')
+                    ->select('comments.content','users.user_name','users.avatar_url')
                     ->get();
+        $current_user = User::find(auth()->user()->user_id);
 
-        return view('post.post_detail',compact('user_author','data','recent_posts','comment_count','comments'));
+        return view('post.post_detail',compact('user_author','data','recent_posts','comment_count','comments','current_user'));
     }
 
     # Get post by tag_id
@@ -87,7 +90,7 @@ class PostController extends Controller
                 $post_tag->tag_id = $tag_id;
                 $post_tag->save();
             }
-            return redirect('/posts');
+            return redirect('/posts/'.$post_id);
         }
         return view('post.create_post');
     }
