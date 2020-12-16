@@ -72,9 +72,10 @@ class PostController extends Controller
 
     # Create new post
     public function create(Request $request){
+        $current_user = User::find(auth()->user()->user_id);
         if($request->isMethod('post')){
             $post = new Post();
-            $post->user_id = 1;
+            $post->user_id = $current_user->user_id;
             $post->title = $request->title;
             $post->content = $request->detail_content;
             $post->description = $request->description;
