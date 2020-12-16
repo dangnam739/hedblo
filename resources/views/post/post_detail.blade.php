@@ -10,14 +10,15 @@
                     <div class="col-xl-8 col-lg-11 col-md-12">
                         <div class="hero__caption hero__caption2">
                             <h1 data-animation="bounceIn" data-delay="0.2s">{{$data->title}}</h1>
-                            <!-- breadcrumb Start-->
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$data->post_id)}}">Edit post</a></li>
-                                    <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$data->post_id)}}">Delete</a></li>
-                                </ol>
-                            </nav>
-                            <!-- breadcrumb End -->
+                            @if($current_user->user_id == $user_author->user_id)
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$data->post_id)}}">Edit post</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$data->post_id)}}">Delete</a></li>
+                                    </ol>
+                                </nav>
+                            @endif
+
                         </div>
                     </div>
                 </div>

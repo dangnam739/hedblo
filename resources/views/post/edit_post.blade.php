@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-11 col-md-12">
                         <div class="hero__caption hero__caption2">
-                            <h1 data-animation="bounceIn" data-delay="0.2s">Edit post</h1>
+                            <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
                             <!-- breadcrumb Start-->
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -29,7 +29,6 @@
     <div class="row">
         <div class="comment-form">
             <h4>Your blog</h4>
-            @foreach($posts as $post)
             <form class="form-contact comment_form" action="{{URL::to('/edit/'.$post->post_id)}}" id="commentForm" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="row">
@@ -51,13 +50,11 @@
                         <div class="form-group">
                             @foreach($tags as $tag)
                             <label class="checkbox-inline" for="tag[]">
-                                @foreach($selected_tags as $key=>$selected_tag)
-                                @if($tag->tag_id == $selected_tag->tag_id)
-                                <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}" checked><b>{{$tag->tag_title}}</b>
-                                @continue
+                                @if(in_array($tag->tag_id, $selected_tags_array))
+                                    <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}" checked><b>{{$tag->tag_title}}</b>
+                                @else
+                                    <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}">{{$tag->tag_title}}
                                 @endif
-                                @endforeach
-                                <input type="checkbox" name="tags[]" value="{{$tag->tag_id}}">{{$tag->tag_title}}
                             </label>
                             @endforeach
                         </div>
@@ -77,7 +74,6 @@
                     <button type="submit" class="button button-contactForm btn_1 boxed-btn">Update</button>
                 </div>
             </form>
-            @endforeach
         </div>
     </div>
 </div>

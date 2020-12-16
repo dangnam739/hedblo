@@ -108,8 +108,12 @@ class PostController extends Controller
 
     # Edit post
     public function edit(Request $request,$post_id){
-        $posts = DB::table('posts')->where('post_id',$post_id)->get();
+        $post = DB::table('posts')->where('post_id',$post_id)->first();
         $selected_tags = DB::table('post_tag')->where('post_id',$post_id)->get();
+        $selected_tags_array = array();
+        foreach ($selected_tags as $selected_tag){
+            array_push($selected_tags_array, $selected_tag->tag_id);
+        }
 
         if($request->isMethod('post')){
             $data = array();
@@ -127,12 +131,22 @@ class PostController extends Controller
             $data["content"] = $request->detail_content;
             $data["description"] = $request->description;
             $data["date_create"] = date('Y-m-d');
+
+            DB::table('post_tag')->where('post_id',$post_id)->delete();
+            $tags = $request->tags;
+            foreach($tags as $tag_id){
+                $post_tag = new PostTag();
+                $post_tag->post_id = $post_id;
+                $post_tag->tag_id = $tag_id;
+                $post_tag->save();
+            }
+
             DB::table("posts")->where('post_id',$post_id)->update($data);
 
             return redirect('/posts/'.$post_id);
         }
 
-        return view('post.edit_post',compact('posts'))->with('selected_tags',$selected_tags);
+        return view('post.edit_post',compact('post','selected_tags_array'));
     }
 
     # Delete post
