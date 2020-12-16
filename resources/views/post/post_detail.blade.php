@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">Blog title {{$data->post_id}}</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">{{$data->title}}</h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
@@ -29,8 +29,13 @@
     <section class="blog_area single-post-area section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 posts-list">
+                <div class="col-lg-9 posts-list">
                     <div class="single-post">
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><a href="#"><i class="fa fa-user"></i>{{$user_author->user_name}}</a></li>
+                            <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
+                            <li><i class="fa fa-heart"></i></li>
+                        </ul>
                         <div class="feature-img">
                             <img class="img-fluid" src="{{asset('/user/img/blog/single_blog_1.png')}}" alt="">
                         </div>
@@ -38,12 +43,6 @@
                                 <h2 style="color: #2d2d2d;">
                                     {{$data->title}}
                                 </h2>
-                                <ul class="blog-info-link mt-3 mb-4">
-                                    <li><a href="#"><i class="fa fa-user"></i>{{$user_author->user_name}}</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
-                                    <li><i class="fa fa-heart"></i></li>
-                                </ul>
-
                                 <div class="quote-wrapper">
                                     <div class="quotes">
                                         <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
@@ -85,7 +84,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <form action="{{ route('search.result') }}">
