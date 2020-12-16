@@ -77,6 +77,16 @@ class PostController extends Controller
             $post = new Post();
             $post->user_id = $current_user->user_id;
             $post->title = $request->title;
+
+            if ($request->hasFile('post_url')) {
+                $filenameWithExt = $request->file('post_url')->getClientOriginalName();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('post_url')->getClientOriginalExtension();
+                $filenameToStore = $filename . '_' . time() . '.' . $extension;
+                $path = $request->file('post_url')->storeAs('public/post_url', $filenameToStore);
+                $post->post_url = $filenameToStore;
+            }
+
             $post->content = $request->detail_content;
             $post->description = $request->description;
             $post->date_create = date('Y-m-d');
@@ -104,6 +114,16 @@ class PostController extends Controller
         if($request->isMethod('post')){
             $data = array();
             $data["title"] = $request->title;
+
+            if ($request->hasFile('post_url')) {
+                $filenameWithExt = $request->file('post_url')->getClientOriginalName();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('post_url')->getClientOriginalExtension();
+                $filenameToStore = $filename . '_' . time() . '.' . $extension;
+                $path = $request->file('post_url')->storeAs('public/post_url', $filenameToStore);
+                $data["post_url"] = $filenameToStore;
+            }
+
             $data["content"] = $request->detail_content;
             $data["description"] = $request->description;
             $data["date_create"] = date('Y-m-d');

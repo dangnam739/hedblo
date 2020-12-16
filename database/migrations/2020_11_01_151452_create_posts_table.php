@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->text('description');
             $table->date('date_create');
+            $table->string('post_url')->nullable();
         });
     }
 
