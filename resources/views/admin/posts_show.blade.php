@@ -10,8 +10,8 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Tag (redirect to tag page)</th>
-                        <th>Author (Need add author page) </th>
+                        {{-- <th>Tag (redirect to tag page)</th> --}}
+                        <th>Author</th>
                         <th>Created at</th>
                         <th colspan="2">Actions</th>
                     </tr>
@@ -19,19 +19,20 @@
                 <tfoot>
                     <tr>
                         <th>Title</th>
-                        <th>Tag</th>
-                        <th>Author (Need add author page) </th>
+                        {{-- <th>Tag</th> --}}
+                        <th>Author</th>
                         <th>Created at</th>
                         <th colspan="2">Actions</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach ($posts as $post)
-
+                    <?php 
+                    $user = \App\User::find($post->user_id) ?>
                         <tr>
                             <td><a href="{{ URL::to('posts/' . $post->post_id) }}">{{ $post->title }}</a></td>
-                            <td>Post's tag</td>
-                        <td><a href={{ URL::to('users/' . $post->user_id) }}>{{$post->user_id}}(find name!!)</a>
+                            {{-- <td>Post's tags</td> --}}
+                        <td><a href={{ URL::to('users/' . $post->user_id) }}>{{$user->user_name}}</a>
                             </td>
                             <td>{{ $post->date_create }}</td>
                             <td><a href={{ URL::to('posts/' . $post->post_id) }}>Show<a></td>

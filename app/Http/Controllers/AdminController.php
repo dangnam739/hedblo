@@ -32,12 +32,6 @@ class AdminController extends Controller
             ->with(compact('tags', $tags));
     }
 
-    // public function show_user()
-    // {
-    //     $users = User::all();
-    //     return view('admin.user_show')->with(compact('users', $users));
-    // }
-
     public function change_pass(Request $request)
     {
         if ($request->isMethod('post')) {

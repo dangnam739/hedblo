@@ -15,4 +15,7 @@ class Tag extends Model
         'tag_title',
         'quantity'
     ];
+    public function posts(){
+        return $this->hasMany(Post::class, 'post_id');
+    }
 }

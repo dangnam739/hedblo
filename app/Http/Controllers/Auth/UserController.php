@@ -63,4 +63,11 @@ class UserController extends Controller
         User::find($user_id)->delete();
         return redirect('/admin/home-page');
     }
+
+    public function posts($user_id) 
+    {
+        $user = User::find($user_id);
+        $posts = User::find($user_id)->posts;
+        return view('user.posts')->with(compact(['posts', $posts], ['user', $user]));
+    }
 }

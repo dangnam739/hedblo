@@ -18,7 +18,7 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Tag name (redirect to tag's post)</th>
+                        <th>Tag name</th>
                         <th>Posts</th>
                         <th colspan="3">Actions</th>
                     </tr>
@@ -27,10 +27,10 @@
                     @foreach ($tags as $tag)
                         <tr>
                             <td><a href="{{ URL::to('tags/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a></td>
-                            <td>Number of tags</td>
+                            <td>{{ $tag->posts->count() }}</td>
                             <td><a href={{ URL::to('tags/' . $tag->tag_id) }}>Show all post<a></td>
-                            <td><a href={{ URL::to('tags/' . $tag->tag_id) . 'edit' }}>Edit<a></td>
-                            <td><a href={{ URL::to('tags/delete/'.$tag->tag_id) }}>Destroy<a></td>
+                            <td><a href={{ URL::to('tags/' . $tag->tag_id) . '/edit' }}>Edit<a></td>
+                            <td><a href={{ URL::to('tags/delete/' . $tag->tag_id) }}>Destroy<a></td>
                         </tr>
                     @endforeach
                 </tbody>

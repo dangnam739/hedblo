@@ -10,6 +10,7 @@ use App\PostTag;
 use phpDocumentor\Reflection\Types\Compound;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 session_start();
 
@@ -91,6 +92,7 @@ class PostController extends Controller
                 $post_tag->post_id = $post_id;
                 $post_tag->tag_id = $tag_id;
                 $post_tag->save();
+                $post->tags()->attach($tag_id);
             }
             return redirect('/posts');
         }

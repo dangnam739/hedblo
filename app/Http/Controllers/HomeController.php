@@ -9,11 +9,12 @@ use App\Post;
 use phpDocumentor\Reflection\Types\Compound;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
   }
-class HomeController extends Controller
+class HomeController extends AdminController
 {
     /**
      * Create a new controller instance.
@@ -30,10 +31,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
+        public function homepage(){
+            $posts = DB::table('posts')->orderBy('post_id','desc')->limit(3)->get();
+            return view('user.home',compact('posts'));  
+        }
+
     public function index()
     {
-        $posts = DB::table('posts')->orderBy('post_id','desc')->limit(3)->get();
-        return view('user.home',compact('posts'));
-        // return view('home');
+        if(Auth::user() && Auth::user()->admin){
+            return redirect('/admin/home-page');
+        }
+        else {
+            $posts = DB::table('posts')->orderBy('post_id','desc')->limit(3)->get();
+            return view('user.home',compact('posts'));                
+        }
     }
 }

@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*User route*/
-// Route::get('/','HomeController@index');
 
 /*Blog*/
 Route::get('/posts','PostController@all_post');
@@ -36,10 +34,12 @@ Route::get('users/{id}','Auth\UserController@show');
 Route::get('users/{id}/edit', 'Auth\UserController@edit');
 Route::match(['GET', 'POST'], 'users/{id}/update', 'Auth\UserController@update');
 Route::get('users/{user_id}/delete', 'Auth\UserController@delete');
+Route::get('users/{user_id}/posts', 'Auth\UserController@posts');
 
 /*Admin route*/
 Route::get('admin/home-page','AdminController@index');
 Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');
+Route::get('/home-page','HomeController@homepage');
 
 
 Auth::routes();
@@ -51,7 +51,7 @@ Route::get('/search-results', 'SearchController@search')->name('search.result');
 
 #tag
 Route::get('/tags','TagController@tags');
-Route::get('/tags/{tag_id}','TagController@tag_detail');
-Route::match(['GET','POST'],'tags/create','TagController@create');
-Route::match(['GET','POST'],'/tags/edit/{tag_id}','TagController@edit');
+Route::match(['GET','POST'],'tags/new','TagController@create');
+Route::get('/tags/{tag_id}','TagController@show');
+Route::match(['GET','POST'],'/tags/{tag_id}/edit','TagController@edit');
 Route::get('/tags/delete/{tag_id}','TagController@delete');

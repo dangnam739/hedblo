@@ -17,7 +17,7 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Username (redirect to user's posts)</th>
+                        <th>Username</th>
                         <th>Email</th>
                         <th>Posts</th>
                         <th colspan="2">Actions</th>
@@ -26,7 +26,7 @@
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
-                            <td><a href="{{ URL::to('users/' . $user->user_id) . 'posts' }}">{{ $user->user_name }}</a></td>
+                            <td><a href="{{ URL::to('users/' . $user->user_id) . '/posts' }}">{{ $user->user_name }}</a></td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->posts->count() }}</td>
                             <td><a href={{ URL::to('users/' . $user->user_id) }}>Show<a></td>
