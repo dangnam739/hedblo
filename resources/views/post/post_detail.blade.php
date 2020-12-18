@@ -90,7 +90,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="blog_right_sidebar">
-                    <aside class="single_sidebar_widget search_widget">
+                    <!-- <aside class="single_sidebar_widget search_widget">
                         <form action="{{ route('search.result') }}">
                             <div class="form-group">
                                 <div class="input-group mb-3">
@@ -102,7 +102,7 @@
                             </div>
                             <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Search</button>
                         </form>
-                    </aside>
+                    </aside> -->
                     <aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title" style="color: #2d2d2d;">Recent Post</h3>
                         @foreach($recent_posts as $post)

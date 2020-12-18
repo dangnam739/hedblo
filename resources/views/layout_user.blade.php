@@ -92,9 +92,25 @@
                             <div class="col-xl-10 col-lg-10">
                                 <div class="menu-wrapper d-flex align-items-center justify-content-end">
                                     <!-- Main-menu -->
-                                    <div class="main-menu d-none d-lg-block">
+                                    <div class="blog_right_sidebar col-xl-4 col-lg-4" style="margin-top:20px">
+                                    <aside class="single_sidebar_widget search_widget" style="margin:0;padding:0">
+                                        <form action="{{ route('search.result') }}">
+                                            <div class="form-group">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" name="query" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                                    <div class="input-group-append">
+                                                        <button class="btns" type="submit"><i class="ti-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Search</button> -->
+                                        </form>
+                                    </aside>
+                                    </div>
+                                    
+                                    <div class="main-menu d-none d-lg-block col-xl-8 col-lg-8">
                                         <nav>
-                                            <ul id="navigation">
+                                            <ul id="navigation" class="d-flex justify-content-end">
                                                 <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
                                                 <li><a href="{{ URL::to('/posts') }}">Posts</a></li>
                                                 <li><a href="{{ URL::to('create_post') }}">Create</a></li>
