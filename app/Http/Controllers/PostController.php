@@ -153,8 +153,6 @@ class PostController extends Controller
 
     # Delete post
     public function delete($post_id){
-        $post_tag_list = PostTag::where('post_id',$post_id);
-        $post_tag_list->delete();
         $post = Post::find($post_id);
         $post->delete();
         return redirect('/posts');
