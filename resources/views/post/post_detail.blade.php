@@ -9,16 +9,15 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-11 col-md-12">
                         <div class="hero__caption hero__caption2">
-                            <h1 data-animation="bounceIn" data-delay="0.2s">{{$data->title}}</h1>
-                            @if($current_user->user_id == $user_author->user_id)
+                            <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
+                            @if($current_user->user_id == $post->user->user_id)
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$data->post_id)}}">Edit post</a></li>
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$data->post_id)}}">Delete</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">Edit post</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">Delete</a></li>
                                     </ol>
                                 </nav>
                             @endif
-
                         </div>
                     </div>
                 </div>
@@ -33,27 +32,32 @@
             <div class="col-lg-9 posts-list">
                 <div class="single-post">
                     <ul class="blog-info-link mt-3 mb-4">
-                        <li><a href="#"><i class="fa fa-user"></i>{{$user_author->user_name}}</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
                         <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
-                        <li><i class="fa fa-heart"></i></li>
+                        <li class="post" data-postid="{{ $post->post_id}}">
+
+                        </li>
                     </ul>
+
                     <div class="feature-img">
-                        <img class="img-fluid" src="{{URL::to('/storage/post_url/'.$data->post_url)}}">
+                        @if($post->post_url == null)
+                            <img class="img-fluid" src="{{asset('/user/img/pj3.1.png')}}" alt="" >
+                        @else
+                            <img class="img-fluid" src="{{asset('/storage/post_url/'.$post->post_url)}}" alt="">
+                        @endif
                     </div>
                     <div class="blog_details">
                         <h2 style="color: #2d2d2d;">
-                            {{$data->title}}
+                            {{$post->title}}
                         </h2>
                         <div class="quote-wrapper">
                             <div class="quotes">
                                 <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
                                 <mark-down>
-                                    {{$data->content}}
+                                    {{$post->content}}
                                 </mark-down>
                             </div>
                         </div>
-                        <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
-                            people like this</p>
                         <div>
                             @foreach($comments as $comment)
                             <span><img style="width:70px;height: 70px;" src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}"></span>
@@ -67,9 +71,9 @@
 
                 <div class="comment-form">
                     <h4>Your comment</h4>
-                    <form method="post" class="form-contact comment_form" action="{{URL::to('/posts/{$data->post_id}/comment')}}" id="commentForm">
+                    <form method="post" class="form-contact comment_form" action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm">
                         {{ csrf_field() }}
-                        <input type="hidden" name="post_id" value='{{$data->post_id}}'>
+                        <input type="hidden" name="post_id" value='{{$post->post_id}}'>
                         <input type="hidden" name="user_id" value="{{$current_user->user_id}}">
                         <div class="row">
                             <div class="col-12">
@@ -132,4 +136,5 @@
     </div>
 </section>
 <!-- Blog Area End -->
+
 @endsection

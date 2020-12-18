@@ -13,4 +13,8 @@ class User extends Authenticatable // change model to authenticable
     protected $primaryKey = 'user_id';
     public $timestamps = false;
     protected $connection = '';
+
+    public function post(){
+        return $this->hasMany('App\Post');
+    }
 }
