@@ -15,8 +15,9 @@
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "spatie/laravel-searchable": "^1.7",
-        "michelf/php-markdown": "^1.9"
+        "michelf/php-markdown": "^1.9",
+        "overtrue/laravel-follow": "^2.2",
+        "spatie/laravel-searchable": "^1.7"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

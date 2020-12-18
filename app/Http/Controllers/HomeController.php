@@ -32,8 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')->orderBy('post_id','desc')->limit(3)->get();
+        $posts = Post::orderBy('date_create','desc')->take(3)->get();
         return view('user.home',compact('posts'));
-        // return view('home');
     }
 }
