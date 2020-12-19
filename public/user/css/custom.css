@@ -28,4 +28,9 @@ input[class="file-upload"] {
     display: none;
 } */
 
+.breadcrumb>li>a {
+    color: #ffffff;
+    font-size: large;
+}
+
 

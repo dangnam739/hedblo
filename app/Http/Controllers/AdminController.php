@@ -32,10 +32,10 @@ class AdminController extends Controller
             ->with(compact('tags', $tags));
     }
 
-    public function change_pass(Request $request)
-    {
-        if ($request->isMethod('post')) {
-        }
-        return view('admin.change_pass');
-    }
+    // public function change_pass(Request $request)
+    // {
+    //     if ($request->isMethod('post')) {
+    //     }
+    //     return view('admin.change_pass');
+    // }
 }

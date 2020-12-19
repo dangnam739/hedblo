@@ -107,11 +107,18 @@
                                         </form>
                                     </aside>
                                     </div>
-                                    
+
                                     <div class="main-menu d-none d-lg-block col-xl-8 col-lg-8">
                                         <nav>
-                                            <ul id="navigation" class="d-flex justify-content-end">
-                                                <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
+                                            <ul id="navigation" class="d-flex justify-content-end align-items-center">
+                                                @if(Auth::user())
+                                                    @if(Auth::user()->admin)
+                                                        <li><a href="{{ URL::to('admin/home-page') }}">Welcome admin!!</a></li>
+                                                    @else
+                                                        <li><a href="{{ URL::to('users/' . Auth::user()->user_id) }}"> Welcome {{Auth::user()->user_name}}!!</a></li>
+                                                    @endif
+                                                @endif
+                                                <li class="active"><a href="{{ URL::to('/home-page') }}">Home</a></li>
                                                 <li><a href="{{ URL::to('/posts') }}">Posts</a></li>
                                                 <li><a href="{{ URL::to('create_post') }}">Create</a></li>
                                                 <li><a href="#">Categories</a>

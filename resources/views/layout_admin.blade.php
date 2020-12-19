@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Dashboard</title>
+    <title>HEDBLO Admin - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('/admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -26,7 +26,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-        <a class="navbar-brand mr-1" href="/home-page">Home Page</a>
+        <a class="navbar-brand mr-1" href={{ URL::to('/home-page') }}>Home Page</a>
 
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
@@ -45,7 +45,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('/home-page') }}">Guest page</a>
+                    <a class="dropdown-item" href="{{ URL::to('/home-page') }}">Home page</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id) }}">Profile</a>
                     <div class="dropdown-divider"></div>

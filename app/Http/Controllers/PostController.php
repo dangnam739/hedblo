@@ -6,12 +6,12 @@ use App\Tag;
 use App\User;
 use App\UserPostLike;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\SESSION;
 use App\Http\Requests;
 use App\Post;
 use App\PostTag;
 use phpDocumentor\Reflection\Types\Compound;
-use Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 

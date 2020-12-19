@@ -38,7 +38,7 @@ Route::get('users/{user_id}/posts', 'Auth\UserController@posts');
 
 /*Admin route*/
 Route::get('admin/home-page','AdminController@index');
-Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');
+// Route::match(['GET','POST'],'/admin-change-pass','AdminController@change_pass');
 Route::get('/home-page','HomeController@homepage');
 
 
