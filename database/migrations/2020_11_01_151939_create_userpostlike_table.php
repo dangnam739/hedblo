@@ -19,8 +19,8 @@ class CreateUserpostlikeTable extends Migration
             $table->integer('like_state')->default(1);
 
             $table->primary(['user_id', 'post_id']);
-            $table->foreign('user_id')->references('user_id')->on('users');
-            $table->foreign('post_id')->references('post_id')->on('posts');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('post_id')->on('posts')->onDelete('cascade');
 
         });
     }

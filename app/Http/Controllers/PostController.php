@@ -66,7 +66,14 @@ class PostController extends Controller
         }else{
             $search_user_post = DB::table('user_post_like')->where('user_id',$current_user->user_id)->where('post_id',$post_id)->select('like_state')->first();
         }
-        return view('post.post_detail',compact('post','recent_posts','comment_count','comments','current_user','search_user_post','count_like'));
+
+        $tags = Tag::whereHas('posts', function($query) use ($post_id) {
+            $query->where('posts.post_id', $post_id);
+        })->get();
+
+        return view('post.post_detail',compact('post','recent_posts',
+                        'comment_count','comments','current_user',
+                        'search_user_post','count_like','tags'));
     }
 
     # Get post by tag_id
