@@ -31,10 +31,10 @@ class HomeController extends AdminController
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    
+
         public function homepage(){
-            $posts = DB::table('posts')->orderBy('post_id','desc')->limit(3)->get();
-            return view('user.home',compact('posts'));  
+            $posts = Post::orderBy('post_id', 'DESC')->get();
+            return view('user.home',compact('posts'));
         }
 
     public function index()
@@ -44,7 +44,7 @@ class HomeController extends AdminController
         }
         else {
             $posts = Post::orderBy('date_create','desc')->take(3)->get();
-            return view('user.home',compact('posts'));              
+            return view('user.home',compact('posts'));
         }
     }
 }

@@ -111,12 +111,9 @@ class PostController extends Controller
     # Edit post
     public function edit(Request $request,$post_id){
         $post = Post::find($post_id);
-        $selected_tags = Tag::whereHas('posts', function($query) use ($post_id) {
-            $query->where('posts.post_id', $post_id);
-        })->get();
 
         $selected_tags_array = array();
-        foreach ($selected_tags as $selected_tag){
+        foreach ($post->tags as $selected_tag){
             array_push($selected_tags_array, $selected_tag->tag_id);
         }
 

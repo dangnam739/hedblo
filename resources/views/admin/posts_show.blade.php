@@ -27,12 +27,10 @@
                 </tfoot>
                 <tbody>
                     @foreach ($posts as $post)
-                    <?php 
-                    $user = \App\User::find($post->user_id) ?>
-                        <tr>
+
                             <td><a href="{{ URL::to('posts/' . $post->post_id) }}">{{ $post->title }}</a></td>
                             {{-- <td>Post's tags</td> --}}
-                        <td><a href={{ URL::to('users/' . $post->user_id) }}>{{$user->user_name}}</a>
+                        <td><a href={{ URL::to('users/' . $post->user_id) }}>{{$post->user->user_name}}</a>
                             </td>
                             <td>{{ $post->date_create }}</td>
                             <td><a href={{ URL::to('posts/' . $post->post_id) }}>Show<a></td>

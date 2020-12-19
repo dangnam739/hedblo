@@ -44,7 +44,7 @@
                                  Upload cover image
                             </label>
 
-                            <input type="file" name="post_url" class="file-upload" id="post_url"> 
+                            <input type="file" name="post_url" class="file-upload" id="post_url">
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>
