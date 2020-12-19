@@ -10,4 +10,8 @@ class Comment extends Model
     protected $primaryKey = 'comment_id';
     public $timestamps = false;
     protected $connection = '';
+
+    public function post(){
+        return $this->belongsTo('App\Post','post_id');
+    }
 }

@@ -1,4 +1,5 @@
-p img{
+
+p img, ul li img{
     width: 50%;
     margin: 0 auto;
     display: block;
@@ -7,4 +8,24 @@ p img{
 #table_data{
     justify-content: center;
 }
+
+input[class="file-upload"] {
+    display: none;
+}
+.custom-file-upload {
+    font-weight: bold;
+}
+
+.form-contact .form-control{
+    border: 3px rgb(211, 208, 208) solid;
+}
+
+.form-group textarea:focus {
+    color: #181717;
+    border-color: #F59942;
+}
+/* input[name="title"] {
+    display: none;
+} */
+
 

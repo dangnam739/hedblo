@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Courses | Education</title>
+    <title>HEDBLO</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -18,8 +18,7 @@
     <link rel="stylesheet" href="{{ asset('/profile/css/fonts.googleapis.com.css') }}" />
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet"
-        id="main-ace-style" />
+    <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
 
     <link rel="stylesheet" href="{{ asset('/profile/css/ace-skins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/profile/css/ace-rtl.min.css') }}" />
@@ -87,25 +86,39 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="{{ URL::to('/') }}"><img src="{{ asset('/user/img/logo/logo.png') }}"
-                                            alt=""></a>
+                                    <a href="{{ URL::to('/') }}"><img src="{{ asset('/user/img/logo/logo.png') }}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
                                 <div class="menu-wrapper d-flex align-items-center justify-content-end">
                                     <!-- Main-menu -->
-                                    <div class="main-menu d-none d-lg-block">
+                                    <div class="blog_right_sidebar col-xl-4 col-lg-4" style="margin-top:20px">
+                                    <aside class="single_sidebar_widget search_widget" style="margin:0;padding:0">
+                                        <form action="{{ route('search.result') }}">
+                                            <div class="form-group">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" name="query" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                                    <div class="input-group-append">
+                                                        <button class="btns" type="submit"><i class="ti-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Search</button> -->
+                                        </form>
+                                    </aside>
+                                    </div>
+                                    
+                                    <div class="main-menu d-none d-lg-block col-xl-8 col-lg-8">
                                         <nav>
-                                            <ul id="navigation">
+                                            <ul id="navigation" class="d-flex justify-content-end">
                                                 <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
                                                 <li><a href="{{ URL::to('/posts') }}">Posts</a></li>
                                                 <li><a href="{{ URL::to('create_post') }}">Create</a></li>
                                                 <li><a href="#">Categories</a>
                                                     <ul class="submenu">
                                                         @foreach ($tags as $tag)
-                                                            <li><a
-                                                                    href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
-                                                            </li>
+                                                        <li><a href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
+                                                        </li>
                                                         @endforeach
                                                     </ul>
                                                 </li>
@@ -127,11 +140,9 @@
                                                         </ul>
                                                     </li>
                                                 @else
-                                                    <li class="button-header margin-left "><a
-                                                            href="{{ URL::to('/register') }}" class="btn">Sign
-                                                            Up</a></li>
-                                                    <li class="button-header"><a href="{{ URL::to('/login') }}"
-                                                            class="btn btn3">Log in</a></li>
+                                                <li class="button-header margin-left "><a href="{{ URL::to('/register') }}" class="btn">Sign
+                                                        Up</a></li>
+                                                <li class="button-header"><a href="{{ URL::to('/login') }}" class="btn btn3">Log in</a></li>
                                                 @endif
                                             </ul>
                                         </nav>
@@ -163,12 +174,11 @@
                                 <div class="single-footer-caption mb-30">
                                     <!-- logo -->
                                     <div class="footer-logo mb-25">
-                                        <a href="index.html"><img src="{{ asset('/user/img/logo/logo2_footer.png') }}"
-                                                alt=""></a>
+                                        <a href="index.html"><img src="{{ asset('/user/img/logo/logo2_footer.png') }}" alt=""></a>
                                     </div>
-                                    <div class="footer-tittle">
+                                    <div class="footer-tittle">.
                                         <div class="footer-pera">
-                                            <p>The automated process starts as soon as your clothes go into the machine.
+                                            <p>Knowledge is power. Knowledge shared is power multiplied
                                             </p>
                                         </div>
                                     </div>
@@ -184,13 +194,14 @@
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Our solutions</h4>
+                                    <h4>Our Team</h4>
                                     <ul>
-                                        <li><a href="#">Design & creatives</a></li>
-                                        <li><a href="#">Telecommunication</a></li>
-                                        <li><a href="#">Restaurant</a></li>
-                                        <li><a href="#">Programing</a></li>
-                                        <li><a href="#">Architecture</a></li>
+                                        <li><a href="https://github.com/locckhl">Nguyen Quang Loc</a></li>
+                                        <li><a href="https://github.com/dangnam739">Kieu Dang Nam</a></li>
+                                        <li><a href="https://github.com/lequang-hp">Le Minh Quang</a></li>
+                                        <li><a href="https://github.com/Sakeshioyaki">Nguyen Nguyet Anh</a></li>
+                                        <li><a href="https://github.com/Cress1004">Nguyen Thi Hai Thanh</a></li>
+                                        <li><a href="https://github.com/huydaodang2706">Dao Dang Huy</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -198,27 +209,25 @@
                         <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Support</h4>
+                                    <h4>Role</h4>
                                     <ul>
-                                        <li><a href="#">Design & creatives</a></li>
-                                        <li><a href="#">Telecommunication</a></li>
-                                        <li><a href="#">Restaurant</a></li>
-                                        <li><a href="#">Programing</a></li>
-                                        <li><a href="#">Architecture</a></li>
+                                        <li><a href="#">Project Manager</a></li>
+                                        <li><a href="#">Database Designer</a></li>
+                                        <li><a href="#">Dev - Wibu</a></li>
+                                        <li><a href="#">Dev - Hot girl</a></li>
+                                        <li><a href="#">Dev - Hot girl</a></li>
+                                        <li><a href="#">Thanh 's mentor</a></li>
                                     </ul>
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Company</h4>
+                                    <h4>Contacts</h4>
                                     <ul>
-                                        <li><a href="#">Design & creatives</a></li>
-                                        <li><a href="#">Telecommunication</a></li>
-                                        <li><a href="#">Restaurant</a></li>
-                                        <li><a href="#">Programing</a></li>
-                                        <li><a href="#">Architecture</a></li>
+                                        <li><a href="#">HEDSPI-D9, Hanoi University of Science and Technology</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -237,10 +246,7 @@
                                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                         Copyright &copy;<script>
                                             document.write(new Date().getFullYear());
-
-                                        </script> All rights reserved | This template is made with <i
-                                            class="fa fa-heart" aria-hidden="true"></i> by <a
-                                            href="https://colorlib.com" target="_blank">Colorlib</a>
+                                        </script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     </p>
                                 </div>

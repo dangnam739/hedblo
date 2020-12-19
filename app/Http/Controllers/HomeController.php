@@ -43,8 +43,8 @@ class HomeController extends AdminController
             return redirect('/admin/home-page');
         }
         else {
-            $posts = DB::table('posts')->orderBy('post_id','desc')->limit(3)->get();
-            return view('user.home',compact('posts'));                
+            $posts = Post::orderBy('date_create','desc')->take(3)->get();
+            return view('user.home',compact('posts'));              
         }
     }
 }
