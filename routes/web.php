@@ -21,6 +21,10 @@ Route::get('/posts/tag/{tag_id}','PostController@post_tag');
 Route::match(['GET','POST'],'/create_post','PostController@create');
 Route::match(['GET','POST'],'/edit/{post_id}','PostController@edit');
 Route::get('/posts/delete/{tag_id}','PostController@delete');
+Route::get('/posts/{post_id}/react','PostController@react')->name('post.react');
+// Route::get('/posts/{post_id}/unactive-post','PostController@post_detail')->name('post.unlike');
+// Route::get('/active-post/{post_id}','PostController@active_post');
+// Route::get('/unactive-post/{post_id}','PostController@unactive_post');
 
 /*User authen*/
 Route::match(['GET','POST'],'/login','AuthController@login');

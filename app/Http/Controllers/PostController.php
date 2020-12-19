@@ -52,7 +52,21 @@ class PostController extends Controller
 
 
         $current_user = User::find(auth()->user()->user_id);
-        return view('post.post_detail',compact('post','recent_posts','comment_count','comments','current_user'));
+        $search_user_post = DB::table('user_post_like')->where('user_id',$current_user->user_id)->where('post_id',$post_id)->first();
+
+        $count_like = DB::table('user_post_like')->where('post_id',$post_id)->where('like_state',1)->count();
+
+        if(!$search_user_post){
+            $data = array();
+            $data["user_id"] = $current_user->user_id;
+            $data["post_id"] = $post_id;
+            $data["like_state"] = 0;
+            DB::table("user_post_like")->insert($data);
+            $search_user_post = DB::table('user_post_like')->where('user_id',$current_user->user_id)->where('post_id',$post_id)->select('like_state')->first();
+        }else{
+            $search_user_post = DB::table('user_post_like')->where('user_id',$current_user->user_id)->where('post_id',$post_id)->select('like_state')->first();
+        }
+        return view('post.post_detail',compact('post','recent_posts','comment_count','comments','current_user','search_user_post','count_like'));
     }
 
     # Get post by tag_id
@@ -169,4 +183,34 @@ class PostController extends Controller
         }
         return redirect("/posts/{$request->post_id}");
     }
+
+    # Like action
+    public function react(Request $request){
+        $post_id = $request->post_id;
+        $user_id = (User::find(auth()->user()->user_id))->user_id;
+        $current_state = DB::table('user_post_like')->where('user_id',$user_id)->where('post_id',$post_id)->select('like_state')->first();
+        if($current_state->like_state == 0){
+            DB::table('user_post_like')->where('post_id',$post_id)->where('user_id',$user_id)->update(['like_state'=>1]);
+        }
+        else{
+            DB::table('user_post_like')->where('post_id',$post_id)->where('user_id',$user_id)->update(['like_state'=>0]);
+        }
+
+        $count_like = DB::table('user_post_like')->where('post_id',$post_id)->where('like_state',1)->count();
+
+        if($request->ajax()){
+            return $count_like;
+        }
+        return redirect('/posts/'.$post_id);
+    }
+
+    // public function unactive_post(Request $request){
+    //     $post_id = $request->post_id;
+    //     $user_id = (User::find(auth()->user()->user_id))->user_id;
+    //     DB::table('user_post_like')->where('post_id',$post_id)->where('user_id',$user_id)->update(['like_state'=>0]);
+    //     if($request->ajax()){
+    //         return redirect('/posts/'.$post_id);
+    //     }
+    //     return redirect('/posts/'.$post_id);
+    // }
 }

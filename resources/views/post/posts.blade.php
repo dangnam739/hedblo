@@ -68,6 +68,7 @@
                     url:"?page="+page,
                     success:function(data)
                     {
+                        console.log("data is "+data)
                         $('#table_data').html(data);
                     }
                 });

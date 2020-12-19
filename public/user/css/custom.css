@@ -33,4 +33,42 @@ input[class="file-upload"] {
     font-size: large;
 }
 
+#react-btn{
+    /* padding: 5px; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    /* background: #C86FFF; */
+    background: #1151b1;
+    height: 70px;
+    width: 70px;
+    left: 31px;
+    bottom: 50%;
+    position: fixed;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 70px;
+    border: 2px solid transparent;
+    box-shadow: 0 0 10px 3px rgba(108, 98, 98, 0.2);
+}
+.react-ajax{
+    font-size: 35px!important;
+    color: rgb(255, 255, 255);
+}
+/* #react-btn a:hover{
+    background: -webkit-linear-gradient(131deg, #e0dbe2 0%, #0dc78f 99%)!important;
+    background-image: -webkit-linear-gradient(131deg, rgb(98, 116, 136) 0%, rgb(173, 139, 28) 99%)!important;
+    color:white!important;
+} */
+.reacted{
+    color: #C86FFF;
+
+}
+/* .react-btnd:hover{
+    color: rgb(255, 255, 255)!important;
+    background: rgb(97, 216, 126)!important;
+} */
+
 

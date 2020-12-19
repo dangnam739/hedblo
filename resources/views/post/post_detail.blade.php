@@ -1,6 +1,9 @@
 @extends('layout_user')
 @section('content')
 
+
+
+
 <!--? slider Area Start-->
 <section class="slider-area slider-area2">
     <div class="slider-active">
@@ -32,13 +35,7 @@
         <div class="row">
             <div class="col-lg-9 posts-list">
                 <div class="single-post">
-                    <ul class="blog-info-link mt-3 mb-4">
-                        <li><a href="#"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
-                        <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
-                        <li class="post" data-postid="{{ $post->post_id}}">
 
-                        </li>
-                    </ul>
 
                     <div class="feature-img">
                         @if($post->post_url == null)
@@ -51,6 +48,42 @@
                         <h2 style="color: #2d2d2d;">
                             {{$post->title}}
                         </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><a href="#"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
+                            <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
+
+                            </li>
+                            <div id="react-btn">
+                                @if($search_user_post->like_state == 0)
+                                    <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span class='fa-thumb-styling fa fa-thumbs-up react-ajax '  post-id="{{ $post->post_id}}"></span></a>
+                                @else
+                                    <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}" ><span class='fa-thumb-styling fa fa-thumbs-up react-ajax reacted'  post-id="{{ $post->post_id}}"></span></a>
+                                @endif
+                                {{-- <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a> --}}
+                            </div>
+                        </ul>
+                        <script>
+                            $(document).ready(function(){
+                                $(document).on('click', '.react-ajax', function(event){
+                                    event.preventDefault();
+                                    var post_id = $(this).attr('post-id');
+                                    console.log("post id is "+post_id);
+                                    fetch_data(post_id);
+                                });
+                                function fetch_data(post_id)
+                                {
+                                    $(".react-ajax").toggleClass("reacted");
+                                    $.ajax({
+                                        url: post_id+"/react",
+                                        success:function(data)
+                                        {
+                                            console.log(data);
+                                            $('.count-like').html(data + " people like this");
+                                        }
+                                    });
+                                }
+                            });
+                        </script>
                         <div class="quote-wrapper">
                             <div class="quotes">
                                 <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
@@ -68,6 +101,65 @@
                             <p>{{$comments->links()}}</p>
                         </div>
                     </div>
+                    <div class="navigation-top">
+                        <div class="d-sm-flex justify-content-between text-center">
+                            <p class="like-info">
+                                <span class="align-middle"><i class="fa fa-heart"></i></span>
+                                <span class="count-like"> {{$count_like}} people like this
+                                </span>
+
+                            </p>
+                           <div class="col-sm-4 text-center my-2 my-sm-0">
+                              <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                           </div>
+                           <ul class="social-icons">
+                              <li><a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
+                              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                              <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                              <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                           </ul>
+                        </div>
+                        {{-- <div class="navigation-area">
+                           <div class="row">
+                              <div
+                              class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                              <div class="thumb">
+                                 <a href="#">
+                                    <img class="img-fluid" src="assets/img/post/preview.png" alt="">
+                                 </a>
+                              </div>
+                              <div class="arrow">
+                                 <a href="#">
+                                    <span class="lnr text-white ti-arrow-left"></span>
+                                 </a>
+                              </div>
+                              <div class="detials">
+                                 <p>Prev Post</p>
+                                 <a href="#">
+                                    <h4 style="color: #2d2d2d;">Space The Final Frontier</h4>
+                                 </a>
+                              </div>
+                           </div>
+                           <div
+                           class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                           <div class="detials">
+                              <p>Next Post</p>
+                              <a href="#">
+                                 <h4 style="color: #2d2d2d;">Telescopes 101</h4>
+                              </a>
+                           </div>
+                           <div class="arrow">
+                              <a href="#">
+                                 <span class="lnr text-white ti-arrow-right"></span>
+                              </a>
+                           </div>
+                           <div class="thumb">
+                              <a href="#">
+                                 <img class="img-fluid" src="assets/img/post/next.png" alt="">
+                              </a>
+                           </div>
+                        </div> --}}
+                     </div>
                 </div>
 
                 <div class="comment-form">
