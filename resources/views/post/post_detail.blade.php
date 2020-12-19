@@ -1,5 +1,6 @@
 @extends('layout_user')
 @section('content')
+
 <!--? slider Area Start-->
 <section class="slider-area slider-area2">
     <div class="slider-active">

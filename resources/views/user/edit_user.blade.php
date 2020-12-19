@@ -15,7 +15,7 @@
                                         <nav aria-label="breadcrumb">
                                             <ol class="breadcrumb">
                                                 <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
-                                                <li class="breadcrumb-item"><a href="{{ URL::to('/all_blog') }}">Your
+                                                <li class="breadcrumb-item"><a href="{{ URL::to('users/'.auth()->user()->user_id.'/posts') }}">Your
                                                         Posts</a></li>
                                             </ol>
                                         </nav>

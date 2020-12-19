@@ -96,11 +96,12 @@ class PostController extends Controller
             $post_id = $post->post_id;
 
             $tags = $request->tags;
-            foreach($tags as $tag_id){
-                $post_tag = new PostTag();
-                $post_tag->post_id = $post_id;
-                $post_tag->tag_id = $tag_id;
-                $post_tag->save();
+            foreach ($tags as $tag_id) {
+                // $post_tag = new PostTag();
+                // $post_tag->post_id = $post_id;
+                // $post_tag->tag_id = $tag_id;
+                // $post_tag->save();
+                $post->tags()->attach($tag_id);
             }
             return redirect('/posts/'.$post_id);
         }
@@ -159,9 +160,10 @@ class PostController extends Controller
     }
 
     #add comment
-    public function add_comment(Request $request){
+    public function add_comment(Request $request)
+    {
         $comments = DB::table('comments')->get();
-        if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
             $dataa = array();
             $dataa["post_id"] = $request->post_id;
             $dataa["user_id"] = $request->user_id;

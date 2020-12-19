@@ -14,7 +14,9 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/post') }}">Your Post</a></li>
+                                        <li class="breadcrumb-item"><a
+                                                href="{{ URL::to('users/' . $user->user_id . '/posts') }}">{{$user->user_name}}'s'
+                                                Post</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -44,12 +46,12 @@
                                                     <div class="tab-content profile-edit-tab-content">
                                                         <div id="edit-basic" class="tab-pane in active">
                                                             <h4 class="header blue bolder smaller">General</h4>
-                                                            <a href='/users/{{ $user->user_id }}/edit'>Edit your
-                                                                profile</a>
                                                             <div class="row">
-                                                                <img src="/storage/avatar_url/{{ $user->avatar_url }}"
-                                                                    style="width:100px">
-                                                                <div class="vspace-12-sm"></div>
+                                                                @if ($user->avatar_url)
+                                                                    <img src="/storage/avatar_url/{{ $user->avatar_url }}"
+                                                                        style="width:100px">
+                                                                    <div class="vspace-12-sm"></div>
+                                                                @endif
                                                                 <div class="col-xs-12 col-sm-8">
                                                                     <div class="form-group">
                                                                         <label
@@ -143,15 +145,18 @@
                                                                 </div>
                                                             </div>
                                                             <div class="space"></div>
-                                                            <div class="clearfix form-actions">
-                                                                <div class="col-md-offset-3 col-md-9">
-                                                                    <button class="btn btn-info" type="button">
-                                                                        <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                        <a href='/users/{{ $user->user_id }}/edit'>Edit your
-                                                                            profile</a>
-                                                                    </button>
+                                                            @if (Auth::user()->user_id == $user->user_id)
+                                                                <div class="clearfix form-actions">
+                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                        <button class="btn btn-info" type="button">
+                                                                            <i class="ace-icon fa fa-check bigger-110"></i>
+                                                                            <a href='/users/{{ $user->user_id }}/edit'>Edit
+                                                                                your
+                                                                                profile</a>
+                                                                        </button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>

@@ -124,15 +124,21 @@
                                                 </li>
 
                                                 @if (!session('status') && auth()->user())
-                                                <li><a href="#">My account</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="{{ URL::to('users/' . Auth::user()->user_id) }}">View
-                                                                Profile</a></li>
-                                                        <li><a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">Edit
-                                                                Profile</a></li>
-                                                        <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
-                                                    </ul>
-                                                </li>
+                                                    <li><a href="#">My account</a>
+                                                        <ul class="submenu">
+                                                            <li><a
+                                                                    href="{{ URL::to('users/' . Auth::user()->user_id) }}">View
+                                                                    Profile</a></li>
+                                                            <li><a
+                                                                    href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">Edit
+                                                                    Profile</a></li>
+                                                            @if (auth()->user()->admin)
+                                                                <li><a href="{{ URL::to('admin/home-page') }}">Control
+                                                                        Page</a></li>
+                                                            @endif
+                                                            <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
+                                                        </ul>
+                                                    </li>
                                                 @else
                                                 <li class="button-header margin-left "><a href="{{ URL::to('/register') }}" class="btn">Sign
                                                         Up</a></li>
