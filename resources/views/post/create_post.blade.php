@@ -1,6 +1,7 @@
 @extends('layout_user')
 @section('content')
 <!--? slider Area Start-->
+
 <section class="slider-area slider-area2">
     <div class="slider-active">
         <!-- Single Slider -->
@@ -25,6 +26,7 @@
         </div>
     </div>
 </section>
+
 <div class="container">
     <div class="row">
         <div class="comment-form">
@@ -45,7 +47,7 @@
                                     Upload cover image
                             </label>
 
-                            <input type="file" name="post_url" class="file-upload" id="post_url"> 
+                            <input type="file" name="post_url" class="file-upload" id="post_url">
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>
@@ -64,10 +66,34 @@
                             <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="Description"></textarea>
                         </div>
                     </div>
+
+
+
                     <div class="col-12">
-                        <div class="form-group">
-                            <textarea class="form-control w-100" name="detail_content" id="comment" cols="50" rows="30" placeholder="Content"></textarea>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">Edit content</a></li>
+                            <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">Preview changes</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12">
+                        <div class="tab-content" id="myTabContent">
+                            <!-- Tab panes -->
+                            {{-- <div class="tab-content"> --}}
+                                <div role="tabpanel" class="tab-pane active" id="content">
+                                    <div class="form-group">
+                                        <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="Content"></textarea>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="preview">
+                                    <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
+                                    <mark-down>
+
+                                    </mark-down>
+                                </div>
+                            {{-- </div> --}}
                         </div>
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -77,4 +103,17 @@
         </div>
     </div>
 </div>
+<div>
+<script>
+    $(document).ready(function(){
+        $("#post-content").change(function(){
+            $("mark-down").html($(this).val())
+        });
+    });
+</script>
+
+
+
+
+  </div>
 @endsection
