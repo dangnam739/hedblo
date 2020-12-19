@@ -48,7 +48,7 @@ class PostController extends Controller
                     ->join('users','comments.user_id','=','users.user_id')
                     ->where('posts.post_id','=',$post_id)
                     ->select('comments.content','users.user_name','users.avatar_url')
-                    ->get();
+                    ->paginate(5);
 
 
         $current_user = User::find(auth()->user()->user_id);

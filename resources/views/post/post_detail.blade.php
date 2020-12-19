@@ -64,8 +64,8 @@
                             <span><img style="width:70px;height: 70px;" src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}"></span>
                             {{$comment->user_name}}
                             <p><br>{{$comment->content}}</p>
-                            <hr />
                             @endforeach
+                            <p>{{$comments->links()}}</p>
                         </div>
                     </div>
                 </div>
