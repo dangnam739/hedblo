@@ -16,6 +16,6 @@ class Tag extends Model
         'quantity'
     ];
     public function posts(){
-        return $this->hasMany(Post::class, 'post_id');
+        return $this->belongsToMany(Post::class);
     }
 }

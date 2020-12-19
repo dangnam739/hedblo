@@ -32,6 +32,6 @@ class Post extends Model implements Searchable
     }
 
     public function tags(){
-        return $this->hasMany(Tag::class, 'tag_id');
+        return $this->belongsToMany(Tag::class);
     }
 }
