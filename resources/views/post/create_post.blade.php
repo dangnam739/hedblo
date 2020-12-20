@@ -31,7 +31,7 @@
     <div class="row">
         <div class="comment-form">
             <h4>Your blog</h4>
-            <form class="form-contact comment_form" action="{{URL::to('/create_post')}}" id="commentForm" method="post" enctype="multipart/form-data">
+            <form class="form-contact comment_form" action="{{URL::to('/create_post')}}" id="commentForm" method="post" enctype="multipart/form-data" onsubmit="return validateData()">
                 {{ csrf_field() }}
                 <div class="row">
 
@@ -109,6 +109,16 @@
             $("mark-down").html($(this).val())
         });
     });
+
+    function validateData(){
+        var tags = document.getElementsByName('tags[]');
+        for(let i = 0; i < tags.length; i++){
+          if(tags[i].checked)
+              return true;
+        }
+        alert("Please choose tag");
+        return false;
+    }
 </script>
 
 
