@@ -199,7 +199,7 @@
                     <aside class="single_sidebar_widget post_category_widget">
                         <h4 class="widget_title" style="color: #2d2d2d;">Category</h4>
                         <ul class="list cat-list">
-                            @foreach ($tags as $tag )
+                            @foreach ($all_tags as $tag )
                             <li>
                                 <a href="{{URL::to('/posts/tag/'.$tag->tag_id)}}" class="d-flex">
                                     <p>{{$tag->tag_title}}</p>
