@@ -27,10 +27,11 @@ class PostController extends Controller
     # Get all post
     function all_post(Request $request){
         $posts = Post::paginate(3);
+        $title = "Posts";
         if($request->ajax()){
-            return view('post.post_data', compact('posts'))->render();
+            return view('post.post_data', compact('posts','title'))->render();
         }
-        return view('post.posts', compact('posts'));
+        return view('post.posts', compact('posts', 'title'));
     }
 
     # Get post by id

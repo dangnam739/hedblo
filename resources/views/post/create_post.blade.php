@@ -37,7 +37,7 @@
 
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <input class="form-control" name="title" id="title" type="text" placeholder="Title">
+                            <input class="form-control" name="title" id="title" type="text" placeholder="Title" required>
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@
 
                     <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="Description"></textarea>
+                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="Description" required></textarea>
                         </div>
                     </div>
 
