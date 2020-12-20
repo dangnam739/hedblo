@@ -72,7 +72,6 @@ class PostController extends Controller
             $query->where('posts.post_id', $post_id);
         })->get();
 
-
         return view('post.post_detail',compact('post','recent_posts',
                         'comment_count','comments','current_user',
                         'search_user_post','count_like','post_tags'));

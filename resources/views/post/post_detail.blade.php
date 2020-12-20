@@ -99,7 +99,7 @@
 
                     </div>
                     <div class="comments-area" id="comments-area">
-                        <h4>{{$count_like}} Comments</h4>
+                        <h4>{{$comment_count}} Comments</h4>
                         @foreach($comments as $comment)
                         <div class="comment-list">
                            <div class="single-comment justify-content-between d-flex">
