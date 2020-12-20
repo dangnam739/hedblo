@@ -11,7 +11,7 @@
                     <div class="col-xl-8 col-lg-11 col-md-12">
                         <div class="hero__caption hero__caption2">
                             <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
-                            @foreach($tags as $tag)
+                            @foreach($post_tags as $tag)
                                 <button type="button" class="btn-warning" style="height: 30px;"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
                             @endforeach
                             <br/><br/>
@@ -199,7 +199,7 @@
                     <aside class="single_sidebar_widget post_category_widget">
                         <h4 class="widget_title" style="color: #2d2d2d;">Category</h4>
                         <ul class="list cat-list">
-                            @foreach ($all_tags as $tag )
+                            @foreach ($tags as $tag )
                             <li>
                                 <a href="{{URL::to('/posts/tag/'.$tag->tag_id)}}" class="d-flex">
                                     <p>{{$tag->tag_title}}</p>
