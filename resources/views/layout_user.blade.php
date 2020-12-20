@@ -143,6 +143,7 @@
                                                                 <li><a href="{{ URL::to('admin/home-page') }}">Control
                                                                         Page</a></li>
                                                             @endif
+                                                            <li><a href="{{URL::to('/my-posts')}}">My posts</a></li>
                                                             <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
                                                         </ul>
                                                     </li>

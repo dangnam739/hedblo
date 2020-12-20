@@ -12,9 +12,9 @@
                         <div class="hero__caption hero__caption2">
                             <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
                             @foreach($tags as $tag)
-                                <button type="button" class="btn btn-warning"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
+                                <button type="button" class="btn-warning" style="height: 30px;"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
                             @endforeach
-
+                            <br/><br/>
                             @if($current_user->user_id == $post->user->user_id)
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">

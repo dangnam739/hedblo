@@ -32,15 +32,11 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-8">
                     <div class="section-tittle text-center mb-55">
-                        <?php
-                            $title = Session::get("title");
-                            if($title){
-                                echo "<h2>$title</h2>";
-                                Session::put("title",null);
-                            }else{
-                                echo "<h2>Posts</h2>";
-                            }
-                        ?>
+                        @if($title != null)
+                            <h2>{{$title}}</h2>
+                        @else
+                            <h2>Posts</h2>
+                        @endif
                     </div>
                 </div>
             </div>

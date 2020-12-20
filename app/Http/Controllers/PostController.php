@@ -85,11 +85,10 @@ class PostController extends Controller
         $tag = Tag::find($tag_id);
         $title = strtoupper($tag->tag_title);
 
-        Session::put('title',$title);
         if($request->ajax()){
-            return view('post.post_data', compact('posts'))->render();
+            return view('post.post_data', compact('posts','title'))->render();
         }
-        return view('post.posts',compact('posts'));
+        return view('post.posts',compact('posts','title'));
     }
 
     # Create new post
@@ -209,6 +208,17 @@ class PostController extends Controller
             return $count_like;
         }
         return redirect('/posts/'.$post_id);
+    }
+
+    # Get my posts
+    public function get_my_posts(Request $request){
+        $current_user = User::find(auth()->user()->user_id);
+        $posts = Post::where('user_id',$current_user->user_id)->paginate(3);
+        $title = "My posts";
+        if($request->ajax()){
+            return view('post.post_data', compact('posts','title'))->render();
+        }
+        return view('post.posts', compact('posts','title'));
     }
 
     // public function unactive_post(Request $request){
