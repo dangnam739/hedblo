@@ -52,7 +52,9 @@
                         <ul class="blog-info-link mt-3 mb-4">
                             <li><a href="#"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
                             <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
-
+                            <li class="like-info">
+                                <span class="align-middle"><i class="fa fa-heart"></i></span>
+                                <span class="count-like"> {{$count_like}} people like this</span>
                             </li>
                             <div id="react-btn">
                                 @if($search_user_post->like_state == 0)
@@ -103,23 +105,6 @@
                         </div>
                     </div>
                     <div class="navigation-top">
-                        <div class="d-sm-flex justify-content-between text-center">
-                            <p class="like-info">
-                                <span class="align-middle"><i class="fa fa-heart"></i></span>
-                                <span class="count-like"> {{$count_like}} people like this
-                                </span>
-
-                            </p>
-                           <div class="col-sm-4 text-center my-2 my-sm-0">
-                              <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
-                           </div>
-                           <ul class="social-icons">
-                              <li><a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
-                              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                              <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                              <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                           </ul>
-                        </div>
                         {{-- <div class="navigation-area">
                            <div class="row">
                               <div
