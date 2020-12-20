@@ -11,10 +11,12 @@
                     <div class="col-xl-8 col-lg-11 col-md-12">
                         <div class="hero__caption hero__caption2">
                             <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
-                            @if($current_user->user_id == $post->user->user_id)
+                            @if(($current_user->user_id == $post->user->user_id) or ($current_user->admin))
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
+                                        @if($current_user->user_id == $post->user->user_id)
                                         <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">Edit post</a></li>
+                                        @endif
                                         <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">Delete</a></li>
                                     </ol>
                                 </nav>

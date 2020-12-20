@@ -1,5 +1,16 @@
 @extends('layout_admin')
 @section('content')
+    <div class="container">
+        <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="{{ URL::to('/admin/home-page') }}" class="nav-link active">Admin
+                        Page</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ URL::to('/') }}" class="nav-link active">Home Page</a>
+                </li>
+        </ul>
+    </div>
     <!--? slider Area Start-->
     <section class="slider-area slider-area2">
         <div class="slider-active">
@@ -11,13 +22,6 @@
                             <div class="hero__caption hero__caption2">
                                 <h1 data-animation="bounceIn" data-delay="0.2s">Edit tag</h1>
                                 <!-- breadcrumb Start-->
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home Page</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/admin/home-page') }}">Control
-                                                Page</a></li>
-                                    </ol>
-                                </nav>
                                 <!-- breadcrumb End -->
                             </div>
                         </div>
@@ -27,7 +31,7 @@
         </div>
     </section>
     <div class="container">
-        <h4>Edit Tag</h4>
+
         <form class="form-contact comment_form" action="edit" id="commentForm" method="post">
             @csrf
             <div class="form-group">
@@ -35,7 +39,7 @@
                 <input class="form-control" name="title" id="title" type="text" placeholder="title" value={{ $tag->tag_title }}>
             </div>
             <div class="form-group">
-                <button type="submit" class="button" name="Edit Tag">Edit Tag</button>
+                <button type="submit" class="btn btn-secondary btn-lg" name="Edit Tag">Edit</button>
             </div>
         </form>
     </div>

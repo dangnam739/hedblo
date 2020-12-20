@@ -66,7 +66,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/admin/home-page">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Control Page</span>
+                    <span>Admin Page</span>
                 </a>
             </li>
             <li class="nav-item dropdown">
@@ -80,7 +80,6 @@
                     <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) }}>View Profile</a>
                     <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) . '/edit' }}>Edit
                         Profile</a>
-                    <a class="dropdown-item" href={{ URL::to('logout') }}>Logout</a>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Other Actions:</h6>
                     <a class="dropdown-item" href={{URL::to('/tags/new')}}>Add tags</a>

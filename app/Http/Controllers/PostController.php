@@ -110,6 +110,9 @@ class PostController extends Controller
 
     # Edit post
     public function edit(Request $request,$post_id){
+        if($this->require_same_user($post_id) == FALSE){
+            return redirect('/');
+        }
         $post = Post::find($post_id);
 
         $selected_tags_array = array();
@@ -151,6 +154,11 @@ class PostController extends Controller
 
     # Delete post
     public function delete($post_id){
+        if($this->require_same_user($post_id) == FALSE){
+            if(auth()->user()->admin == FALSE){
+                return redirect('/');
+            }
+        }
         $post = Post::find($post_id);
         $post->delete();
         return redirect('/posts');
@@ -168,5 +176,15 @@ class PostController extends Controller
             DB::table("comments")->insert($dataa);
         }
         return redirect("/posts/{$request->post_id}");
+    }
+
+    public function require_same_user($post_id){
+        $post = Post::find($post_id);
+        $post_user = $post->user;
+        if(auth()->user() == $post_user){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
     }
 }
