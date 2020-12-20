@@ -85,7 +85,7 @@
                                         <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="Content"></textarea>
                                     </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="preview">
+                                <div role="tabpanel" class="tab-pane" id="preview" style="padding: 40px 70px 40px 70px">
                                     <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
                                     <mark-down>
 
@@ -103,7 +103,6 @@
         </div>
     </div>
 </div>
-<div>
 <script>
     $(document).ready(function(){
         $("#post-content").change(function(){
@@ -115,5 +114,4 @@
 
 
 
-  </div>
 @endsection
