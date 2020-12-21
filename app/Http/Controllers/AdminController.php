@@ -37,12 +37,8 @@ class AdminController extends Controller
     }
 
     public function delete($user_id){
-        if(auth()->user()->admin){
-            User::find($user_id)->delete();
-            return redirect('/admin/home-page');    
-        }else{
-            return redirect('/');
-        }
+        User::find($user_id)->delete();
+        return redirect('/admin/home-page');    
     }
 
 }
