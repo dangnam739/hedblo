@@ -160,6 +160,8 @@
     <script src="{{ asset('/admin/js/demo/datatables-demo.js') }}"></script>
     <script src="{{ asset('/admin/js/demo/chart-area-demo.js') }}"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{asset('/js/tran.js')}}"></script>
 </body>
 
 </html>
