@@ -72,7 +72,7 @@
                                                                     <div class="col-sm-9">
                                                                         <input type="text" id="form-field-username"
                                                                             placeholder="Username" name="username"
-                                                                            value={{ $user->user_name }}></br>
+                                                                            value={{ $user->user_name }} disabled></br>
                                                                         <small>
                                                                             <span>
                                                                                 @error('username')

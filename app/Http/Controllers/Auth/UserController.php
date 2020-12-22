@@ -35,17 +35,14 @@ class UserController extends Controller
                 $user->avatar_url = $filenameToStore;
             }
             $request->validate([
-                'username' => 'required|max:30|min:3|unique:users,user_name',
                 'phone' => 'min:8|numeric',
             ]);
             
-            $user->user_name = $request->input('username');
             $user->last_name = $request->input('lastname');
             $user->first_name = $request->input('firstname');
             $user->birthday = $request->input('birthday');    
             $user->gender = $request->input('gender');
         
-            // $user->email = $request->input('email');
             $user->address = $request->input('address');
             $user->phone = $request->input('phone');
         }
