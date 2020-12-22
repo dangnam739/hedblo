@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Spatie\Searchable\Search;
 use App\Http\Controllers\Controller;
 use Spatie\Searchable\ModelSearchAspect;
+use App\Post;
+
 
 
 class SearchController extends Controller
@@ -39,6 +41,7 @@ class SearchController extends Controller
                     ->addSearchableAttribute('content'); // return results for partial matches
             })
             ->perform($searchterm);
+            // dd($searchResults);
 
         return view('search.searchPost', compact('searchResults', 'searchterm'));
     }

@@ -29,7 +29,7 @@
     <div class="row">
         <div class="comment-form">
             <h4>Your blog</h4>
-            <form class="form-contact comment_form" action="{{URL::to('/edit/'.$post->post_id)}}" id="commentForm" method="post" enctype="multipart/form-data">
+            <form class="form-contact comment_form" action="{{URL::to('/edit/'.$post->post_id)}}" id="commentForm" method="post" enctype="multipart/form-data" onsubmit="return validateData()">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-sm-4">
@@ -40,11 +40,12 @@
 
                     <div class="col-sm-4">
                         <div class="col-xs-12 col-sm-8">
-                            <label for="post_url" class="btn btn3 custom-file-upload">
-                                 Upload cover image
-                            </label>
+{{--                            <label for="post_url" class="btn btn3 custom-file-upload">--}}
+{{--                                 Upload cover image--}}
+{{--                            </label>--}}
 
-                            <input type="file" name="post_url" class="file-upload" id="post_url">
+{{--                            <input type="file" name="post_url" class="file-upload" id="post_url">--}}
+                            <input type="file" name="post_url" id="post_url">
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>
@@ -69,8 +70,28 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="form-group">
-                            <textarea class="form-control w-100" name="detail_content" id="comment" cols="50" rows="30" placeholder="Content">{{$post->content}}</textarea>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">Edit content</a></li>
+                            <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">Preview changes</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12">
+                        <div class="tab-content" id="myTabContent">
+                            <!-- Tab panes -->
+                            {{-- <div class="tab-content"> --}}
+                                <div role="tabpanel" class="tab-pane active" id="content">
+                                    <div class="form-group">
+                                        <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="Content">{{$post->content}}</textarea>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="preview" style="padding: 40px  70px 40px 70px">
+                                    <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
+                                    <mark-down >
+                                        {{$post->content}}
+                                    </mark-down>
+                                </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>
@@ -81,4 +102,21 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $("#post-content").change(function(){
+            $("mark-down").html($(this).val())
+        });
+    });
+
+    function validateData(){
+        var tags = document.getElementsByName('tags[]');
+        for(let i = 0; i < tags.length; i++){
+            if(tags[i].checked)
+                return true;
+        }
+        alert("Please choose tag");
+        return false;
+    }
+</script>
 @endsection

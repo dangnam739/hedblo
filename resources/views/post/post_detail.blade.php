@@ -11,7 +11,12 @@
                     <div class="col-xl-8 col-lg-11 col-md-12">
                         <div class="hero__caption hero__caption2">
                             <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
-                            @if(($current_user->user_id == $post->user->user_id) or ($current_user->admin))
+
+                            @foreach($post_tags as $tag)
+                                <button type="button" class="btn-warning btn" style="padding: 15px 10px !important;"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
+                            @endforeach
+                            <br/><br/>
+                            @if($current_user->user_id == $post->user->user_id) or ($current_user->admin))
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         @if($current_user->user_id == $post->user->user_id)
@@ -34,13 +39,7 @@
         <div class="row">
             <div class="col-lg-9 posts-list">
                 <div class="single-post">
-                    <ul class="blog-info-link mt-3 mb-4">
-                        <li><a href="#"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
-                        <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
-                        <li class="post" data-postid="{{ $post->post_id}}">
 
-                        </li>
-                    </ul>
 
                     <div class="feature-img">
                         @if($post->post_url == null)
@@ -53,6 +52,45 @@
                         <h2 style="color: #2d2d2d;">
                             {{$post->title}}
                         </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
+                            <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
+                            <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
+                            <li class="like-info">
+                                <span class="align-middle"><i class="fa fa-heart"></i></span>
+                                <span class="count-like"> {{$count_like}} people like this</span>
+                            </li>
+                            <div id="react-btn">
+                                @if($search_user_post->like_state == 0)
+                                    <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span class='fa-thumb-styling fa fa-thumbs-up react-ajax '  post-id="{{ $post->post_id}}"></span></a>
+                                @else
+                                    <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}" ><span class='fa-thumb-styling fa fa-thumbs-up react-ajax reacted'  post-id="{{ $post->post_id}}"></span></a>
+                                @endif
+                                {{-- <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a> --}}
+                            </div>
+                        </ul>
+                        <script>
+                            $(document).ready(function(){
+                                $(document).on('click', '.react-ajax', function(event){
+                                    event.preventDefault();
+                                    var post_id = $(this).attr('post-id');
+                                    console.log("post id is "+post_id);
+                                    fetch_data(post_id);
+                                });
+                                function fetch_data(post_id)
+                                {
+                                    $(".react-ajax").toggleClass("reacted");
+                                    $.ajax({
+                                        url: post_id+"/react",
+                                        success:function(data)
+                                        {
+                                            console.log(data);
+                                            $('.count-like').html(data + " people like this");
+                                        }
+                                    });
+                                }
+                            });
+                        </script>
                         <div class="quote-wrapper">
                             <div class="quotes">
                                 <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
@@ -61,14 +99,81 @@
                                 </mark-down>
                             </div>
                         </div>
-                        <div>
-                            @foreach($comments as $comment)
-                            <span><img style="width:70px;height: 70px;" src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}"></span>
-                            {{$comment->user_name}}
-                            <p><br>{{$comment->content}}</p>
-                            @endforeach
-                            <p>{{$comments->links()}}</p>
+
+                    </div>
+                    <div class="comments-area" id="comments-area">
+                        <h4>{{$comment_count}} Comments</h4>
+                        @foreach($comments as $comment)
+                        <div class="comment-list">
+                           <div class="single-comment justify-content-between d-flex">
+                              <div class="user justify-content-between d-flex">
+                                 <div class="thumb">
+                                  @if($comment->avatar_url == null)
+                                      <img src="{{asset('/user/img/blog/comment_1.png')}}" alt="" style="height: 80px; width: 80px">
+                                  @else
+                                    <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar" style="height: 80px; width:80px">
+                                  @endif
+                                 </div>
+                                 <div class="desc">
+                                    <p class="comment">
+                                        {{$comment->content}}
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                       <div class="d-flex align-items-center">
+                                          <h5>
+                                             <a href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a>
+                                          </h5>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
+                        @endforeach
+                        <p>{{$comments->links()}}</p>
+                    </div>
+
+                    <div class="navigation-top">
+                        {{-- <div class="navigation-area">
+                           <div class="row">
+                              <div
+                              class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                              <div class="thumb">
+                                 <a href="#">
+                                    <img class="img-fluid" src="assets/img/post/preview.png" alt="">
+                                 </a>
+                              </div>
+                              <div class="arrow">
+                                 <a href="#">
+                                    <span class="lnr text-white ti-arrow-left"></span>
+                                 </a>
+                              </div>
+                              <div class="detials">
+                                 <p>Prev Post</p>
+                                 <a href="#">
+                                    <h4 style="color: #2d2d2d;">Space The Final Frontier</h4>
+                                 </a>
+                              </div>
+                           </div>
+                           <div
+                           class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                           <div class="detials">
+                              <p>Next Post</p>
+                              <a href="#">
+                                 <h4 style="color: #2d2d2d;">Telescopes 101</h4>
+                              </a>
+                           </div>
+                           <div class="arrow">
+                              <a href="#">
+                                 <span class="lnr text-white ti-arrow-right"></span>
+                              </a>
+                           </div>
+                           <div class="thumb">
+                              <a href="#">
+                                 <img class="img-fluid" src="assets/img/post/next.png" alt="">
+                              </a>
+                           </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -121,7 +226,7 @@
 
                     </aside>
                     <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title" style="color: #2d2d2d;">Category</h4>
+                        <h4 class="widget_title" style="color: #2d2d2d;">You may like these Category</h4>
                         <ul class="list cat-list">
                             @foreach ($tags as $tag )
                             <li>

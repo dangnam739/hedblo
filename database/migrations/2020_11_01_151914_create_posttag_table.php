@@ -20,8 +20,8 @@ class CreatePosttagTable extends Migration
 
             $table->primary(['post_id', 'tag_id']);
 
-            $table->foreign('post_id')->references('post_id')->on('posts')->onDelete('cascade');;
-            $table->foreign('tag_id')->references('tag_id')->on('tags')->onDelete('cascade');;
+            $table->foreign('post_id')->references('post_id')->on('posts')->onDelete('cascade');
+            $table->foreign('tag_id')->references('tag_id')->on('tags')->onDelete('cascade');
         });
     }
 

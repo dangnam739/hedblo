@@ -15,7 +15,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ URL::to('/home-page') }}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/posts') }}"">All Post</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ URL::to('/posts') }}">All Post</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -60,11 +60,19 @@
                                         <div class="properties pb-20">
                                                     <div class="properties__card">
                                                         <div class="properties__img overlay1">
-                                                            <img src="{{asset('/user/img/gallery/featured1.png')}}" alt="">
+                                                            <div class="properties__img overlay1">
+                                                                @if($searchResult->searchable->post_url == null)
+                                                                    <img src="{{asset('/user/img/pj3.1.png')}}" alt="" style="height: 200px;">
+                                                                @else
+                                                                    <img src="{{asset('/storage/post_url/'.$searchResult->searchable->post_url)}}" alt=""  style="height: 200px;">
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                         <div class="properties__caption">
                                                             <h3>{{$searchResult->title}}</h3>
-                                                            <a href="{{ $searchResult->url}}" class="border-btn border-btn2">Read more</a>
+                                                            <p>{{$searchResult->searchable->description}}</p>
+                                                            <p style="font-style: italic">Posted on {{$searchResult->searchable->date_create}} by {{$searchResult->searchable->user->user_name}}</p>
+                                                            <a href="{{URL::to('/posts/'.$searchResult->searchable->post_id)}}" class="border-btn border-btn2">Read more</a>
                                                         </div>
                                                     </div>
                                                 </div>
