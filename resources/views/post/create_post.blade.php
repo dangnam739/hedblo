@@ -31,13 +31,16 @@
     <div class="row">
         <div class="comment-form">
             <h4>Your blog</h4>
-            <form class="form-contact comment_form" action="{{URL::to('/create_post')}}" id="commentForm" method="post" enctype="multipart/form-data" onsubmit="return validateData()">
+            <form class="form-contact comment_form" action="{{URL::to('/create_post')}}" id="commentForm" method="post" enctype="multipart/form-data" >
                 {{ csrf_field() }}
                 <div class="row">
 
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <input class="form-control" name="title" id="title" type="text" placeholder="Title" required>
+                            <input class="form-control" name="title" id="title" type="text" placeholder="Title">
+                            @error('title')
+                            <b><span style="color: red;">{{ $message }}</span></b>
+                            @enderror
                         </div>
                     </div>
 
@@ -59,12 +62,20 @@
                             @foreach($tags as $tag)
                             <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="{{$tag->tag_id}}">{{$tag->tag_title}}</label>
                             @endforeach
+                            <br/>
+                                @error('tags[]')
+                                <b><span style="color: red;">{{ $message }}</span></b>
+                                @enderror
                         </div>
+
                     </div>
 
                     <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="Description" required></textarea>
+                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="Description"></textarea>
+                            @error('description')
+                            <b><span style="color: red;">{{ $message }}</span></b>
+                            @enderror
                         </div>
                     </div>
 
@@ -84,6 +95,9 @@
                                 <div role="tabpanel" class="tab-pane active" id="content">
                                     <div class="form-group">
                                         <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="Content"></textarea>
+                                        @error('detail_content')
+                                        <b><span style="color: red;">{{ $message }}</span></b>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="preview" style="padding: 40px 70px 40px 70px">
