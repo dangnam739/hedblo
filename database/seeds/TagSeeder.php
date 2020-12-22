@@ -12,31 +12,55 @@ class TagSeeder extends Seeder
     public function run()
     {
         DB::table('tags')->insert([
-            'tag_title' => 'Science',
+            'tag_title' => 'IOS',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Coding',
+            'tag_title' => 'Android',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Food',
+            'tag_title' => 'NLP',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Travel',
+            'tag_title' => 'Computer Vision',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Films & Stars',
+            'tag_title' => 'Machine Learning'
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Weeaboo',
+            'tag_title' => 'PHP',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Love',
+            'tag_title' => 'Laravel',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Code Jav',
+            'tag_title' => 'Java',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'Show_biz',
+            'tag_title' => 'Web',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Web Application',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Python',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Network',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'IoT',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'VueJS',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'NodeJS',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Ruby on Rails',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'IT Tips',
         ]);
     }
 }
