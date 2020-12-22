@@ -52,8 +52,8 @@
                                                                         style="width:100px">
                                                                     {{-- <div class="vspace-12-sm"></div> --}}
                                                                 @else
-                                                                    <img src="/storage/avatar_url/default_avt.jpg"
-                                                                    style="width:100px">
+                                                                    <img src="{{asset('/user/img/default_avt.jpg')}}"
+                                                                        style="width:100px">
                                                                 @endif
                                                                 <div class="col-xs-12 col-sm-8">
                                                                     <div class="form-group">

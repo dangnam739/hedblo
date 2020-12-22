@@ -7,7 +7,7 @@
                         Page</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ URL::to('/') }}" class="nav-link active">Home Page</a>
+                    <a href="{{ URL::to('/home-page') }}" class="nav-link active">Home Page</a>
                 </li>
         </ul>
     </div>

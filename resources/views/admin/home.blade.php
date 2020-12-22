@@ -20,7 +20,7 @@
                     </div>
                     <div class="mr-5">{{$number_of_users}} Users</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1 edus-nav-item-1" href="#">
                     <span class="float-left">View Details</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="mr-5">{{$number_of_posts}} Posts</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1 edus-nav-item-2" href="#">
                     <span class="float-left">View Details</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="mr-5">{{$number_of_tags}} Tags</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1 edus-nav-item-3" href="#">
                     <span class="float-left">View Details</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -60,22 +60,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-danger o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-life-ring"></i>
-                    </div>
-                    <div class="mr-5">New Posts</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-                </a>
-            </div>
-        </div>
+        
     </div>
 @include('admin.users_show')
 @include('admin.posts_show')
