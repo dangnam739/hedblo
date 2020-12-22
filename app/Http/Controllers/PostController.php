@@ -118,10 +118,6 @@ class PostController extends Controller
 
             $tags = $request->tags;
             foreach ($tags as $tag_id) {
-                // $post_tag = new PostTag();
-                // $post_tag->post_id = $post_id;
-                // $post_tag->tag_id = $tag_id;
-                // $post_tag->save();
                 $post->tags()->attach($tag_id);
             }
             return redirect('/posts/'.$post_id);
