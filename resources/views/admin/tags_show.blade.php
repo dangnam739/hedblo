@@ -3,8 +3,8 @@
     <div class="card-header">
         <i class="fas fa-table"></i>
         All Tags
-    </div>
-    <div><a href="{{ URL::to('tags/new') }}">Add Tag</a>
+        <div class="float-right"><a href="{{ URL::to('tags/new') }}"><button class="btn btn-outline-secondary btn-sm">Add new tag</button></a>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">

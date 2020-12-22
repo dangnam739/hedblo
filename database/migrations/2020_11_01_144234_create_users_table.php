@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('admin')->default(false);
             $table->string('gender')->nullable();
             $table->date('birthday')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('job')->nullable();

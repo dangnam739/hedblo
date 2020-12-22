@@ -15,7 +15,7 @@
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
                                         <li class="breadcrumb-item"><a
-                                                href="{{ URL::to('users/' . $user->user_id . '/posts') }}">{{$user->user_name}}'s'
+                                                href="{{ URL::to('users/' . $user->user_id . '/posts') }}">{{$user->user_name}}'s
                                                 Post</a></li>
                                     </ol>
                                 </nav>
