@@ -40,15 +40,8 @@ class Post extends Model implements Searchable
         return new SearchResult(
             $this,
             $this->title,
+            $this->post_url,
             $url
         );
     }
-
-    // public function user(){
-    //     return $this->belongsTo(User::class, 'post_id');
-    // }
-
-    // public function tags(){
-    //     return $this->belongsToMany(Tag::class);
-    // }
 }

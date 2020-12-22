@@ -12,7 +12,7 @@
                         <div class="hero__caption hero__caption2">
                             <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
                             @foreach($post_tags as $tag)
-                                <button type="button" class="btn-warning" style="height: 30px;"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
+                                <button type="button" class="btn-warning btn" style="padding: 15px 10px !important;"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
                             @endforeach
                             <br/><br/>
                             @if($current_user->user_id == $post->user->user_id)
@@ -50,8 +50,9 @@
                             {{$post->title}}
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><a href="#"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
-                            <li><a href="#"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
+                            <li><a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
+                            <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
+                            <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
                             <li class="like-info">
                                 <span class="align-middle"><i class="fa fa-heart"></i></span>
                                 <span class="count-like"> {{$count_like}} people like this</span>
@@ -95,15 +96,40 @@
                                 </mark-down>
                             </div>
                         </div>
-                        <div>
-                            @foreach($comments as $comment)
-                            <span><img style="width:70px;height: 70px;" src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}"></span>
-                            {{$comment->user_name}}
-                            <p><br>{{$comment->content}}</p>
-                            @endforeach
-                            <p>{{$comments->links()}}</p>
-                        </div>
+
                     </div>
+                    <div class="comments-area" id="comments-area">
+                        <h4>{{$comment_count}} Comments</h4>
+                        @foreach($comments as $comment)
+                        <div class="comment-list">
+                           <div class="single-comment justify-content-between d-flex">
+                              <div class="user justify-content-between d-flex">
+                                 <div class="thumb">
+                                  @if($comment->avatar_url == null)
+                                      <img src="{{asset('/user/img/blog/comment_1.png')}}" alt="" style="height: 80px; width: 80px">
+                                  @else
+                                    <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar" style="height: 80px; width:80px">
+                                  @endif
+                                 </div>
+                                 <div class="desc">
+                                    <p class="comment">
+                                        {{$comment->content}}
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                       <div class="d-flex align-items-center">
+                                          <h5>
+                                             <a href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a>
+                                          </h5>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        @endforeach
+                        <p>{{$comments->links()}}</p>
+                    </div>
+
                     <div class="navigation-top">
                         {{-- <div class="navigation-area">
                            <div class="row">
@@ -145,7 +171,7 @@
                               </a>
                            </div>
                         </div> --}}
-                     </div>
+                    </div>
                 </div>
 
                 <div class="comment-form">
@@ -197,7 +223,7 @@
 
                     </aside>
                     <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title" style="color: #2d2d2d;">Category</h4>
+                        <h4 class="widget_title" style="color: #2d2d2d;">You may like these Category</h4>
                         <ul class="list cat-list">
                             @foreach ($tags as $tag )
                             <li>
