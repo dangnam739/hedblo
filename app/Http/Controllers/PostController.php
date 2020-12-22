@@ -96,6 +96,16 @@ class PostController extends Controller
     public function create(Request $request){
         $current_user = User::find(auth()->user()->user_id);
         if($request->isMethod('post')){
+            # Validate post form data
+            $request->validate(
+                [
+                    'title' => ['required','min:4','max:255'],
+                    'tags' => 'required',
+                    'description' => 'required',
+                    'detail_content' => 'required'
+                ]
+            );
+
             $post = new Post();
             $post->user_id = $current_user->user_id;
             $post->title = $request->title;

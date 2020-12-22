@@ -49,7 +49,7 @@ Route::get('/home-page','HomeController@homepage');
 
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@homepage')->name('home');
 
 #search
 Route::get('/search', 'SearchController@index')->name('search.index');
