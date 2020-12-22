@@ -22,7 +22,6 @@ class UserSeeder extends Seeder
             'phone' => '0123456789',
             'address' => Str::random(20),
             'job' => Str::random(10),
-            'avatar_url' => asset('personal-user-illustration-@2x.png'),
         ]);
         DB::table('users')->insert([
             'first_name' => Str::random(10),
@@ -35,7 +34,6 @@ class UserSeeder extends Seeder
             'phone' => '0123456789',
             'address' => Str::random(20),
             'job' => Str::random(10),
-            'avatar_url' => asset('personal-user-illustration-@2x.png'),
         ]);
         DB::table('users')->insert([
             'first_name' => 'Thanh',
@@ -49,7 +47,6 @@ class UserSeeder extends Seeder
             'address' => Str::random(20),
             'job' => Str::random(10),
             'admin' => 1,
-            'avatar_url' => asset('personal-user-illustration-@2x.png'),
         ]);
         DB::table('users')->insert([
             'first_name' => 'Dang Nam',
@@ -62,7 +59,6 @@ class UserSeeder extends Seeder
             'phone' => '0123456789',
             'address' => Str::random(20),
             'job' => Str::random(10),
-            'avatar_url' => asset('personal-user-illustration-@2x.png'),
         ]);
 
     }
