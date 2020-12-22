@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
@@ -35,33 +34,35 @@ class UserController extends Controller
                 $path = $request->file('avatar_url')->storeAs('public/avatar_url', $filenameToStore);
                 $user->avatar_url = $filenameToStore;
             }
-            $user->user_name = $request->input('username');
+            $request->validate([
+                'phone' => 'min:8|numeric',
+            ]);
+            
             $user->last_name = $request->input('lastname');
             $user->first_name = $request->input('firstname');
-            $user->birthday = $request->input('birthday');
-            if ($request->input('form_field_radio') == "Male") {
-                $user->gender = "Male";
-            } else {
-                $user->gender = "Female";
-            }
-            $user->email = $request->input('email');
+            $user->birthday = $request->input('birthday');    
+            $user->gender = $request->input('gender');
+        
             $user->address = $request->input('address');
             $user->phone = $request->input('phone');
         }
         if ($request->input('pass0') && $request->input('pass1')) {
             $hashedPassword = $user->password;
-            if ((Hash::check($request->input('pass0'),$hashedPassword)) && ($request->input('pass1')==$request->input('pass2'))) {
-                $user->password = Hash::make($request->input('pass1'));
+            if (Hash::check($request->input('pass0'),$hashedPassword)) {
+                if($request->input('pass1')==$request->input('pass2')){
+                    $user->password = Hash::make($request->input('pass1'));
+                    return redirect("/users/$user->user_id")->with('alert', 'Your password updated!!');
+
+                }else{
+                    return redirect("/users/$user->user_id/edit")->with('alert','Confirm password not match!!');
+                }
             } else {
-                return redirect("/users/$user->user_id/edit")->with('user', $user);
+                // Current Password not match ps in db
+                return redirect("/users/$user->user_id/edit")->with('alert', 'Your current password not correct!!');
             }
         }
         $user->save();
-        return redirect("/users/$user->user_id")->with('user', $user);
-    }
-    public function delete($user_id){
-        User::find($user_id)->delete();
-        return redirect('/admin/home-page');
+        return redirect("/users/$user->user_id");
     }
 
     public function posts($user_id) 
@@ -70,4 +71,5 @@ class UserController extends Controller
         $posts = User::find($user_id)->posts;
         return view('user.posts')->with(compact(['posts', $posts], ['user', $user]));
     }
+
 }

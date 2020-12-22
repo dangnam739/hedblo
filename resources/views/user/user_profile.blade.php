@@ -15,7 +15,7 @@
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
                                         <li class="breadcrumb-item"><a
-                                                href="{{ URL::to('users/' . $user->user_id . '/posts') }}">{{$user->user_name}}'s'
+                                                href="{{ URL::to('users/' . $user->user_id . '/posts') }}">{{$user->user_name}}'s
                                                 Post</a></li>
                                     </ol>
                                 </nav>
@@ -47,10 +47,13 @@
                                                         <div id="edit-basic" class="tab-pane in active">
                                                             <h4 class="header blue bolder smaller">General</h4>
                                                             <div class="row">
-                                                                @if ($user->avatar_url)
+                                                                @if ($user->avatar_url != null)
                                                                     <img src="/storage/avatar_url/{{ $user->avatar_url }}"
                                                                         style="width:100px">
-                                                                    <div class="vspace-12-sm"></div>
+                                                                    {{-- <div class="vspace-12-sm"></div> --}}
+                                                                @else
+                                                                    <img src="{{asset('/user/img/default_avt.jpg')}}"
+                                                                        style="width:100px">
                                                                 @endif
                                                                 <div class="col-xs-12 col-sm-8">
                                                                     <div class="form-group">
@@ -83,77 +86,87 @@
                                                                 </div>
                                                             </div>
                                                             <hr />
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 control-label no-padding-right"
-                                                                    for="form-field-date">Birth Date</label>
-
-                                                                <div class="col-sm-9">
-                                                                    <span class="input-icon input-icon-right">
-                                                                        {{ $user->birthday }}
-                                                                    </span>
+                                                            <div class="row">
+                                                                <div style="width:100px; height: 10px"></div>
+                                                                <div class="col-xs-12 col-sm-8">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label no-padding-right"
+                                                                            for="form-field-date">Birth Date</label>
+        
+                                                                        <div class="col-sm-8">
+                                                                            <span class="input-icon input-icon-right">
+                                                                                {{ $user->birthday }}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+        
+                                                                    <div class="space-4"></div>
+        
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            class="col-sm-4 control-label no-padding-right">Gender</label>
+                                                                        <div class="col-sm-8">
+                                                                            {{ $user->gender }}
+                                                                        </div>
+                                                                    </div>
+        
+                                                                    <div class="space-4"></div>
                                                                 </div>
                                                             </div>
-
-                                                            <div class="space-4"></div>
-
-                                                            <div class="form-group">
-                                                                <label
-                                                                    class="col-sm-3 control-label no-padding-right">Gender</label>
-                                                                {{ $user->gender }}
-                                                                <div class="col-sm-9">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="space-4"></div>
+                                                                                                                       
                                                             <h4 class="header blue bolder smaller">Contact</h4>
-
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 control-label no-padding-right"
-                                                                    for="form-field-email">Email</label>
-
-                                                                <div class="col-sm-9">
-                                                                    <span class="input-icon input-icon-right">
-                                                                        {{ $user->email }}
-
-                                                                    </span>
+                                                            <div class="row">
+                                                                <div style="width:100px; height: 10px"></div>
+                                                                <div class="col-xs-12 col-sm-8">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label no-padding-right"
+                                                                            for="form-field-email">Email</label>
+        
+                                                                        <div class="col-sm-8">
+                                                                            <span class="input-icon input-icon-right">
+                                                                                {{ $user->email }}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+        
+                                                                    <div class="space-4"></div>
+        
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label no-padding-right"
+                                                                            for="form-field-website">Address</label>
+        
+                                                                        <div class="col-sm-8">
+                                                                            <span class="input-icon input-icon-right">
+                                                                                {{ $user->address }}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+        
+                                                                    <div class="space-4"></div>
+        
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label no-padding-right"
+                                                                            for="form-field-phone">Phone</label>
+        
+                                                                        <div class="col-sm-8">
+                                                                            <span class="input-icon input-icon-right">
+                                                                                {{ $user->phone }}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-
-                                                            <div class="space-4"></div>
-
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 control-label no-padding-right"
-                                                                    for="form-field-website">Address</label>
-
-                                                                <div class="col-sm-9">
-                                                                    <span class="input-icon input-icon-right">
-                                                                        {{ $user->address }}
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="space-4"></div>
-
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 control-label no-padding-right"
-                                                                    for="form-field-phone">Phone</label>
-
-                                                                <div class="col-sm-9">
-                                                                    <span class="input-icon input-icon-right">
-                                                                        {{ $user->phone }}
-                                                                    </span>
-                                                                </div>
-                                                            </div>
+                                                            
                                                             <div class="space"></div>
                                                             @if (Auth::user()->user_id == $user->user_id)
                                                                 <div class="clearfix form-actions">
                                                                     <div class="col-md-offset-3 col-md-9">
-                                                                        <button class="btn btn-info" type="button">
+                                                                        <a class="btn btn-info" type="button"  href='/users/{{ $user->user_id }}/edit'>
                                                                             <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                            <a href='/users/{{ $user->user_id }}/edit'>Edit
+                                                                                Edit
                                                                                 your
-                                                                                profile</a>
-                                                                        </button>
+                                                                                profile
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             @endif

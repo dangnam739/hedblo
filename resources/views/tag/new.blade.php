@@ -1,6 +1,18 @@
 @extends('layout_admin')
 @section('content')
     <!--? slider Area Start-->
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a href="{{ URL::to('/admin/home-page') }}" class="nav-link active">Admin
+                    Page</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ URL::to('/home-page') }}" class="nav-link active">Home Page</a>
+            </li>
+        </ul>
+    </div>
+
     <section class="slider-area slider-area2">
         <div class="slider-active">
             <!-- Single Slider -->
@@ -11,13 +23,7 @@
                             <div class="hero__caption hero__caption2">
                                 <h1 data-animation="bounceIn" data-delay="0.2s">Create new tag</h1>
                                 <!-- breadcrumb Start-->
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home Page</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/admin/home-page') }}">Control
-                                                Page</a></li>
-                                    </ol>
-                                </nav>
+
                                 <!-- breadcrumb End -->
                             </div>
                         </div>
@@ -27,15 +33,23 @@
         </div>
     </section>
     <div class="container">
-        <h4>Add Tag</h4>
+
         <form class="form-contact comment_form" action="new" id="commentForm" method="post">
             @csrf
             <div class="form-group">
-                <label>Add tag title:</label>
-                <input class="form-control" name="title" id="title" type="text" placeholder="Title">
+                <label>Title:</label>
+                <input class="form-control" name="title" id="title" type="text" placeholder="Title"></br>
+                <small>
+                    <span>
+                        @error('title')
+                            {{ $message }}
+                        @enderror
+                    </span>
+                </small>
+
             </div>
             <div class="form-group">
-                <button type="submit" class="button" name="Add Tag">Add Tag</button>
+                <button type="submit" class="btn btn-secondary btn-lg" name="Add Tag">Add Tag</button>
             </div>
         </form>
     </div>

@@ -11,7 +11,7 @@
         </div>
         <h2>Registration Here</h2>
         <div class="form-input">
-            <label for="name" class="col-form-label text-md-right">Name</label>
+            <label for="name" class="col-form-label text-md-right">Username</label>
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                 value="{{ old('name') }}">
             @error('name')

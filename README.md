@@ -32,6 +32,7 @@ Follow the following steps to clone this project: ❤❤
         * Just run: `php artisan migrate` to run migrating files ( create tables )
         * Just run: `php artisan migrate:fresh` to refresh migrating files
         * Just run: `php artisan db:seed` to insert into your tables
+        * Run: `php artisan storage:link`
         * **Commannd `migrate` may run to error in ubuntu or MacOs, please wait Huy-san until he finds the solution**
 
 ## About Database

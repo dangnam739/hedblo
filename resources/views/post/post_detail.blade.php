@@ -11,17 +11,20 @@
                     <div class="col-xl-8 col-lg-11 col-md-12">
                         <div class="hero__caption hero__caption2">
                             <h1 data-animation="bounceIn" data-delay="0.2s">{{$post->title}}</h1>
+
                             @foreach($post_tags as $tag)
                                 <button type="button" class="btn-warning btn" style="padding: 15px 10px !important;"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
                             @endforeach
-                            <br /><br />
-                            @if($current_user->user_id == $post->user->user_id)
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">Edit post</a></li>
-                                    <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">Delete</a></li>
-                                </ol>
-                            </nav>
+                            <br/><br/>
+                            @if($current_user->user_id == $post->user->user_id) or ($current_user->admin))
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        @if($current_user->user_id == $post->user->user_id)
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}">Edit post</a></li>
+                                        @endif
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}">Delete</a></li>
+                                    </ol>
+                                </nav>
                             @endif
                         </div>
                     </div>

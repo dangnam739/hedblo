@@ -50,7 +50,14 @@
 
     <script src="{{ asset('/user/js/jquery.min.js') }}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <!-- Alert for confirm password -->
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+          alert(msg);
+        }
+    </script>
 
     <!-- User-profile CSS here -->
     <!-- <link rel="stylesheet" href="{{ asset('/user/css/user-profile.css') }}" /> -->
@@ -136,7 +143,7 @@
                                                                     href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">Edit
                                                                     Profile</a></li>
                                                             @if (auth()->user()->admin)
-                                                                <li><a href="{{ URL::to('admin/home-page') }}">Control
+                                                                <li><a href="{{ URL::to('admin/home-page') }}">Admin
                                                                         Page</a></li>
                                                             @endif
                                                             <li><a href="{{URL::to('/my-posts')}}">My posts</a></li>

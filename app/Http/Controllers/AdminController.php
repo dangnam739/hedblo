@@ -17,25 +17,28 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        $posts = Post::all();
-        $tags = Tag::all();
-        $number_of_users = User::count();
-        $number_of_posts = Post::count();
-        $number_of_tags = Tag::count();
-        return view('admin.home')
-            ->with(compact('number_of_users', $number_of_users))
-            ->with(compact('number_of_posts', $number_of_posts))
-            ->with(compact('number_of_tags', $number_of_tags))
-            ->with(compact('users', $users))
-            ->with(compact('posts', $posts))
-            ->with(compact('tags', $tags));
+        if(auth()->user()->admin){
+            $users = User::all();
+            $posts = Post::all();
+            $tags = Tag::all();
+            $number_of_users = User::count();
+            $number_of_posts = Post::count();
+            $number_of_tags = Tag::count();
+            return view('admin.home')
+                ->with(compact('number_of_users', $number_of_users))
+                ->with(compact('number_of_posts', $number_of_posts))
+                ->with(compact('number_of_tags', $number_of_tags))
+                ->with(compact('users', $users))
+                ->with(compact('posts', $posts))
+                ->with(compact('tags', $tags));    
+        }else{
+            return redirect('/');
+        }
     }
 
-    // public function change_pass(Request $request)
-    // {
-    //     if ($request->isMethod('post')) {
-    //     }
-    //     return view('admin.change_pass');
-    // }
+    public function delete($user_id){
+        User::find($user_id)->delete();
+        return redirect('/admin/home-page');    
+    }
+
 }
