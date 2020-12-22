@@ -100,7 +100,7 @@ class PostController extends Controller
             $request->validate(
                 [
                     'title' => ['required','min:4','max:255'],
-                    'tags[]' => 'required',
+                    'tags' => 'required',
                     'description' => 'required',
                     'detail_content' => 'required'
                 ]

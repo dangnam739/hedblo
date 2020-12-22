@@ -63,7 +63,7 @@
                             <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="{{$tag->tag_id}}">{{$tag->tag_title}}</label>
                             @endforeach
                             <br/>
-                                @error('tags[]')
+                                @error('tags')
                                 <b><span style="color: red;">{{ $message }}</span></b>
                                 @enderror
                         </div>
