@@ -104,7 +104,11 @@
                            <div class="single-comment justify-content-between d-flex">
                               <div class="user justify-content-between d-flex">
                                  <div class="thumb">
-                                    <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar">
+                                  @if($comment->avatar_url == null)
+                                      <img src="{{asset('/user/img/blog/comment_1.png')}}" alt="" style="height: 80px; width: 80px">
+                                  @else
+                                    <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar" style="height: 80px; width:80px">
+                                  @endif
                                  </div>
                                  <div class="desc">
                                     <p class="comment">
@@ -115,11 +119,7 @@
                                           <h5>
                                              <a href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a>
                                           </h5>
-                                          {{-- <p class="date">December 4, 2017 at 3:12 pm </p> --}}
                                        </div>
-                                       {{-- <div class="reply-btn">
-                                          <a href="#" class="btn-reply text-uppercase">reply</a>
-                                       </div> --}}
                                     </div>
                                  </div>
                               </div>
@@ -128,6 +128,7 @@
                         @endforeach
                         <p>{{$comments->links()}}</p>
                     </div>
+
                     <div class="navigation-top">
                         {{-- <div class="navigation-area">
                            <div class="row">
