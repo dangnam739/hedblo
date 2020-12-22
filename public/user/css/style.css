@@ -5581,8 +5581,8 @@ hr {
     background: rgba(130, 139, 178, 0.1);
     padding: 15px;
     line-height: 1.733;
-    color: #888888;
-    font-style: italic;
+    /* color: #888888; */
+    /* font-style: italic; */
     margin-top: 25px;
     margin-bottom: 25px
 }
@@ -5596,7 +5596,7 @@ hr {
 .single-post-area .quotes {
     background: #fff;
     padding: 15px 15px 15px 20px;
-    border-left: 2px solid
+    /* border-left: 2px solid */
 }
 
 @media (min-width: 768px) {

@@ -43,9 +43,9 @@
 
                     <div class="feature-img">
                         @if($post->post_url == null)
-                            <img class="img-fluid" src="{{asset('/user/img/pj3.1.png')}}" alt="" >
+                        <img class="img-fluid" src="{{asset('/user/img/pj3.1.png')}}" alt="">
                         @else
-                            <img class="img-fluid" src="{{asset('/storage/post_url/'.$post->post_url)}}" alt="">
+                        <img class="img-fluid" src="{{asset('/storage/post_url/'.$post->post_url)}}" alt="">
                         @endif
                     </div>
                     <div class="blog_details">
@@ -62,28 +62,27 @@
                             </li>
                             <div id="react-btn">
                                 @if($search_user_post->like_state == 0)
-                                    <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span class='fa-thumb-styling fa fa-thumbs-up react-ajax '  post-id="{{ $post->post_id}}"></span></a>
+                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span class='fa-thumb-styling fa fa-thumbs-up react-ajax ' post-id="{{ $post->post_id}}"></span></a>
                                 @else
-                                    <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}" ><span class='fa-thumb-styling fa fa-thumbs-up react-ajax reacted'  post-id="{{ $post->post_id}}"></span></a>
+                                <a href="{{URL::to('/posts/'.$post->post_id.'/react/')}}"><span class='fa-thumb-styling fa fa-thumbs-up react-ajax reacted' post-id="{{ $post->post_id}}"></span></a>
                                 @endif
                                 {{-- <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a> --}}
                             </div>
                         </ul>
                         <script>
-                            $(document).ready(function(){
-                                $(document).on('click', '.react-ajax', function(event){
+                            $(document).ready(function() {
+                                $(document).on('click', '.react-ajax', function(event) {
                                     event.preventDefault();
                                     var post_id = $(this).attr('post-id');
-                                    console.log("post id is "+post_id);
+                                    console.log("post id is " + post_id);
                                     fetch_data(post_id);
                                 });
-                                function fetch_data(post_id)
-                                {
+
+                                function fetch_data(post_id) {
                                     $(".react-ajax").toggleClass("reacted");
                                     $.ajax({
-                                        url: post_id+"/react",
-                                        success:function(data)
-                                        {
+                                        url: post_id + "/react",
+                                        success: function(data) {
                                             console.log(data);
                                             $('.count-like').html(data + " people like this");
                                         }
@@ -94,7 +93,7 @@
                         <div class="quote-wrapper">
                             <div class="quotes">
                                 <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
-                                <mark-down>
+                                <mark-down pedantic>
                                     {{$post->content}}
                                 </mark-down>
                             </div>
