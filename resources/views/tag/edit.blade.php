@@ -36,7 +36,14 @@
             @csrf
             <div class="form-group">
                 <label>Edit tag title:</label>
-                <input class="form-control" name="title" id="title" type="text" placeholder="title" value={{ $tag->tag_title }}>
+                <input class="form-control" name="title" id="title" type="text" placeholder="title" value={{ $tag->tag_title }}></br>
+                <small>
+                    <span>
+                        @error('title')
+                            {{ $message }}
+                        @enderror
+                    </span>
+                </small>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-secondary btn-lg" name="Edit Tag">Edit</button>

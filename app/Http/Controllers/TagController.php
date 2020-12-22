@@ -30,6 +30,7 @@ class TagController extends Controller
         if ($request->isMethod('post')) {
             $tag = new Tag();
             $tag->tag_title = $request->title;
+            $request->validate(['title' => "required|max:30|min:1|unique:tags,tag_title"]);
             $tag->save();
             return redirect('admin/home-page');
         }
@@ -50,6 +51,7 @@ class TagController extends Controller
     public function edit(Request $request,$tag_id){
         $tag = Tag::find($tag_id);
         if($request->isMethod('post')){
+            $request->validate(['title' => "required|max:30|min:3|unique:tags,tag_title"]);
             $tag->tag_title = $request->title;
             $tag->save();
             return redirect('admin/home-page');

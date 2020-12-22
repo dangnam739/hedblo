@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
@@ -35,6 +34,11 @@ class UserController extends Controller
                 $path = $request->file('avatar_url')->storeAs('public/avatar_url', $filenameToStore);
                 $user->avatar_url = $filenameToStore;
             }
+            $request->validate([
+                'username' => 'required|max:30|min:3|unique:users,user_name',
+                'phone' => 'min:8|numeric',
+            ]);
+            
             $user->user_name = $request->input('username');
             $user->last_name = $request->input('lastname');
             $user->first_name = $request->input('firstname');
@@ -50,16 +54,18 @@ class UserController extends Controller
             if (Hash::check($request->input('pass0'),$hashedPassword)) {
                 if($request->input('pass1')==$request->input('pass2')){
                     $user->password = Hash::make($request->input('pass1'));
+                    return redirect("/users/$user->user_id")->with('alert', 'Your password updated!!');
+
                 }else{
-                    return redirect('/')->with('alert','Confirm password not match!!');
+                    return redirect("/users/$user->user_id/edit")->with('alert','Confirm password not match!!');
                 }
             } else {
                 // Current Password not match ps in db
-                return redirect('/')->with('alert', 'Your current password not correct!!');
+                return redirect("/users/$user->user_id/edit")->with('alert', 'Your current password not correct!!');
             }
         }
         $user->save();
-        return redirect("/users/$user->user_id")->with('user', $user);
+        return redirect("/users/$user->user_id");
     }
 
     public function posts($user_id) 
