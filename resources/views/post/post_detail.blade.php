@@ -16,7 +16,7 @@
                                 <button type="button" class="btn-warning btn" style="padding: 15px 10px !important;"><a href="{{ URL::to('/posts/tag/'.$tag->tag_id) }}">{{$tag->tag_title}}</a></button>
                             @endforeach
                             <br/><br/>
-                            @if($current_user->user_id == $post->user->user_id) or ($current_user->admin))
+                            @if(($current_user->user_id == $post->user->user_id) or ($current_user->admin))
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         @if($current_user->user_id == $post->user->user_id)
@@ -108,9 +108,13 @@
                               <div class="user justify-content-between d-flex">
                                  <div class="thumb">
                                   @if($comment->avatar_url == null)
-                                      <img src="{{asset('/user/img/blog/comment_1.png')}}" alt="" style="height: 80px; width: 80px">
+                                    <div class="cmt-ava">
+                                        <img src="{{asset('/user/img/default_avt.jpg')}}">
+                                    </div>
                                   @else
-                                    <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar" style="height: 80px; width:80px">
+                                  <div class="cmt-ava">
+                                        <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar">
+                                  </div>
                                   @endif
                                  </div>
                                  <div class="desc">

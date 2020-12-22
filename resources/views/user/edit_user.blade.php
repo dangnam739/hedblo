@@ -50,14 +50,17 @@
 
                                                                 <div class="row">
                                                                     @if ($user->avatar_url != null)
-                                                                        <img src="/storage/avatar_url/{{ $user->avatar_url }}"
-                                                                            style="width:100px">
+                                                                    <div class="block-ava">
+                                                                        <img src="/storage/avatar_url/{{ $user->avatar_url }}">
+                                                                    </div>
+
                                                                         {{-- <div
                                                                             class="vspace-12-sm"></div>
                                                                         --}}
                                                                     @else
-                                                                        <img src="{{asset('/user/img/default_avt.jpg')}}"
-                                                                        style="width:100px">
+                                                                    <div class="block-ava">
+                                                                        <img src="{{asset('/user/img/default_avt.jpg')}}">
+                                                                    </div>
                                                                     @endif
                                                                     <div class="col-xs-12 col-sm-4">
                                                                         <input type="file" name="avatar_url">
@@ -74,7 +77,7 @@
                                                                             placeholder="Username" name="username"
                                                                             value={{ $user->user_name }} disabled></br>
                                                                         <small>
-                                                                            <span>
+                                                                            <span style="color:red">
                                                                                 @error('username')
                                                                                     {{ $message }}
                                                                                 @enderror
@@ -192,7 +195,7 @@
                                                                                 class="ace-icon fa fa-phone fa-flip-horizontal"></i>
                                                                         </span></br>
                                                                         <small>
-                                                                            <span>
+                                                                            <span style="color:red">
                                                                                 @error('phone')
                                                                                     {{ $message }}
                                                                                 @enderror

@@ -5850,8 +5850,8 @@ hr {
 }
 
 .comments-area .thumb img {
-    width: 70px;
-    border-radius: 50%
+    /* width: 70px;
+    border-radius: 50% */
 }
 
 .comments-area .date {

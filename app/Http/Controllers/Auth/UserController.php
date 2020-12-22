@@ -37,12 +37,12 @@ class UserController extends Controller
             $request->validate([
                 'phone' => 'min:8|numeric',
             ]);
-            
+
             $user->last_name = $request->input('lastname');
             $user->first_name = $request->input('firstname');
-            $user->birthday = $request->input('birthday');    
+            $user->birthday = $request->input('birthday');
             $user->gender = $request->input('gender');
-        
+
             $user->address = $request->input('address');
             $user->phone = $request->input('phone');
         }
@@ -65,7 +65,7 @@ class UserController extends Controller
         return redirect("/users/$user->user_id");
     }
 
-    public function posts($user_id) 
+    public function posts($user_id)
     {
         $user = User::find($user_id);
         $posts = User::find($user_id)->posts;
