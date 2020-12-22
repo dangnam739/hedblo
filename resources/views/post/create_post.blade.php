@@ -67,7 +67,6 @@
                                 <b><span style="color: red;">{{ $message }}</span></b>
                                 @enderror
                         </div>
-
                     </div>
 
                     <div class="col-12">
