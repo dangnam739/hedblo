@@ -98,82 +98,32 @@
                         </div>
 
                     </div>
-                    <div class="comments-area" id="comments-area">
-                        <h4>{{$comment_count}} Comments</h4>
-                        @foreach($comments as $comment)
-                        <div class="comment-list">
-                           <div class="single-comment justify-content-between d-flex">
-                              <div class="user justify-content-between d-flex">
-                                 <div class="thumb">
-                                  @if($comment->avatar_url == null)
-                                      <img src="{{asset('/user/img/blog/comment_1.png')}}" alt="" style="height: 80px; width: 80px">
-                                  @else
-                                    <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar" style="height: 80px; width:80px">
-                                  @endif
-                                 </div>
-                                 <div class="desc">
-                                    <p class="comment">
-                                        {{$comment->content}}
-                                    </p>
-                                    <div class="d-flex justify-content-between">
-                                       <div class="d-flex align-items-center">
-                                          <h5>
-                                             <a href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a>
-                                          </h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        @endforeach
-                        <p>{{$comments->links()}}</p>
+                    <div id='table_data'>
+                      @include('post.comment_data')
                     </div>
+                        <script>
+                          $(document).ready(function(){
+                              $(document).on('click', '.pagination a',function(event){
+                                  event.preventDefault();
+                                  var page = $(this).attr('href').split('page=')[1];
+                                  var post_id = $(this).attr('post-id');
+                                  fetch_data(page, post_id);
+                                  console.log($(this));
+                                  console.log("post id is "+post_id);
+                                });
 
-                    <div class="navigation-top">
-                        {{-- <div class="navigation-area">
-                           <div class="row">
-                              <div
-                              class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                              <div class="thumb">
-                                 <a href="#">
-                                    <img class="img-fluid" src="assets/img/post/preview.png" alt="">
-                                 </a>
-                              </div>
-                              <div class="arrow">
-                                 <a href="#">
-                                    <span class="lnr text-white ti-arrow-left"></span>
-                                 </a>
-                              </div>
-                              <div class="detials">
-                                 <p>Prev Post</p>
-                                 <a href="#">
-                                    <h4 style="color: #2d2d2d;">Space The Final Frontier</h4>
-                                 </a>
-                              </div>
-                           </div>
-                           <div
-                           class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                           <div class="detials">
-                              <p>Next Post</p>
-                              <a href="#">
-                                 <h4 style="color: #2d2d2d;">Telescopes 101</h4>
-                              </a>
-                           </div>
-                           <div class="arrow">
-                              <a href="#">
-                                 <span class="lnr text-white ti-arrow-right"></span>
-                              </a>
-                           </div>
-                           <div class="thumb">
-                              <a href="#">
-                                 <img class="img-fluid" src="assets/img/post/next.png" alt="">
-                              </a>
-                           </div>
-                        </div> --}}
+                                function fetch_data(page, post_id)
+                                {
+                                    $.ajax({
+                                      url: '/posts/pagination?page='+ page,
+                                    success:function(data) {
+                                      $('#table_data').html(data);
+                                    }
+                            });
+                          }
+                        });
+                        </script>
                     </div>
-                </div>
-
                 <div class="comment-form">
                     <h4>Your comment</h4>
                     <form method="post" class="form-contact comment_form" action="{{URL::to('/posts/{$post->post_id}/comment')}}" id="commentForm">

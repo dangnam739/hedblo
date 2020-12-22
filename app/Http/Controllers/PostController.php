@@ -223,6 +223,24 @@ class PostController extends Controller
         return view('post.posts', compact('posts','title'));
     }
 
+    public function fetch_data(Request $request, $post_id){
+        if($request->ajax()){
+            $comment_count = DB::table('comments')
+                                ->join('posts','comments.post_id','=','posts.post_id')
+                                ->where('posts.post_id','=',$post_id)
+                                ->count();
+
+            $comments = DB::table('comments')
+                        ->join('posts','comments.post_id','=','posts.post_id')
+                        ->join('users','comments.user_id','=','users.user_id')
+                        ->where('posts.post_id','=',$post_id)
+                        ->select('comments.content','users.user_name','users.avatar_url')
+                        ->paginate(5);
+            $current_user = User::find(auth()->user()->user_id);
+            return view('post.comment_data',compact('comments, comment_count, current_user'));
+        }
+    }
+
     // public function unactive_post(Request $request){
     //     $post_id = $request->post_id;
     //     $user_id = (User::find(auth()->user()->user_id))->user_id;
