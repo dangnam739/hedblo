@@ -1,5 +1,10 @@
 @extends('layout_admin')
 @section('content')
+@if (session('alert'))
+    <div class="alert alert-success">
+        {{ session('alert') }}
+    </div>
+@endif
 <div class="container-fluid">
 
     <!-- Breadcrumbs-->
@@ -67,4 +72,6 @@
 @include('admin.tags_show')
 </div>
 <!-- /.container-fluid -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{asset('/js/tran.js')}}"></script>
 @endsection
