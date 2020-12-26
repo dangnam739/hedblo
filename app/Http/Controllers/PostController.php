@@ -39,6 +39,9 @@ class PostController extends Controller
     public function post_detail($post_id)
     {
         $post = Post::find($post_id);
+        if($post === null){
+            return view('error.error')->with('code',404)->with('message','Post id not found');
+        }
         $recent_posts = Post::where('post_id', '!=', $post_id)->orderBy('date_create', 'desc')->take(3)->get();
 
         $comment_count = DB::table('comments')
@@ -94,6 +97,10 @@ class PostController extends Controller
         })->paginate(3);
 
         $tag = Tag::find($tag_id);
+        if($tag == null){
+            return view('error.error')->with('code',404)->with('message','Tag id not found');
+        }
+
         $title = strtoupper($tag->tag_title);
 
         if ($request->ajax()) {
@@ -148,10 +155,14 @@ class PostController extends Controller
 
     # Edit post
     public function edit(Request $request,$post_id){
+        $post = Post::find($post_id);
+        if($post == null){
+            return view('error.error')->with('code',404)->with('message','Post id not found');
+        }
         if($this->require_same_user($post_id) == FALSE){
             return redirect('/');
         }
-        $post = Post::find($post_id);
+
 
         $selected_tags_array = array();
         foreach ($post->tags as $selected_tag) {
@@ -193,12 +204,17 @@ class PostController extends Controller
 
     # Delete post
     public function delete($post_id){
+        $post = Post::find($post_id);
+        if($post == null){
+            return view('error.error')->with('code',404)->with('message','Post id not found');
+        }
+
         if($this->require_same_user($post_id) == FALSE){
             if(auth()->user()->admin == FALSE){
                 return redirect('/');
             }
         }
-        $post = Post::find($post_id);
+
         $post->delete();
         return redirect('/posts');
     }
