@@ -12,7 +12,8 @@
                         <th>Username</th>
                         <th>Email</th>
                         <th>Posts</th>
-                        <th colspan="2">Actions</th>
+                        <th>Detail</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -20,7 +21,8 @@
                         <th>Username</th>
                         <th>Email</th>
                         <th>Posts</th>
-                        <th colspan="2">Actions</th>
+                        <th>Detail</th>
+                        <th>Actions</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -29,8 +31,8 @@
                             <td><a href="{{ URL::to('users/' . $user->user_id) . '/posts' }}">{{ $user->user_name }}</a></td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->posts->count() }}</td>
-                            <td><a href={{ URL::to('users/' . $user->user_id) }}>Show<a></td>
-                            <td><a href={{ URL::to('users/' . $user->user_id . '/delete') }}>Destroy<a></td>
+                            <td><a class="btn btn-primary btn-sm" href={{ URL::to('users/' . $user->user_id) }}>Show</a></td>
+                            <td><a class="btn btn-danger btn-sm" href={{ URL::to('users/' . $user->user_id . '/delete') }} onclick="return alert_delete('Are you sure to delete?');">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -40,4 +42,11 @@
     {{-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     --}}
 </div>
+<script>
+    function alert_delete($message) {
+        if(!confirm($message))
+        event.preventDefault();
+    }
+</script>
+
 

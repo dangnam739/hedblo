@@ -50,4 +50,7 @@
             </div>
         </form>
     </div>
+    <div class="container">
+        @include('admin.tags_show')
+    </div>
 @endsection

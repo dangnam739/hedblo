@@ -21,6 +21,9 @@ class AdminController extends Controller
             $users = User::all();
             $posts = Post::all();
             $tags = Tag::all();
+            $tags = $tags->SortByDesc('tag_id');
+            
+            
             $number_of_users = User::count();
             $number_of_posts = Post::count();
             $number_of_tags = Tag::count();
@@ -37,8 +40,17 @@ class AdminController extends Controller
     }
 
     public function delete($user_id){
+        $user = User::find($user_id);
+        if(!isset($user)){
+            return redirect('/admin/home-page');
+        }
+        if($user->admin){
+            return redirect('/admin/home-page')->with('alert','Cannot delete admin user!');
+        }
+
         User::find($user_id)->delete();
         return redirect('/admin/home-page');    
+    
     }
 
 }
