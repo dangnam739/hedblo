@@ -22,8 +22,8 @@ class AdminController extends Controller
             $posts = Post::all();
             $tags = Tag::all();
             $tags = $tags->SortByDesc('tag_id');
-            
-            
+
+
             $number_of_users = User::count();
             $number_of_posts = Post::count();
             $number_of_tags = Tag::count();
@@ -33,7 +33,7 @@ class AdminController extends Controller
                 ->with(compact('number_of_tags', $number_of_tags))
                 ->with(compact('users', $users))
                 ->with(compact('posts', $posts))
-                ->with(compact('tags', $tags));    
+                ->with(compact('tags', $tags));
         }else{
             return redirect('/');
         }
@@ -49,8 +49,8 @@ class AdminController extends Controller
         }
 
         User::find($user_id)->delete();
-        return redirect('/admin/home-page');    
-    
+        return redirect('/admin/home-page');
+
     }
 
 }

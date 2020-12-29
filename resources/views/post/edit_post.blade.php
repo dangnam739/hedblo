@@ -40,12 +40,12 @@
 
                     <div class="col-sm-4">
                         <div class="col-xs-12 col-sm-8">
-{{--                            <label for="post_url" class="btn btn3 custom-file-upload">--}}
-{{--                                 Upload cover image--}}
-{{--                            </label>--}}
+                            <label for="post_url" class="btn btn3 custom-file-upload">
+                                 Upload cover image
+                            </label>
 
-{{--                            <input type="file" name="post_url" class="file-upload" id="post_url">--}}
-                            <input type="file" name="post_url" id="post_url">
+                            <input type="file" name="post_url" class="file-upload" id="post_url">
+                            {{-- <input type="file" name="post_url" id="post_url"> --}}
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>
